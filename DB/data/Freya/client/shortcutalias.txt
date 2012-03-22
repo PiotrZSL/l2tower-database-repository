@@ -1,0 +1,153 @@
+﻿id	name	val1	val2
+1	a,SetPrevChatType\0	709	9C5
+2	a,SetNextChatType\0	70A	9C6
+3	a,TargetCancel\0	70B	9C7
+4	a,FocusChatWindow\0	70C	9C8
+5	a,TabShowInventoryWindow\0	70D	9C9
+6	a,HideAllWindow\0	70E	9CA
+7	a,CloseAllWindow\0	70F	9CB
+8	a,ShowGMWindow\0	710	9CC
+9	a,ShowGMPetitionWindow\0	711	9CD
+10	a,ShowPartyBuff\0	712	9CE
+11	a,ApplyMinFrame\0	713	9CF
+12	a,ShowMessengerWindow\0	714	9D0
+13	a,UseShortcutItem Num=0\0	715	9D1
+14	a,UseShortcutItem Num=1\0	716	9D2
+15	a,UseShortcutItem Num=2\0	717	9D3
+16	a,UseShortcutItem Num=3\0	718	9D4
+17	a,UseShortcutItem Num=4\0	719	9D5
+18	a,UseShortcutItem Num=5\0	71A	9D6
+19	a,UseShortcutItem Num=6\0	71B	9D7
+20	a,UseShortcutItem Num=7\0	71C	9D8
+21	a,UseShortcutItem Num=8\0	71D	9D9
+22	a,UseShortcutItem Num=9\0	71E	9DA
+23	a,UseShortcutItem Num=10\0	71F	9DB
+24	a,UseShortcutItem Num=11\0	720	9DC
+25	a,UseShortcutItem Num=12\0	721	9DD
+26	a,UseShortcutItem Num=13\0	722	9DE
+27	a,UseShortcutItem Num=14\0	723	9DF
+28	a,UseShortcutItem Num=15\0	724	9E0
+29	a,UseShortcutItem Num=16\0	725	9E1
+30	a,UseShortcutItem Num=17\0	726	9E2
+31	a,UseShortcutItem Num=18\0	727	9E3
+32	a,UseShortcutItem Num=19\0	728	9E4
+33	a,UseShortcutItem Num=20\0	729	9E5
+34	a,UseShortcutItem Num=21\0	72A	9E6
+35	a,UseShortcutItem Num=22\0	72B	9E7
+36	a,UseShortcutItem Num=23\0	72C	9E8
+37	a,UseShortcutItem Num=24\0	72D	9E9
+38	a,UseShortcutItem Num=25\0	72E	9EA
+39	a,UseShortcutItem Num=26\0	72F	9EB
+40	a,UseShortcutItem Num=27\0	730	9EC
+41	a,UseShortcutItem Num=28\0	731	9ED
+42	a,UseShortcutItem Num=29\0	732	9EE
+43	a,UseShortcutItem Num=30\0	733	9EF
+44	a,UseShortcutItem Num=31\0	734	9F0
+45	a,UseShortcutItem Num=32\0	735	9F1
+46	a,UseShortcutItem Num=33\0	736	9F2
+47	a,UseShortcutItem Num=34\0	737	9F3
+48	a,UseShortcutItem Num=35\0	738	9F4
+49	a,SetShortcutPage Num=0\0	739	9F5
+50	a,SetShortcutPage Num=1\0	73A	9F6
+51	a,SetShortcutPage Num=2\0	73B	9F7
+52	a,SetShortcutPage Num=3\0	73C	9F8
+53	a,SetShortcutPage Num=4\0	73D	9F9
+54	a,SetShortcutPage Num=5\0	73E	9FA
+55	a,SetShortcutPage Num=6\0	73F	9FB
+56	a,SetShortcutPage Num=7\0	740	9FC
+57	a,SetShortcutPage Num=8\0	741	9FD
+58	a,SetShortcutPage Num=9\0	742	9FE
+59	a,ShowWindow Name=ActionWnd\0	743	9FF
+60	a,ShowWindow Name=BoardWnd\0	744	A00
+61	a,ShowWindow Name=CalculatorWnd\0	745	A01
+62	a,ShowWindow Name=ChatWnd\0	746	A02
+63	a,ShowWindow Name=ClanWnd\0	747	A03
+64	a,ShowWindow Name=DetailStatusWnd\0	748	A04
+65	a,ShowWindow Name=HelpHtmlWnd\0	749	A05
+66	a,ShowWindow Name=InventoryWnd\0	74A	A06
+67	a,ShowWindow Name=MacroWnd\0	74B	A07
+68	a,ShowWindow Name=MagicSkillWnd\0	74C	A08
+69	a,ShowWindow Name=MenuWnd\0	74D	A09
+70	a,ShowWindow Name=MinimapWnd\0	74E	A0A
+71	a,ShowWindow Name=OptionWnd\0	74F	A0B
+72	a,ShowWindow Name=PartyMatchWnd\0	750	A0C
+73	a,ShowWindow Name=QuestTreeWnd\0	751	A0D
+74	a,ShowWindow Name=RadarMapWnd\0	752	A0E
+75	a,ShowWindow Name=StatusWnd\0	753	A0F
+76	a,ShowWindow Name=SystemMenuWnd\0	754	A10
+77	a,ShowWindow Name=FN_HideDropItemSilhauette\0	755	A11
+78	a,ShowWindow Name=FN_SendTargetedCharacterMessage\0	756	A12
+79	a,ShowWindow Name=FN_MuteAllAudio\0	757	A13
+80	a,ShowWindow Name=FN_SHORTCUTEXPAND\0	758	A14
+81	a,ShowWindow Name=FN_UILocReset\0	759	A15
+82	a,LeftTurn\0	75A	A16
+83	a,RightTurn\0	75B	A17
+84	a,MoveForward\0	75C	A18
+85	a,MoveBackward\0	75D	A19
+86	a,AutoMove\0	75E	A1A
+87	a,ZoomIn\0	75F	A1B
+88	a,ZoomOut\0	760	A1C
+89	a,TurnBack\0	761	A1D
+90	a,ShowWindow Name=GMWnd\0	762	A1E
+91	a,ShowWindow Name=GMPetitionWnd\0	763	A1F
+92	a,ShowWindow Name=FN_SCTog\0	764	A20
+93	a,FixedDefaultCamera Down\0	765	A21
+94	a,FixedDefaultCamera Up\0	766	A22
+95	a,FixedDefaultCamera\0	767	A23
+96	a,StopLeftTurn\0	768	A24
+97	a,StopRightTurn\0	769	A25
+98	a,StopMoveForward\0	76A	A26
+99	a,StopMoveBackward\0	76B	A27
+100	a,EulaWndOKButton\0	834	AF0
+101	a,ChinaWarnMsgOKButton\0	835	AF1
+102	a,ServerSelectOKButton\0	836	AF2
+103	a,BroadcastShowPartyWindow\0	837	AF3
+104	a,BroadcastLockPosition\0	838	AF4
+105	a,BroadcastInitPosition\0	839	AF5
+106	a,BroadcastToggleShowClassOrName\0	83A	AF6
+107	a,BroadcastToggleTargetName\0	83B	AF7
+108	a,BroadcastSwitchMessageMode\0	83C	AF8
+109	a,BroadcastShowPartyWindow\0	83D	AF9
+110	a,BroadcastLockPosition\0	83E	AFA
+111	a,BroadcastInitPosition\0	83F	AFB
+112	a,BroadcastToggleShowClassOrName\0	840	AFC
+113	a,BroadcastToggleTargetName\0	841	AFD
+114	a,BroadcastSwitchMessageMode\0	842	AFE
+115	a,ShowChatWindow\0	843	AFF
+116	a,ReserveShortcutItem Num=120\0	844	B00
+117	a,ReserveShortcutItem Num=121\0	845	B01
+118	a,ReserveShortcutItem Num=122\0	846	B02
+119	a,ReserveShortcutItem Num=123\0	847	B03
+120	a,ReserveShortcutItem Num=124\0	848	B04
+121	a,ReserveShortcutItem Num=125\0	849	B05
+122	a,ReserveShortcutItem Num=126\0	84A	B06
+123	a,ReserveShortcutItem Num=127\0	84B	B07
+124	a,ReserveShortcutItem Num=128\0	84C	B08
+125	a,ReserveShortcutItem Num=129\0	84D	B09
+126	a,ReserveShortcutItem Num=130\0	84E	B0A
+127	a,ReserveShortcutItem Num=131\0	84F	B0B
+128	a,ReserveShortcutItem Num=132\0	850	B0C
+129	a,ReserveShortcutItem Num=133\0	851	B0D
+130	a,ReserveShortcutItem Num=134\0	852	B0E
+131	a,ReserveShortcutItem Num=135\0	853	B0F
+132	a,ReserveShortcutItem Num=136\0	854	B10
+133	a,ReserveShortcutItem Num=137\0	855	B11
+134	a,ReserveShortcutItem Num=138\0	856	B12
+135	a,ReserveShortcutItem Num=139\0	857	B13
+136	a,ReserveShortcutItem Num=140\0	858	B14
+137	a,ReserveShortcutItem Num=141\0	859	B15
+138	a,ReserveShortcutItem Num=142\0	85A	B16
+139	a,ReserveShortcutItem Num=143\0	85B	B17
+140	a,UseReservedShortcutItem\0	85C	B18
+141	a,MoveUp\0	85D	B19
+142	a,MoveDown\0	85E	B1A
+143	a,MoveUpAirship\0	85F	B1B
+144	a,MoveDownAirship\0	860	B1C
+145	a,AutoMovingForward\0	861	B1D
+146	a,StopUseReservedShortcutItem\0	862	B1E
+147	a,StopMoveUp\0	863	B1F
+148	a,StopMoveDown\0	864	B20
+149	a,StopMoveUpAirship\0	865	B21
+150	a,StopMoveDownAirship\0	866	B22
+151	a,StopMoveAll\0	867	B23
+152	a,StopMoveAirship\0	868	B24

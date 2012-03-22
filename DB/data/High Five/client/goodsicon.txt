@@ -1,0 +1,6 @@
+﻿ID	ICON
+10001	icon.etc_i.etc_pi_gift_box_i00
+10002	icon.etc_i.etc_pi_gift_box_i01
+10003	icon.etc_i.etc_pi_gift_box_i02
+10004	icon.etc_i.etc_pi_gift_box_i03
+10005	icon.etc_i.etc_pi_gift_box_i04

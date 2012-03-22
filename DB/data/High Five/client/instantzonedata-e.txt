@@ -1,0 +1,156 @@
+﻿id	name
+1	a,Party Duel\0
+2	a,Urban Area\0
+3	a,Tower of Infinitum Demon Prince\0
+4	a,Tower of Infinitum Ranku\0
+5	a,Tully's Workshop 1st Floor\0
+6	a,Tully's Workshop 3rd Floor\0
+7	a,Tully's Workshop 5th Floor\0
+8	a,Tully's Workshop 7th Floor\0
+9	a,Dark Cloud Mansion\0
+10	a,Crystal Caverns\0
+11	a,Nornil's Garden\0
+12	a,Nornil's Garden Quest\0
+13	a,Dungeon\0
+14	a,Dungeon\0
+15	a,Dungeon\0
+16	a,Dungeon\0
+17	a,Dungeon\0
+18	a,Dungeon\0
+19	a,Dungeon\0
+20	a,Dungeon\0
+21	a,Dungeon\0
+22	a,Monster Dungeon\0
+23	a,Monster Dungeon\0
+24	a,Monster Dungeon\0
+25	a,Monster Dungeon\0
+26	a,Monster Dungeon\0
+27	a,Monster Dungeon\0
+28	a,Monster Dungeon\0
+29	a,Monster Dungeon\0
+30	a,Monster Dungeon\0
+31	a,Monster Dungeon\0
+32	a,Monster Dungeon\0
+33	a,Monster Dungeon\0
+34	a,Monster Dungeon\0
+35	a,Monster Dungeon\0
+36	a,Monster Dungeon\0
+37	a,Monster Dungeon\0
+38	a,Monster Dungeon\0
+39	a,Monster Dungeon\0
+40	a,Monster Dungeon\0
+41	a,Monster Dungeon\0
+42	a,Monster Dungeon\0
+43	a,Pailaka (Forgotten Temple)\0
+44	a,Pailaka (Devil's Isle)\0
+45	a,Pailaka (Varka Silenos Barracks)\0
+46	a,Rim Kamaloka\0
+47	a,Rim Kamaloka\0
+48	a,Rim Kamaloka\0
+49	a,Rim Kamaloka\0
+50	a,Rim Kamaloka\0
+51	a,Rim Kamaloka\0
+52	a,Rim Kamaloka\0
+53	a,Rim Kamaloka\0
+54	a,Rim Kamaloka\0
+55	a,Rim Kamaloka\0
+56	a,Rim Kamaloka\0
+57	a,Kamaloka (Hall of the Abyss)\0
+58	a,Kamaloka (Hall of the Abyss)\0
+59	a,Near Kamaloka\0
+60	a,Kamaloka (Hall of the Abyss)\0
+61	a,Kamaloka (Hall of the Abyss)\0
+62	a,Near Kamaloka\0
+63	a,Kamaloka (Hall of the Abyss)\0
+64	a,Kamaloka (Hall of the Abyss)\0
+65	a,Near Kamaloka\0
+66	a,Kamaloka (Hall of the Abyss)\0
+67	a,Kamaloka (Hall of the Abyss)\0
+68	a,Near Kamaloka\0
+69	a,Kamaloka (Hall of the Abyss)\0
+70	a,Kamaloka (Hall of the Abyss)\0
+71	a,Near Kamaloka\0
+72	a,Kamaloka (Hall of the Abyss)\0
+73	a,Kamaloka (Labyrinth of the Abyss)\0
+74	a,Kamaloka (Labyrinth of the Abyss)\0
+75	a,Kamaloka (Labyrinth of the Abyss)\0
+76	a,Kamaloka (Labyrinth of the Abyss)\0
+77	a,Kamaloka (Labyrinth of the Abyss)\0
+78	a,Kamaloka (Labyrinth of the Abyss)\0
+79	a,Kamaloka (Labyrinth of the Abyss)\0
+80	a,Pailaka (Rune Castle)\0
+81	a,Pailaka (Rune Castle)\0
+82	a,Pailaka (Rune Castle)\0
+83	a,Pailaka (Rune Castle)\0
+84	a,Pailaka (Rune Castle)\0
+85	a,Pailaka (Rune Castle)\0
+86	a,Pailaka (Rune Castle)\0
+87	a,Pailaka (Rune Castle)\0
+88	a,Pailaka (Rune Castle)\0
+89	a,Pailaka (Rune Castle)\0
+90	a,Pailaka (Rune Castle)\0
+91	a,Pailaka (Rune Castle)\0
+92	a,Pailaka (Rune Castle)\0
+93	a,Pailaka (Rune Castle)\0
+94	a,Pailaka (Rune Castle)\0
+95	a,Pailaka (Rune Castle)\0
+96	a,Pailaka (Rune Castle)\0
+97	a,Pailaka (Rune Castle)\0
+98	a,Pailaka (Rune Castle)\0
+99	a,Pailaka (Rune Castle)\0
+100	a,Pailaka (Rune Castle)\0
+101	a,Pailaka (Rune Castle)\0
+102	a,Pailaka (Rune Castle)\0
+103	a,Pailaka (Rune Castle)\0
+104	a,Pailaka (Rune Castle)\0
+105	a,Pailaka (Rune Castle)\0
+106	a,Pailaka (Rune Castle)\0
+107	a,Pailaka (Rune Castle)\0
+108	a,Pailaka (Rune Castle)\0
+109	a,Pailaka (Rune Castle)\0
+110	a,Seed of Destruction\0
+111	a,Sanctum of the Lords of Dawn\0
+112	a,Disciple's Necropolis (Past)\0
+113	a,Hideout of the Dawn\0
+114	a,Cavern of the Pirate Captain (Nightmare)\0
+115	a,Seed of Infinity (Hall of Suffering)\0
+116	a,Seed of Infinity (Hall of Suffering)\0
+117	a,Secret Area in the Keucereus Fortress\0
+118	a,Secret Area in the Keucereus Fortress\0
+119	a,Seed of Infinity (Hall of Erosion)\0
+120	a,Seed of Infinity (Hall of Erosion)\0
+121	a,Seed of Infinity (Heart of Infinity)\0
+122	a,Seed of Infinity (Heart of Infinity)\0
+123	a,Seed of Destruction (Chamblain's Mounted Troop)\0
+124	a,Seed of Destruction (Soldier's Mounted Troop)\0
+125	a,Seed of Destruction (Warrior's Mounted Troop)\0
+126	a,Seed of Destruction (Great Warrior's Mounted Troop)\0
+127	a,Delusion Chamber (Eastern Seal)\0
+128	a,Delusion Chamber (Western Seal)\0
+129	a,Delusion Chamber (Eastern Seal)\0
+130	a,Delusion Chamber (Northern  Seal)\0
+131	a,Delusion Chamber (Great Seal)\0
+132	a,Delusion Chamber (Tower of Seal)\0
+133	a,Cavern of the Pirate Captain (Daydream)\0
+134	a,Kamaloka (Labyrinth of the Abyss)\0
+135	a,Cavern of the Pirate Captain (Daydream)\0
+136	a,Final Emperial Tomb\0
+137	a,Ice Queen's Castle\0
+138	a,Mithril Mine\0
+139	a,Ice Queen's Castle\0
+140	a,Jinia Guild Hideout\0
+141	a,Jinia Guild Hideout\0
+142	a,Tower of Infinitum (5th Floor)\0
+143	a,Tower of Infinitum (10th Floor)\0
+144	a,Ice Queen's Castle (Ultimate Battle)\0
+145	a,Jinia Guild Hideout\0
+146	a,Jinia Guild Hideout\0
+147	a,Olympiad\0
+148	a,Olympiad\0
+149	a,Olympiad\0
+150	a,Olympiad\0
+151	a,Monastery of Silence\0
+156	a,Library of Sages\0
+157	a,Underground Library of Sages\0
+158	a,Elcadia's Tent\0
+159	a,Penal Colony of Darkness Raid\0

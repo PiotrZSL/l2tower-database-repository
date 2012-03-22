@@ -1,0 +1,90 @@
+﻿id	txt_cnt	rcid_1	rctex_1	rcid_2	rctex_2	rcid_3	rctex_3	rcid_4	rctex_4	rcid_5	rctex_5	rcid_6	rctex_6	rcid_7	rctex_7	rcid_8	rctex_8	rcid_9	rctex_9	rcid_10	rctex_10	rcid_11	rctex_11	rcid_12	rctex_12	rcid_13	rctex_13
+9421	9	2	a,MDarkElf.MDarkElf_m010_t201_l2\0	3	a,FDarkElf.FDarkElf_m010_t201_l2\0	4	a,MDwarf.MDwarf_m008_t201_l2\0	5	a,FDwarf.FDwarf_m008_t201_l2\0	7	a,FElf.FElf_m011_t201_l2\0	8	a,mMagic.MMagic_m011_t301_l2\0	9	a,FMagic.FMagic_m013_t301_l2\0	12	a,MShaman.MShaman_m008_t301_l2\0	13	a,FShaman.FShaman_m008_t301_l2\0								
+9425	1	7	a,FElf.FElf_m008_t101_u2\0																								
+9426	1	7	a,FElf.FElf_m008_t101_u2\0																								
+9427	1	7	a,FElf.FElf_m008_t101_u2\0																								
+9428	7	4	a,MDwarf.MDwarf_m008_t201_l2\0	5	a,FDwarf.FDwarf_m008_t201_l2\0	7	a,FElf.FElf_m008_t101_l2\0	8	a,mMagic.MMagic_m011_t301_l2\0	9	a,FMagic.FMagic_m013_t301_l2\0	12	a,MShaman.MShaman_m008_t301_l2\0	13	a,FShaman.FShaman_m008_t301_l2\0												
+9437	10	2	a,MDarkElf.MDarkElf_m008_t301_l2\0	3	a,FDarkElf.FDarkElf_m006_t301_l2\0	4	a,MDwarf.MDwarf_m008_t201_l2\0	5	a,FDwarf.FDwarf_m008_t201_l2\0	6	a,MElf.MElf_m009_t301_l2\0	7	a,FElf.FElf_m006_t301_l2\0	8	a,mMagic.MMagic_m011_t301_l2\0	9	a,FMagic.FMagic_m013_t301_l2\0	12	a,MShaman.MShaman_m008_t301_l2\0	13	a,FShaman.FShaman_m008_t301_l2\0						
+9515	9	2	a,MDarkElf.MDarkElf_m010_t201_l2\0	3	a,FDarkElf.FDarkElf_m010_t201_l2\0	4	a,MDwarf.MDwarf_m008_t201_l2\0	5	a,FDwarf.FDwarf_m008_t201_l2\0	7	a,FElf.FElf_m011_t201_l2\0	8	a,mMagic.MMagic_m011_t301_l2\0	9	a,FMagic.FMagic_m013_t301_l2\0	12	a,MShaman.MShaman_m008_t301_l2\0	13	a,FShaman.FShaman_m008_t301_l2\0								
+9519	1	7	a,FElf.FElf_m008_t101_u2\0																								
+9520	7	4	a,MDwarf.MDwarf_m008_t201_l2\0	5	a,FDwarf.FDwarf_m008_t201_l2\0	7	a,FElf.FElf_m008_t101_l2\0	8	a,mMagic.MMagic_m011_t301_l2\0	9	a,FMagic.FMagic_m013_t301_l2\0	12	a,MShaman.MShaman_m008_t301_l2\0	13	a,FShaman.FShaman_m008_t301_l2\0												
+9525	10	2	a,MDarkElf.MDarkElf_m008_t301_l2\0	3	a,FDarkElf.FDarkElf_m006_t301_l2\0	4	a,MDwarf.MDwarf_m008_t201_l2\0	5	a,FDwarf.FDwarf_m008_t201_l2\0	6	a,MElf.MElf_m009_t301_l2\0	7	a,FElf.FElf_m006_t301_l2\0	8	a,mMagic.MMagic_m011_t301_l2\0	9	a,FMagic.FMagic_m013_t301_l2\0	12	a,MShaman.MShaman_m008_t301_l2\0	13	a,FShaman.FShaman_m008_t301_l2\0						
+10126	1	7	a,FElf.FElf_m008_t101_u2\0																								
+10127	1	7	a,FElf.FElf_m008_t101_u2\0																								
+10168	1	7	a,FElf.FElf_m008_t101_u2\0																								
+10214	1	7	a,FElf.FElf_m008_t101_u2\0																								
+10232	1	7	a,FElf.FElf_m008_t101_u2\0																								
+10233	1	7	a,FElf.FElf_m008_t101_u2\0																								
+10234	1	7	a,FElf.FElf_m008_t101_u2\0																								
+10487	1	7	a,FElf.FElf_m008_t101_u2\0																								
+10488	1	7	a,FElf.FElf_m008_t101_u2\0																								
+10489	1	7	a,FElf.FElf_m008_t101_u2\0																								
+10490	1	7	a,FElf.FElf_m008_t101_u2\0																								
+10807	1	7	a,FElf.FElf_m008_t101_u2\0																								
+10808	1	7	a,FElf.FElf_m008_t101_u2\0																								
+10809	1	7	a,FElf.FElf_m008_t101_u2\0																								
+10815	1	7	a,FElf.FElf_m008_t101_u2\0																								
+10816	1	7	a,FElf.FElf_m008_t101_u2\0																								
+10817	1	7	a,FElf.FElf_m008_t101_u2\0																								
+10818	1	7	a,FElf.FElf_m008_t101_u2\0																								
+10824	1	7	a,FElf.FElf_m008_t101_u2\0																								
+10825	1	7	a,FElf.FElf_m008_t101_u2\0																								
+10826	1	7	a,FElf.FElf_m008_t101_u2\0																								
+10832	1	7	a,FElf.FElf_m008_t101_u2\0																								
+10833	1	7	a,FElf.FElf_m008_t101_u2\0																								
+10834	1	7	a,FElf.FElf_m008_t101_u2\0																								
+10835	1	7	a,FElf.FElf_m008_t101_u2\0																								
+11512	9	2	a,MDarkElf.MDarkElf_m010_t201_l2\0	3	a,FDarkElf.FDarkElf_m010_t201_l2\0	4	a,MDwarf.MDwarf_m008_t201_l2\0	5	a,FDwarf.FDwarf_m008_t201_l2\0	7	a,FElf.FElf_m011_t201_l2\0	8	a,mMagic.MMagic_m011_t301_l2\0	9	a,FMagic.FMagic_m013_t301_l2\0	12	a,MShaman.MShaman_m008_t301_l2\0	13	a,FShaman.FShaman_m008_t301_l2\0								
+11516	7	4	a,MDwarf.MDwarf_m008_t201_l2\0	5	a,FDwarf.FDwarf_m008_t201_l2\0	7	a,FElf.FElf_m008_t101_l2\0	8	a,mMagic.MMagic_m011_t301_l2\0	9	a,FMagic.FMagic_m013_t301_l2\0	12	a,MShaman.MShaman_m008_t301_l2\0	13	a,FShaman.FShaman_m008_t301_l2\0												
+11517	1	7	a,FElf.FElf_m008_t101_u2\0																								
+11518	1	7	a,FElf.FElf_m008_t101_u2\0																								
+11519	1	7	a,FElf.FElf_m008_t101_u2\0																								
+11520	1	7	a,FElf.FElf_m008_t101_u2\0																								
+11521	1	7	a,FElf.FElf_m008_t101_u2\0																								
+11522	1	7	a,FElf.FElf_m008_t101_u2\0																								
+11540	1	7	a,FElf.FElf_m008_t101_u2\0																								
+11541	1	7	a,FElf.FElf_m008_t101_u2\0																								
+11542	1	7	a,FElf.FElf_m008_t101_u2\0																								
+11543	1	7	a,FElf.FElf_m008_t101_u2\0																								
+11544	1	7	a,FElf.FElf_m008_t101_u2\0																								
+11545	1	7	a,FElf.FElf_m008_t101_u2\0																								
+11546	1	7	a,FElf.FElf_m008_t101_u2\0																								
+11558	10	2	a,MDarkElf.MDarkElf_m008_t301_l2\0	3	a,FDarkElf.FDarkElf_m006_t301_l2\0	4	a,MDwarf.MDwarf_m008_t201_l2\0	5	a,FDwarf.FDwarf_m008_t201_l2\0	6	a,MElf.MElf_m009_t301_l2\0	7	a,FElf.FElf_m006_t301_l2\0	8	a,mMagic.MMagic_m011_t301_l2\0	9	a,FMagic.FMagic_m013_t301_l2\0	12	a,MShaman.MShaman_m008_t301_l2\0	13	a,FShaman.FShaman_m008_t301_l2\0						
+11559	9	2	a,MDarkElf.MDarkElf_m010_t201_l2\0	3	a,FDarkElf.FDarkElf_m010_t201_l2\0	4	a,MDwarf.MDwarf_m008_t201_l2\0	5	a,FDwarf.FDwarf_m008_t201_l2\0	7	a,FElf.FElf_m011_t201_l2\0	8	a,mMagic.MMagic_m011_t301_l2\0	9	a,FMagic.FMagic_m013_t301_l2\0	12	a,MShaman.MShaman_m008_t301_l2\0	13	a,FShaman.FShaman_m008_t301_l2\0								
+11563	7	4	a,MDwarf.MDwarf_m008_t201_l2\0	5	a,FDwarf.FDwarf_m008_t201_l2\0	7	a,FElf.FElf_m008_t101_l2\0	8	a,mMagic.MMagic_m011_t301_l2\0	9	a,FMagic.FMagic_m013_t301_l2\0	12	a,MShaman.MShaman_m008_t301_l2\0	13	a,FShaman.FShaman_m008_t301_l2\0												
+11564	1	7	a,FElf.FElf_m008_t101_u2\0																								
+11574	10	2	a,MDarkElf.MDarkElf_m008_t301_l2\0	3	a,FDarkElf.FDarkElf_m006_t301_l2\0	4	a,MDwarf.MDwarf_m008_t201_l2\0	5	a,FDwarf.FDwarf_m008_t201_l2\0	6	a,MElf.MElf_m009_t301_l2\0	7	a,FElf.FElf_m006_t301_l2\0	8	a,mMagic.MMagic_m011_t301_l2\0	9	a,FMagic.FMagic_m013_t301_l2\0	12	a,MShaman.MShaman_m008_t301_l2\0	13	a,FShaman.FShaman_m008_t301_l2\0						
+13436	2	2	a,MDarkElf.MDarkElf_m003_t112_u2\0	7	a,FElf.FElf_m014_t112_u2\0																						
+13448	13	0	a,MFighter.MFighter_m014_t212_l2\0	1	a,FFighter.FFighter_m014_t212_l2\0	2	a,MDarkElf.MDarkElf_m012_t212_l2\0	3	a,FDarkElf.FDarkElf_m012_t212_l2\0	4	a,MDwarf.MDwarf_m010_t212_l2\0	6	a,MElf.MElf_m013_t212_l2\0	7	a,FElf.FElf_m013_t212_l2\0	8	a,MMagic.MMagic_m015_t312_l2\0	9	a,FMagic.FMagic_m015_t312_l2\0	10	a,MOrc.MOrc_m009_t212_l2\0	11	a,FOrc.FOrc_m009_t212_l2\0	12	a,MShaman.MShaman_m006_t312_l2\0	13	a,FShaman.FShaman_m006_t312_l2\0
+13451	13	0	a,MFighter.MFighter_m015_t112_l2\0	1	a,FFighter.FFighter_m015_t112_l2\0	2	a,MDarkElf.MDarkElf_m004_t112_l2\0	3	a,FDarkElf.FDarkElf_m013_t112_l2\0	4	a,MDwarf.MDwarf_m010_t212_l2\0	6	a,MElf.MElf_m014_t112_l2\0	7	a,FElf.FElf_m014_t112_l2\0	8	a,MMagic.MMagic_m015_t312_l2\0	9	a,FMagic.FMagic_m015_t312_l2\0	10	a,MOrc.MOrc_m010_t112_l2\0	11	a,FOrc.FOrc_m010_t112_l2\0	12	a,MShaman.MShaman_m006_t312_l2\0	13	a,FShaman.FShaman_m006_t312_l2\0
+13454	12	0	a,MFighter.MFighter_m015_t112_l2\0	1	a,FFighter.FFighter_m015_t112_l2\0	2	a,MDarkElf.MDarkElf_m013_t312_l2\0	3	a,FDarkElf.FDarkElf_m009_t312_l2\0	4	a,MDwarf.MDwarf_m010_t212_l2\0	6	a,MElf.MElf_m003_t312_l2\0	8	a,MMagic.MMagic_m015_t312_l2\0	9	a,FMagic.FMagic_m015_t312_l2\0	10	a,MOrc.MOrc_m010_t112_l2\0	11	a,FOrc.FOrc_m010_t112_l2\0	12	a,MShaman.MShaman_m006_t312_l2\0	13	a,FShaman.FShaman_m006_t312_l2\0		
+14524	2	2	a,MDarkElf.MDarkElf_m003_t112_u2\0	7	a,FElf.FElf_m014_t112_u2\0																						
+15578	5	3	a,FDarkElf.FDarkElf_m010_t2010_l2\0	8	a,MMagic.MMagic_m011_t3010_l2\0	9	a,FMagic.FMagic_m013_t3010_l2\0	12	a,MShaman.MShaman_m008_t3010_l2\0	13	a,FShaman.FShaman_m008_t3010_l2\0																
+15579	4	8	a,MMagic.MMagic_m011_t3010_l2\0	9	a,FMagic.FMagic_m013_t3010_l2\0	12	a,MShaman.MShaman_m008_t3010_l2\0	13	a,FShaman.FShaman_m008_t3010_l2\0																		
+15580	6	3	a,FDarkElf.FDarkElf_m006_t3010_l2\0	7	a,FElf.FElf_m006_t3010_l2\0	8	a,MMagic.MMagic_m011_t3010_l2\0	9	a,FMagic.FMagic_m013_t3010_l2\0	12	a,MShaman.MShaman_m008_t3010_l2\0	13	a,FShaman.FShaman_m008_t3010_l2\0														
+15595	5	3	a,FDarkElf.FDarkElf_m012_t2110_l2\0	8	a,MMagic.MMagic_m015_t3110_l2\0	9	a,FMagic.FMagic_m015_t3110_l2\0	12	a,MShaman.MShaman_m006_t3110_l2\0	13	a,FShaman.FShaman_m006_t3110_l2\0																
+15596	5	3	a,FDarkElf.FDarkElf_m013_t1110_l2\0	8	a,MMagic.MMagic_m015_t3110_l2\0	9	a,FMagic.FMagic_m015_t3110_l2\0	12	a,MShaman.MShaman_m006_t3110_l2\0	13	a,FShaman.FShaman_m006_t3110_l2\0																
+15597	5	3	a,FDarkElf.FDarkElf_m009_t3110_l2\0	8	a,MMagic.MMagic_m015_t3110_l2\0	9	a,FMagic.FMagic_m015_t3110_l2\0	12	a,MShaman.MShaman_m006_t3110_l2\0	13	a,FShaman.FShaman_m006_t3110_l2\0																
+15612	5	3	a,FDarkElf.FDarkElf_m012_t2120_l2\0	8	a,MMagic.MMagic_m015_t3120_l2\0	9	a,FMagic.FMagic_m015_t3120_l2\0	12	a,MShaman.MShaman_m006_t3120_l2\0	13	a,FShaman.FShaman_m006_t3120_l2\0																
+15613	5	3	a,FDarkElf.FDarkElf_m013_t1120_l2\0	8	a,MMagic.MMagic_m015_t3120_l2\0	9	a,FMagic.FMagic_m015_t3120_l2\0	12	a,MShaman.MShaman_m006_t3120_l2\0	13	a,FShaman.FShaman_m006_t3120_l2\0																
+15614	5	3	a,FDarkElf.FDarkElf_m009_t3120_l2\0	8	a,MMagic.MMagic_m015_t3120_l2\0	9	a,FMagic.FMagic_m015_t3120_l2\0	12	a,MShaman.MShaman_m006_t3120_l2\0	13	a,FShaman.FShaman_m006_t3120_l2\0																
+15700	5	3	a,FDarkElf.FDarkElf_m012_t2120_l2\0	8	a,MMagic.MMagic_m015_t3120_l2\0	9	a,FMagic.FMagic_m015_t3120_l2\0	12	a,MShaman.MShaman_m006_t3120_l2\0	13	a,FShaman.FShaman_m006_t3120_l2\0																
+15701	5	3	a,FDarkElf.FDarkElf_m013_t1120_l2\0	8	a,MMagic.MMagic_m015_t3120_l2\0	9	a,FMagic.FMagic_m015_t3120_l2\0	12	a,MShaman.MShaman_m006_t3120_l2\0	13	a,FShaman.FShaman_m006_t3120_l2\0																
+15702	5	3	a,FDarkElf.FDarkElf_m009_t3120_l2\0	8	a,MMagic.MMagic_m015_t3120_l2\0	9	a,FMagic.FMagic_m015_t3120_l2\0	12	a,MShaman.MShaman_m006_t3120_l2\0	13	a,FShaman.FShaman_m006_t3120_l2\0																
+15732	5	3	a,FDarkElf.FDarkElf_m010_t2010_l2\0	8	a,MMagic.MMagic_m011_t3010_l2\0	9	a,FMagic.FMagic_m013_t3010_l2\0	12	a,MShaman.MShaman_m008_t3010_l2\0	13	a,FShaman.FShaman_m008_t3010_l2\0																
+15733	4	8	a,MMagic.MMagic_m011_t3010_l2\0	9	a,FMagic.FMagic_m013_t3010_l2\0	12	a,MShaman.MShaman_m008_t3010_l2\0	13	a,FShaman.FShaman_m008_t3010_l2\0																		
+15734	6	3	a,FDarkElf.FDarkElf_m006_t3010_l2\0	7	a,FElf.FElf_m006_t3010_l2\0	8	a,MMagic.MMagic_m011_t3010_l2\0	9	a,FMagic.FMagic_m013_t3010_l2\0	12	a,MShaman.MShaman_m008_t3010_l2\0	13	a,FShaman.FShaman_m008_t3010_l2\0														
+15749	5	3	a,FDarkElf.FDarkElf_m012_t2110_l2\0	8	a,MMagic.MMagic_m015_t3110_l2\0	9	a,FMagic.FMagic_m015_t3110_l2\0	12	a,MShaman.MShaman_m006_t3110_l2\0	13	a,FShaman.FShaman_m006_t3110_l2\0																
+15750	5	3	a,FDarkElf.FDarkElf_m013_t1110_l2\0	8	a,MMagic.MMagic_m015_t3110_l2\0	9	a,FMagic.FMagic_m015_t3110_l2\0	12	a,MShaman.MShaman_m006_t3110_l2\0	13	a,FShaman.FShaman_m006_t3110_l2\0																
+15751	5	3	a,FDarkElf.FDarkElf_m009_t3110_l2\0	8	a,MMagic.MMagic_m015_t3110_l2\0	9	a,FMagic.FMagic_m015_t3110_l2\0	12	a,MShaman.MShaman_m006_t3110_l2\0	13	a,FShaman.FShaman_m006_t3110_l2\0																
+16295	5	3	a,FDarkElf.FDarkElf_m012_t2120_l2\0	8	a,MMagic.MMagic_m015_t3120_l2\0	9	a,FMagic.FMagic_m015_t3120_l2\0	12	a,MShaman.MShaman_m006_t3120_l2\0	13	a,FShaman.FShaman_m006_t3120_l2\0																
+16296	5	3	a,FDarkElf.FDarkElf_m013_t1120_l2\0	8	a,MMagic.MMagic_m015_t3120_l2\0	9	a,FMagic.FMagic_m015_t3120_l2\0	12	a,MShaman.MShaman_m006_t3120_l2\0	13	a,FShaman.FShaman_m006_t3120_l2\0																
+16297	5	3	a,FDarkElf.FDarkElf_m009_t3120_l2\0	8	a,MMagic.MMagic_m015_t3120_l2\0	9	a,FMagic.FMagic_m015_t3120_l2\0	12	a,MShaman.MShaman_m006_t3120_l2\0	13	a,FShaman.FShaman_m006_t3120_l2\0																
+16329	5	3	a,FDarkElf.FDarkElf_m012_t2120_l2\0	8	a,MMagic.MMagic_m015_t3120_l2\0	9	a,FMagic.FMagic_m015_t3120_l2\0	12	a,MShaman.MShaman_m006_t3120_l2\0	13	a,FShaman.FShaman_m006_t3120_l2\0																
+16330	5	3	a,FDarkElf.FDarkElf_m013_t1120_l2\0	8	a,MMagic.MMagic_m015_t3120_l2\0	9	a,FMagic.FMagic_m015_t3120_l2\0	12	a,MShaman.MShaman_m006_t3120_l2\0	13	a,FShaman.FShaman_m006_t3120_l2\0																
+16331	5	3	a,FDarkElf.FDarkElf_m009_t3120_l2\0	8	a,MMagic.MMagic_m015_t3120_l2\0	9	a,FMagic.FMagic_m015_t3120_l2\0	12	a,MShaman.MShaman_m006_t3120_l2\0	13	a,FShaman.FShaman_m006_t3120_l2\0																
+16841	2	2	a,MDarkElf.MDarkElf_m003_t112_u2\0	7	a,FElf.FElf_m014_t112_u2\0																						
+16843	13	0	a,MFighter.MFighter_m014_t212_l2\0	1	a,FFighter.FFighter_m014_t212_l2\0	2	a,MDarkElf.MDarkElf_m012_t212_l2\0	3	a,FDarkElf.FDarkElf_m012_t212_l2\0	4	a,MDwarf.MDwarf_m010_t212_l2\0	6	a,MElf.MElf_m013_t212_l2\0	7	a,FElf.FElf_m013_t212_l2\0	8	a,MMagic.MMagic_m015_t312_l2\0	9	a,FMagic.FMagic_m015_t312_l2\0	10	a,MOrc.MOrc_m009_t212_l2\0	11	a,FOrc.FOrc_m009_t212_l2\0	12	a,MShaman.MShaman_m006_t312_l2\0	13	a,FShaman.FShaman_m006_t312_l2\0
+16844	13	0	a,MFighter.MFighter_m015_t112_l2\0	1	a,FFighter.FFighter_m015_t112_l2\0	2	a,MDarkElf.MDarkElf_m004_t112_l2\0	3	a,FDarkElf.FDarkElf_m013_t112_l2\0	4	a,MDwarf.MDwarf_m010_t212_l2\0	6	a,MElf.MElf_m014_t112_l2\0	7	a,FElf.FElf_m014_t112_l2\0	8	a,MMagic.MMagic_m015_t312_l2\0	9	a,FMagic.FMagic_m015_t312_l2\0	10	a,MOrc.MOrc_m010_t112_l2\0	11	a,FOrc.FOrc_m010_t112_l2\0	12	a,MShaman.MShaman_m006_t312_l2\0	13	a,FShaman.FShaman_m006_t312_l2\0
+16845	12	0	a,MFighter.MFighter_m015_t112_l2\0	1	a,FFighter.FFighter_m015_t112_l2\0	2	a,MDarkElf.MDarkElf_m013_t312_l2\0	3	a,FDarkElf.FDarkElf_m009_t312_l2\0	4	a,MDwarf.MDwarf_m010_t212_l2\0	6	a,MElf.MElf_m003_t312_l2\0	8	a,MMagic.MMagic_m015_t312_l2\0	9	a,FMagic.FMagic_m015_t312_l2\0	10	a,MOrc.MOrc_m010_t112_l2\0	11	a,FOrc.FOrc_m010_t112_l2\0	12	a,MShaman.MShaman_m006_t312_l2\0	13	a,FShaman.FShaman_m006_t312_l2\0		
+17007	2	2	a,MDarkElf.MDarkElf_m003_t112_u2\0	7	a,FElf.FElf_m014_t112_u2\0																						

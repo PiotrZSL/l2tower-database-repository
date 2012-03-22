@@ -1,0 +1,1075 @@
+﻿id	name	str	icon
+1080001	Small fortuna box	a,	br_cashtex.item.br_cash_lucky_box_i00
+1080002	Middle fortuna box	a,	br_cashtex.item.br_cash_lucky_box_i00
+1080003	Large fortuna box	a,	br_cashtex.item.br_cash_lucky_box_i00
+1080004	Small fortuna cube	a,	br_cashtex.item.br_cash_lucky_cube_i00
+1080005	Middle fortuna cube	a,	br_cashtex.item.br_cash_lucky_cube_i00
+1080006	Large fortuna cube	a,	br_cashtex.item.br_cash_lucky_cube_i00
+1080007	Powerful Healing Potion	a,	br_cashtex.item.br_cash_greater_healing_potion_i00
+1080008	High-grade Healing Potion	a,	br_cashtex.item.br_cash_healing_potion_i00
+1080009	Secret medicine of Will - D grade	a,	br_cashtex.item.br_cash_elixir_of_combative_d_i00
+1080010	Secret medicine of Will - C grade	a,	br_cashtex.item.br_cash_elixir_of_combative_c_i00
+1080011	Secret medicine of Will - B grade	a,	br_cashtex.item.br_cash_elixir_of_combative_b_i00
+1080012	Secret medicine of Will - A grade	a,	br_cashtex.item.br_cash_elixir_of_combative_a_i00
+1080013	Secret medicine of Will - S grade	a,	br_cashtex.item.br_cash_elixir_of_combative_s_i00
+1080014	Secret medicine of Life - D grade	a,	br_cashtex.item.br_cash_elixir_of_life_d_i00
+1080015	Secret medicine of Life - C grade	a,	br_cashtex.item.br_cash_elixir_of_life_c_i00
+1080016	Secret medicine of Life - B grade	a,	br_cashtex.item.br_cash_elixir_of_life_b_i00
+1080017	Secret medicine of Life - A grade	a,	br_cashtex.item.br_cash_elixir_of_life_a_i00
+1080018	Secret medicine of Life - S grade	a,	br_cashtex.item.br_cash_elixir_of_life_s_i00
+1080019	Potion of Will	a,	br_cashtex.item.br_cash_cp_potion_i00
+1080020	Healing medicine for Mana	a,	br_cashtex.item.br_cash_mana_potion_i00
+1080021	Wind Walk Scroll	a,	br_cashtex.item.br_cash_scroll_of_wind_walk_i00
+1080022	Haste Scroll	a,	br_cashtex.item.br_cash_scroll_of_haste_i00
+1080023	Might Scroll	a,	br_cashtex.item.br_cash_scroll_of_might_i00
+1080024	Shield Scroll	a,	br_cashtex.item.br_cash_scroll_of_shield_i00
+1080025	Death Whisper Scroll	a,	br_cashtex.item.br_cash_scroll_of_death_whisper_i00
+1080026	Guidance Scroll	a,	br_cashtex.item.br_cash_scroll_of_guidance_i00
+1080027	Empower Scroll	a,	br_cashtex.item.br_cash_scroll_of_empower_i00
+1080028	Grater Acumen Scroll	a,	br_cashtex.item.br_cash_scroll_of_greater_acumen_i00
+1080029	Vampiric Rage Scroll	a,	br_cashtex.item.br_cash_scroll_of_vampiric_rage_i00
+1080030	Bless the Body Scroll	a,	br_cashtex.item.br_cash_scroll_of_bless_the_body_i00
+1080031	Berserker Spirit Scroll	a,	br_cashtex.item.br_cash_scroll_of_berserker_spirit_i00
+1080032	Magic Barrier Scroll	a,	br_cashtex.item.br_cash_scroll_of_magic_barrier_i00
+1080033	Bless the Soul Scroll	a,	br_cashtex.item.br_cash_scroll_of_bless_the_soul_i00
+1080034	Clarity Scroll	a,	br_cashtex.item.br_cash_scroll_of_clarity_i00
+1080035	Wild Magic Scroll	a,	br_cashtex.item.br_cash_scroll_of_wild_magic_i00
+1080036	Rune of Experience Points	a,	br_cashtex.item.br_cash_rune_of_exp_i00
+1080037	Rune of Experience Points	a,	br_cashtex.item.br_cash_rune_of_exp_i00
+1080038	Rune of Experience Points	a,	br_cashtex.item.br_cash_rune_of_exp_i00
+1080039	Rune of Experience Points	a,	br_cashtex.item.br_cash_rune_of_exp_i00
+1080040	Rune of SP	a,	br_cashtex.item.br_cash_rune_of_sp_i00
+1080041	Rune of SP	a,	br_cashtex.item.br_cash_rune_of_sp_i00
+1080042	Rune of SP	a,	br_cashtex.item.br_cash_rune_of_sp_i00
+1080043	Rune of SP	a,	br_cashtex.item.br_cash_rune_of_sp_i00
+1080044	Crystal form Rune	a,	br_cashtex.item.br_cash_rune_of_rp_i00
+1080045	Crystal form Rune	a,	br_cashtex.item.br_cash_rune_of_rp_i00
+1080046	Crystal form Rune	a,	br_cashtex.item.br_cash_rune_of_rp_i00
+1080047	Crystal form Rune	a,	br_cashtex.item.br_cash_rune_of_rp_i00
+1080048	Rune of Feather	a,	br_cashtex.item.br_cash_rune_of_feather_i00
+1080049	A Scroll Bundle of Fighter	a,	br_cashtex.item.br_cash_fighter_buff_set_i00
+1080050	A Scroll Bundle of Mage	a,	br_cashtex.item.br_cash_mage_buff_set_i00
+1080051	Bone Quiver	a,	br_cashtex.item.br_cash_quiver_of_bone_arrows_i00
+1080052	Steel Quiver	a,	br_cashtex.item.br_cash_quiver_of_fine_steel_arrows_i00
+1080053	Silver Quiver	a,	br_cashtex.item.br_cash_quiver_of_silver_arrows_i00
+1080054	Mithril Quiver	a,	br_cashtex.item.br_cash_quiver_of_mithril_arrows_i00
+1080055	Quiver of Light	a,	br_cashtex.item.br_cash_quiver_of_shining_arrows_i00
+1080056	Bone Bolt Container	a,	br_cashtex.item.br_cash_quiver_of_bone_bolts_i00
+1080057	Steel Bolt Container	a,	br_cashtex.item.br_cash_quiver_of_fine_steel_bolts_i00
+1080058	Silver Bolt Container	a,	br_cashtex.item.br_cash_quiver_of_silver_bolts_i00
+1080059	Mithril Bolt Container	a,	br_cashtex.item.br_cash_quiver_of_mithril_bolts_i00
+1080060	Bolt Container of Light	a,	br_cashtex.item.br_cash_quiver_of_shining_bolts_i00
+1080061	Blessed Spiritshot Pack - D grade	a,	br_cashtex.item.br_cash_pack_of_blessed_spiritshot_d_i00
+1080062	Blessed Spiritshot Pack - C grade	a,	br_cashtex.item.br_cash_pack_of_blessed_spiritshot_c_i00
+1080063	Blessed Spiritshot Pack - B grade	a,	br_cashtex.item.br_cash_pack_of_blessed_spiritshot_b_i00
+1080064	Blessed Spiritshot Pack - A grade	a,	br_cashtex.item.br_cash_pack_of_blessed_spiritshot_a_i00
+1080065	Blessed Spiritshot Pack - S grade	a,	br_cashtex.item.br_cash_pack_of_blessed_spiritshot_s_i00
+1080066	Spiritshot Pack - D grade	a,	br_cashtex.item.br_cash_pack_of_spiritshot_d_i00
+1080067	Spiritshot Pack - C grade	a,	br_cashtex.item.br_cash_pack_of_spiritshot_c_i00
+1080068	Spiritshot Pack -  B grade	a,	br_cashtex.item.br_cash_pack_of_spiritshot_b_i00
+1080069	Spiritshot Pack - A grade	a,	br_cashtex.item.br_cash_pack_of_spiritshot_a_i00
+1080070	Spiritshot Pack - S grade	a,	br_cashtex.item.br_cash_pack_of_spiritshot_s_i00
+1080071	Soulshot Pack - D grade	a,	br_cashtex.item.br_cash_pack_of_soulshot_d_i00
+1080072	Soulshot Pack - C grade	a,	br_cashtex.item.br_cash_pack_of_soulshot_c_i00
+1080073	Soulshot Pack -  B grade	a,	br_cashtex.item.br_cash_pack_of_soulshot_b_i00
+1080074	Soulshot Pack - A grade	a,	br_cashtex.item.br_cash_pack_of_soulshot_a_i00
+1080075	Soulshot Pack - S grade	a,	br_cashtex.item.br_cash_pack_of_soulshot_s_i00
+1080076	Blessed Spiritshot Large Pack - D grade	a,	br_cashtex.item.br_cash_large_pack_of_blessed_spiritshot_d_i00
+1080077	Blessed Spiritshot Large Pack - C grade	a,	br_cashtex.item.br_cash_large_pack_of_blessed_spiritshot_c_i00
+1080078	Blessed Spiritshot Large Pack - B grade	a,	br_cashtex.item.br_cash_large_pack_of_blessed_spiritshot_b_i00
+1080079	Blessed Spiritshot Large Pack - A grade	a,	br_cashtex.item.br_cash_large_pack_of_blessed_spiritshot_a_i00
+1080080	Blessed Spiritshot Large Pack - S grade	a,	br_cashtex.item.br_cash_large_pack_of_blessed_spiritshot_s_i00
+1080081	Spiritshot Large Pack - D grade	a,	br_cashtex.item.br_cash_large_pack_of_spiritshot_d_i00
+1080082	Spiritshot Large Pack - C grade	a,	br_cashtex.item.br_cash_large_pack_of_spiritshot_c_i00
+1080083	Spiritshot Large Pack -  B grade	a,	br_cashtex.item.br_cash_large_pack_of_spiritshot_b_i00
+1080084	Spiritshot Large Pack - A grade	a,	br_cashtex.item.br_cash_large_pack_of_spiritshot_a_i00
+1080085	Spiritshot Large Pack - S grade	a,	br_cashtex.item.br_cash_large_pack_of_spiritshot_s_i00
+1080086	Soulshot Large Pack - D grade	a,	br_cashtex.item.br_cash_large_pack_of_soulshot_d_i00
+1080087	Soulshot Large Pack - C grade	a,	br_cashtex.item.br_cash_large_pack_of_soulshot_c_i00
+1080088	Soulshot Large Pack -  B grade	a,	br_cashtex.item.br_cash_large_pack_of_soulshot_b_i00
+1080089	Soulshot Large Pack - A grade	a,	br_cashtex.item.br_cash_large_pack_of_soulshot_a_i00
+1080090	Soulshot Large Pack - S grade	a,	br_cashtex.item.br_cash_large_pack_of_soulshot_s_i00
+1080091	Wrapped daisy hairpin	a,	br_cashtex.item.br_cash_wrapped_accessary_i00
+1080092	Wrapped forget-me-not hairpin	a,	br_cashtex.item.br_cash_wrapped_accessary_i00
+1080093	Wrapped outlaw's eyepatch	a,	br_cashtex.item.br_cash_wrapped_accessary_i00
+1080094	Wrapped pirate's eyepatch	a,	br_cashtex.item.br_cash_wrapped_accessary_i00
+1080095	Wrapped Monocle	a,	br_cashtex.item.br_cash_wrapped_accessary_i00
+1080096	Wrapped Red Mask of Victory	a,	br_cashtex.item.br_cash_wrapped_accessary_i00
+1080097	Wrapped Red Horn of Victory	a,	br_cashtex.item.br_cash_wrapped_accessary_i00
+1080098	Wrapped Party Mask	a,	br_cashtex.item.br_cash_wrapped_accessary_i00
+1080099	Wrapped Red Party Mask	a,	br_cashtex.item.br_cash_wrapped_accessary_i00
+1080100	Wrapped Cat Ear	a,	br_cashtex.item.br_cash_wrapped_accessary_i00
+1080101	Wrapped Noblewoman's Hairpin	a,	br_cashtex.item.br_cash_wrapped_accessary_i00
+1080102	Wrapped Raccoon Ear	a,	br_cashtex.item.br_cash_wrapped_accessary_i00
+1080103	Wrapped Rabbit Ear	a,	br_cashtex.item.br_cash_wrapped_accessary_i00
+1080104	Wrapped Little Angel's Wings	a,	br_cashtex.item.br_cash_wrapped_accessary_i00
+1080105	Wrapped Fairy's Tentacle	a,	br_cashtex.item.br_cash_wrapped_accessary_i00
+1080106	Wrapped Dandy's Chapeau	a,	br_cashtex.item.br_cash_wrapped_accessary_i00
+1080107	Wrapped Artisan's Goggles	a,	br_cashtex.item.br_cash_wrapped_accessary_i00
+1080108	Wrapped Pet Exchange Ticket - Buffalo	a,	br_cashtex.item.br_cash_wrapped_pet_i00
+1080109	Wrapped Pet Exchange Ticket - Cougar	a,	br_cashtex.item.br_cash_wrapped_pet_i00
+1080110	Wrapped Pet Exchange Ticket - kookaburra	a,	br_cashtex.item.br_cash_wrapped_pet_i00
+1080111	Blessed Wolf Hat Package	a,A wolf hat with a special function is acquired. Shadow Item\0	br_cashtex.item.br_cash_wrapped_accessary_i00
+1080112	Rune of Exp. Points 30% - 5 hours	a,	br_cashtex.item.br_cash_rune_of_exp_i00
+1080113	Rune of Exp. Points 50% - 5 hours	a,	br_cashtex.item.br_cash_rune_of_exp_i00
+1080114	Rune of Exp. Points 30% - 10 hours	a,	br_cashtex.item.br_cash_rune_of_exp_i00
+1080115	Rune of Exp. Points 50% - 10 hours	a,	br_cashtex.item.br_cash_rune_of_exp_i00
+1080116	Rune of Exp. Points 30% - 7 days	a,	br_cashtex.item.br_cash_rune_of_exp_i00
+1080117	Rune of Exp. Points 50% - 7 days	a,	br_cashtex.item.br_cash_rune_of_exp_i00
+1080118	Rune of SP 30% - 5 hours	a,	br_cashtex.item.br_cash_rune_of_sp_i00
+1080119	Rune of SP 50% - 5 hours	a,	br_cashtex.item.br_cash_rune_of_sp_i00
+1080120	Rune of SP 30% - 10 hours	a,	br_cashtex.item.br_cash_rune_of_sp_i00
+1080121	Rune of SP 50% - 10 hours	a,	br_cashtex.item.br_cash_rune_of_sp_i00
+1080122	Rune of SP 30% - 7 days	a,	br_cashtex.item.br_cash_rune_of_sp_i00
+1080123	Rune of SP 50% - 7 days	a,	br_cashtex.item.br_cash_rune_of_sp_i00
+1080124	Rune of Crystal level 3 - 5 hours	a,	br_cashtex.item.br_cash_rune_of_rp_i00
+1080125	Rune of Crystal level 5 - 5 hours	a,	br_cashtex.item.br_cash_rune_of_rp_i00
+1080126	Rune of Crystal level 3 - 10 hours	a,	br_cashtex.item.br_cash_rune_of_rp_i00
+1080127	Rune of Crystal level 5 - 10 hours	a,	br_cashtex.item.br_cash_rune_of_rp_i00
+1080128	Rune of Crystal level 3 - 7 days	a,	br_cashtex.item.br_cash_rune_of_rp_i00
+1080129	Rune of Crystal level 5 - 7 days	a,	br_cashtex.item.br_cash_rune_of_rp_i00
+1080130	Weapon-type Enhance Backup Stone (D-Grade) 	a,	icon.ench_wp_stone_i00
+1080131	Weapon-type Enhance Backup Stone (C-Grade) 	a,	icon.ench_wp_stone_i01
+1080132	Weapon-type Enhance Backup Stone (B-Grade) 	a,	icon.ench_wp_stone_i02
+1080133	Weapon-type Enhance Backup Stone (A-Grade) 	a,	icon.ench_wp_stone_i03
+1080134	Weapon-type Enhance Backup Stone (S-Grade) 	a,	icon.ench_wp_stone_i04
+1080135	Armor-type Enhance Backup Stone (D-Grade) 	a,	icon.ench_am_stone_i00
+1080136	Armor-type Enhance Backup Stone (C-Grade) 	a,	icon.ench_am_stone_i01
+1080137	Armor-type Enhance Backup Stone (B-Grade) 	a,	icon.ench_am_stone_i02
+1080138	Armor-type Enhance Backup Stone (A-Grade) 	a,	icon.ench_am_stone_i03
+1080139	Armor-type Enhance Backup Stone (S-Grade) 	a,	icon.ench_am_stone_i04
+1080140	Beast Soulshot Pack	a,	BranchSys.icon.br_box_beast_soul_shot_i00
+1080141	Beast Spiritshot Pack	a,	BranchSys.icon.br_box_beast_spirit_shot_i00
+1080142	Blessed Beast Spiritshot Pack	a,	BranchSys.icon.br_box_blessed_beast_spirit_shot_i00
+1080143	Beast Soulshot Large Pack	a,	BranchSys.icon.br_box_beast_soul_shot_i00
+1080144	Beast Spiritshot Large Pack	a,	BranchSys.icon.br_box_beast_spirit_shot_i00
+1080145	Blessed Beast Spiritshot Large Pack	a,	BranchSys.icon.br_box_blessed_beast_spirit_shot_i00
+1080146	Omen Beast Transformation Scroll	a,	BranchSys.icon.br_scroll_of_transformation_i00
+1080147	Death Blader Transformation Scroll	a,	BranchSys.icon.br_scroll_of_transformation_i00
+1080148	Grail Apostle Transformation Scroll	a,	BranchSys.icon.br_scroll_of_transformation_i00
+1080149	Unicorn Transformation Scroll	a,	BranchSys.icon.br_scroll_of_transformation_i00
+1080150	Lilim Knight Transformation Scroll	a,	BranchSys.icon.br_scroll_of_transformation_i00
+1080151	Golem Guardian Transformation Scroll	a,	BranchSys.icon.br_scroll_of_transformation_i00
+1080152	Inferno Drake Transformation Scroll	a,	BranchSys.icon.br_scroll_of_transformation_i00
+1080153	Dragon Bomber Transformation Scroll	a,	BranchSys.icon.br_scroll_of_transformation_i00
+1080154	Escape - Talking Island Village	a,	BranchSys.icon.br_escape_scroll_i00
+1080155	Escape - Elven Village	a,	BranchSys.icon.br_escape_scroll_i00
+1080156	Escape - Dark Elven Village	a,	BranchSys.icon.br_escape_scroll_i00
+1080157	Escape - Orc Village	a,	BranchSys.icon.br_escape_scroll_i00
+1080158	Escape - Dwarven Village	a,	BranchSys.icon.br_escape_scroll_i00
+1080159	Escape - Gludin Village	a,	BranchSys.icon.br_escape_scroll_i00
+1080160	Escape - Town of Gludio	a,	BranchSys.icon.br_escape_scroll_i00
+1080161	Escape - Town of Dion	a,	BranchSys.icon.br_escape_scroll_i00
+1080162	Escape - Floran Village	a,	BranchSys.icon.br_escape_scroll_i00
+1080163	Escape - Giran Castle Town	a,	BranchSys.icon.br_escape_scroll_i00
+1080164	Escape - Hardin's Academy	a,	BranchSys.icon.br_escape_scroll_i00
+1080165	Escape - Heine	a,	BranchSys.icon.br_escape_scroll_i00
+1080166	Escape - Town of Oren	a,	BranchSys.icon.br_escape_scroll_i00
+1080167	Escape - Ivory Tower	a,	BranchSys.icon.br_escape_scroll_i00
+1080168	Escape - Hunters Village	a,	BranchSys.icon.br_escape_scroll_i00
+1080169	Escape - Town of Aden	a,	BranchSys.icon.br_escape_scroll_i00
+1080170	Escape - Town of Goddard	a,	BranchSys.icon.br_escape_scroll_i00
+1080171	Escape - Rune Township	a,	BranchSys.icon.br_escape_scroll_i00
+1080172	Escape - Town of Schuttgart	a,	BranchSys.icon.br_escape_scroll_i00
+1080173	Free Teleport Scroll	a,	icon.bookmark_book_i00
+1080174	Free Teleport Spellbook 5 Sheet Bundle	a,	icon.bookmark_scroll_i00
+1080175	Free Teleport Spellbook 10 Sheet Bundle	a,	icon.bookmark_scroll_i00
+1080176	Free Teleport Flag 5 Sheet Bundle	a,	BranchSys.icon.br_flag_of_bookmark_i00
+1080177	Free Teleport Flag 10 Sheet Bundle	a,	BranchSys.icon.br_flag_of_bookmark_i00
+1080178	Extra Entrance Pass - Kamaloka (Hall of the Abyss) 5 Sheet Bundle	a,	icon.ticket_i00
+1080179	Extra Entrance Pass - Kamaloka (Hall of the Abyss) 10 Sheet Bundle	a,	icon.ticket_i00
+1080180	Extra Entrance Pass - Near Kamaloka 5 Sheet Bundle	a,	icon.ticket_i00
+1080181	Extra Entrance Pass - Near Kamaloka 10 Sheet Bundle	a,	icon.ticket_i00
+1080182	Extra Entrance Pass - Kamaloka (Labyrinth of the Abyss) 5 Sheet Bundle	a,	icon.ticket_i00
+1080183	Extra Entrance Pass - Kamaloka (Labyrinth of the Abyss) 10 Sheet Bundle	a,	icon.ticket_i00
+1080184	Feather of Blessing	a,	icon.blessed_feather_i00
+1080185	Color Name	a,	icon.color_name_i00
+1080186	High Grade Potion of Will	a,	BranchSys.icon.br_cp_potion_i01
+1080187	Secret medicine of Will - D grade	a,	br_cashtex.item.br_cash_elixir_of_combative_d_i00
+1080188	Secret medicine of Will - C grade	a,	br_cashtex.item.br_cash_elixir_of_combative_c_i00
+1080189	Secret medicine of Will - B grade	a,	br_cashtex.item.br_cash_elixir_of_combative_b_i00
+1080190	Secret medicine of Will - A grade	a,	br_cashtex.item.br_cash_elixir_of_combative_a_i00
+1080191	Secret medicine of Will - S grade	a,	br_cashtex.item.br_cash_elixir_of_combative_s_i00
+1080192	Secret medicine of Life - D grade	a,	br_cashtex.item.br_cash_elixir_of_life_d_i00
+1080193	Secret medicine of Life - C grade	a,	br_cashtex.item.br_cash_elixir_of_life_c_i00
+1080194	Secret medicine of Life - B grade	a,	br_cashtex.item.br_cash_elixir_of_life_b_i00
+1080195	Secret medicine of Life - A grade	a,	br_cashtex.item.br_cash_elixir_of_life_a_i00
+1080196	Secret medicine of Life - S grade	a,	br_cashtex.item.br_cash_elixir_of_life_s_i00
+1080197	Potion of Energy Maintenance	a,	BranchSys.icon.br_vitality_potion_i00
+1080198	Potion of Energy Replenishing	a,	BranchSys.icon.br_vitality_potion_i01
+1080199	Sweet Fruit Cocktail	a,	BranchSys.icon.br_fruit_cocktail_i00
+1080200	Fresh Fruit Cocktail	a,	BranchSys.icon.br_fruit_cocktail_i01
+1080201	Sudden Agathion 7 Day Pack	a,	icon.etc_pi_gift_box_i02
+1080202	Shiny Agathion 7 Day Pack	a,	icon.etc_pi_gift_box_i02
+1080203	Sobbing Agathion 7 Day Pack	a,	icon.etc_pi_gift_box_i02
+1080204	Agathion of Love 7 Day Pack	a,	icon.etc_pi_gift_box_i02
+1080205	Pumpkin Transformation Stick 7 Day Pack	a,	icon.etc_pi_gift_box_i02
+1080206	Kat the Cat Hat 7 Day Pack	a,	icon.etc_pi_gift_box_i02
+1080207	Feline Queen Hat 7 Day Pack	a,	icon.etc_pi_gift_box_i02
+1080208	Monster Eye Hat 7 Day Pack	a,	icon.etc_pi_gift_box_i02
+1080209	Brown Bear Hat 7 Day Pack	a,	icon.etc_pi_gift_box_i02
+1080210	Fungus Hat 7 Day Pack	a,	icon.etc_pi_gift_box_i02
+1080211	Skull Hat 7 Day Pack	a,	icon.etc_pi_gift_box_i02
+1080212	Ornithomimus Hat 7 Day Pack	a,	icon.etc_pi_gift_box_i02
+1080213	Feline King Hat 7 Day Pack	a,	icon.etc_pi_gift_box_i02
+1080214	Kai the Cat Hat 7 Day Pack	a,	icon.etc_pi_gift_box_i02
+1080215	Goggle Pack	a,	BranchSys.icon.br_four_leaf_clover_box_i00
+1080216	Napoleon Hat Pack	a,	BranchSys.icon.br_four_leaf_clover_box_i00
+1080217	Black Gem Mask Pack	a,	BranchSys.icon.br_four_leaf_clover_box_i00
+1080218	Afro Hair Pack - Gold	a,	BranchSys.icon.br_four_leaf_clover_box_i00
+1080219	Afro Hair Pack - Pink	a,	BranchSys.icon.br_four_leaf_clover_box_i00
+1080220	Horn Rimmed Glasses Pack	a,	icon.etc_pi_gift_box_i00
+1080221	Afro Hair Pack 	a,	icon.etc_pi_gift_box_i00
+1080222	Afro Hair Pack - Big Head, Firework	a,	icon.etc_pi_gift_box_i00
+1080223	Afro Hair Pack - Wind Walk	a,	icon.etc_pi_gift_box_i00
+1080224	Uniform Hat Pack	a,	icon.etc_pi_gift_box_i00
+1080225	Assassin's Bamboo Hat Pack	a,	icon.etc_pi_gift_box_i00
+1080226	Ruthless Tribe Mask Pack	a,	icon.etc_pi_gift_box_i00
+1080227	Ribbon Hairband Pack	a,	icon.etc_pi_gift_box_i00
+1080228	Visor Pack	a,	icon.etc_pi_gift_box_i00
+1080229	Hunting Helper Exchange Coupon - 1 sheet	a,	icon.etc_ticket_red_i00
+1080230	Hunting Helper Exchange Coupon - 3 sheet	a,	icon.etc_ticket_red_i00
+1080231	High Quality Hunting Helper Exchange Coupon - 1 sheet	a,	icon.etc_ticket_red_i00
+1080232	High Quality Hunting Helper Exchange Coupon - 3 sheet	a,	icon.etc_ticket_red_i00
+1080233	Steam Beatle Mounting Bracelet 7 Day Pack	a,	icon.etc_pi_gift_box_i00
+1080234	Light Purple Maned Horse Bracelet 30 Day Pack	a,	icon.etc_pi_gift_box_i00
+1080235	Golden Jack O'Lantern Mask 7 Day Pack	a,Authority of Golden Jack O'Lantern - Increase max HP 40%, max MP 40%, max CP 40%, Physical Def. 30%, Magic Def. 30%, Spd. 30% of party members for 10 minutes. \0	BranchSys.icon.br_four_leaf_clover_box_i00
+1030001	Free Teleport Scroll	a,	icon.bookmark_book_i00
+1030002	Free Teleport Flag 	a,	BranchSys.icon.br_flag_of_bookmark_i00
+1030003	Free Teleport Spellbook 10 Sheet	a,	icon.bookmark_scroll_i00
+1030004	Hunting Helper Exchange Coupon	a,	icon.etc_ticket_red_i00
+1030005	High Quality Hunting Helper Exchange Coupon	a,	icon.etc_ticket_red_i00
+1030006	Extra Entrance Pass - Kamaloka (Hall of the Abyss) 	a,	icon.ticket_i00
+1030007	Extra Entrance Pass - Kamaloka (Labyrinth of the Abyss) 	a,	icon.ticket_i00
+1030008	Potion of Energy Maintenance	a,	BranchSys.icon.br_vitality_potion_i00
+1030009	Energy Replenishing Beverage	a,	icon.etc_potion_of_energy_i00
+1030010	Rune of SP 30% 5 hour pack	a,	BranchSys.icon.br_four_leaf_clover_box_i00
+1030011	Rune of Feathers 24 hour pack	a,	BranchSys.icon.br_four_leaf_clover_box_i00
+1030012	Feather of Blessing	a,	icon.blessed_feather_i00
+1030013	A Scroll Bundle of Fighter	a,	br_cashtex.item.br_cash_fighter_buff_set_i00
+1030014	A Scroll Bundle of Mage	a,	br_cashtex.item.br_cash_mage_buff_set_i00
+1030015	Omen Beast Transformation Scroll	a,	BranchSys.icon.br_scroll_of_transformation_i00
+1030016	Death Blader Transformation Scroll	a,	BranchSys.icon.br_scroll_of_transformation_i00
+1030017	Grail Apostle Transformation Scroll	a,	BranchSys.icon.br_scroll_of_transformation_i00
+1030018	Unicorn Transformation Scroll	a,	BranchSys.icon.br_scroll_of_transformation_i00
+1030019	Lilim Knight Transformation Scroll	a,	BranchSys.icon.br_scroll_of_transformation_i00
+1030020	Golem Guardian Transformation Scroll	a,	BranchSys.icon.br_scroll_of_transformation_i00
+1030021	Inferno Drake Transformation Scroll	a,	BranchSys.icon.br_scroll_of_transformation_i00
+1030022	Dragon Bomber Transformation Scroll	a,	BranchSys.icon.br_scroll_of_transformation_i00
+1030023	Feline Queen Hat 30 Day Pack	a,	icon.etc_pi_gift_box_i00
+1030024	Feline King Hat 30 Day Pack	a,	icon.etc_pi_gift_box_i00
+1030025	Monster Eye Hat 30 Day Pack	a,	icon.etc_pi_gift_box_i01
+1030026	Brown Bear Hat 30 Day Pack	a,	icon.etc_pi_gift_box_i01
+1030027	Fungus Hat 30 Day Pack	a,	icon.etc_pi_gift_box_i01
+1030028	Agathion of Love 30 Day Pack	a,	icon.etc_pi_gift_box_i00
+1030029	Wonboso Agathion 7-Day Pack	a,	BranchSys.icon.br_four_leaf_clover_box_i00
+1030030	Daewoonso Agathion 7-Day Pack	a,	BranchSys.icon.br_four_leaf_clover_box_i00
+1030031	Gold Crown Majo Agathion 7 Day Pack	a,Resurrection\0	BranchSys.icon.br_four_leaf_clover_box_i00
+1030032	Color Name	a,	icon.color_name_i00
+1030033	Rune of Crystal level-3 10 hour pack	a,	BranchSys.icon.br_four_leaf_clover_box_i00
+1030034	Rune of SP 50% 5 hour pack	a,	BranchSys.icon.br_four_leaf_clover_box_i00
+1030035	Little Angel's Wings 7 Day Pack	a,Mana regeneration\0	BranchSys.icon.br_four_leaf_clover_box_i00
+1030036	Fairy's Tentacle 7 Day Pack	a,Reflect damage\0	BranchSys.icon.br_four_leaf_clover_box_i00
+1030037	Visor 7 Day Pack	a,Mana regeneration\0	BranchSys.icon.br_four_leaf_clover_box_i00
+1030038	Afro Hair Pack - Gold	a,	BranchSys.icon.br_four_leaf_clover_box_i00
+1030039	Afro Hair Pack - Pink	a,	BranchSys.icon.br_four_leaf_clover_box_i00
+1030040	Afro Hair Pack	a,	icon.etc_pi_gift_box_i00
+1030041	Snow Kung Transformation Stick 30 Day Pack	a,	icon.etc_pi_gift_box_i00
+1030042	Steam Beatle Mounting Bracelet Pack	a,	icon.etc_pi_gift_box_i00
+1030043	Light Purple Maned Horse Bracelet Pack	a,	icon.etc_pi_gift_box_i00
+1030044	Ribbon Hairband Pack	a,	icon.etc_pi_gift_box_i00
+1030045	Horn Rimmed Glasses Pack	a,	icon.etc_pi_gift_box_i00
+1030046	Skull Hat Pack	a,	icon.etc_pi_gift_box_i00
+1030047	Kat the Cat Hat Pack	a,	icon.etc_pi_gift_box_i00
+1030048	Haste Scroll	a,	br_cashtex.item.br_cash_scroll_of_haste_i00
+1030049	Empower Scroll	a,	br_cashtex.item.br_cash_scroll_of_haste_i00
+1030050	Grater Acumen Scroll	a,	br_cashtex.item.br_cash_scroll_of_haste_i00
+1030051	Vampiric Rage Scroll	a,	br_cashtex.item.br_cash_scroll_of_haste_i00
+1030052	Clarity Scroll	a,	br_cashtex.item.br_cash_scroll_of_haste_i00
+1030053	Free Teleport Flag 11 Sheet	a,	BranchSys.icon.br_flag_of_bookmark_i00
+1030054	Free Teleport Spellbook 110 Sheet	a,	icon.bookmark_scroll_i00
+1030055	Hunting Helper Exchange Coupon - 5 hours 10 sheet	a,	icon.etc_ticket_red_i00
+1030056	High-grade Hunting Helper Exchange Coupon - 5 hours 10 sheet	a,	icon.etc_ticket_red_i00
+1030057	Extra Entrance Pass - Kamaloka (Hall of the Abyss) 50 Sheet	a,	icon.ticket_i00
+1030058	Extra Entrance Pass - Kamaloka (Labyrinth of the Abyss) 50 Sheet	a,	icon.ticket_i00
+1030059	Potion of Energy Maintenance 10 Units	a,	BranchSys.icon.br_vitality_potion_i00
+1030060	Energy Replenishing Beverage 20-Unit	a,	icon.etc_potion_of_energy_i00
+1030061	Fighter's Scroll Bundle 30 Sheet	a,	br_cashtex.item.br_cash_fighter_buff_set_i00
+1030062	Mage's Scroll Bundle 30 Sheet	a,	br_cashtex.item.br_cash_mage_buff_set_i00
+1030063	Feather of Blessing 20 Units	a,	icon.blessed_feather_i00
+1030064	Twilight Staff 7 Day Pack	a,	BranchSys.icon.br_four_leaf_clover_box_i00
+1030065	Anniversary Hat 7 Day Pack	a,	BranchSys.icon.br_four_leaf_clover_box_i00
+1030066	Immortal Steam Beatle Mount Pack	a,	BranchSys.icon.br_four_leaf_clover_box_i00
+1030067	Gloomy Skull Hat Pack	a,	BranchSys.icon.br_four_leaf_clover_box_i00
+1030068	Uniform Hat	a,	icon.etc_pi_gift_box_i00
+1030069	Napoleon Hat	a,	icon.etc_pi_gift_box_i00
+1030070	Popped-Out Eye	a,	icon.etc_pi_gift_box_i00
+1030071	Button-Eyed Bear Doll Agathion 7-Day Pack	a,Resurrection\0	BranchSys.icon.br_four_leaf_clover_box_i00
+1030072	Black Maneki Neko Agathion 7 Day Pack	a,Escape\0	BranchSys.icon.br_four_leaf_clover_box_i00
+1030073	White Maneki Neko Agathion 7 Day Pack	a,Resurrection\0	BranchSys.icon.br_four_leaf_clover_box_i00
+1030074	Energy Maintenance Set	a,	BranchSys.icon.br_four_leaf_clover_box_i00
+1030075	Energy Replenishing Set	a,	BranchSys.icon.br_four_leaf_clover_box_i00
+1030076	Halloween Hat	a,	icon.accessory_halloween_cap_i00
+1030077	Halloween Pumpkin Transformation Stick 30 Day Pack	a,	BranchSys.icon.br_four_leaf_clover_box_i00
+1030078	Halloween Scarecrow Transformation Stick 30 Day Pack	a,	BranchSys.icon.br_four_leaf_clover_box_i00
+1030079	Halloween Kai the Cat Hat 30 Day Pack	a,	BranchSys.icon.br_four_leaf_clover_box_i00
+1030080	Kai the Cat Hat	a,	icon.accessory_chi_the_cat_cap_i00
+1030081	Golden Jack O'Lantern Mask 7 Day Pack	a,Authority of Golden Jack O'Lantern - Increase max HP 40%, max MP 40%, max CP 40%, Physical Def. 30%, Magic Def. 30%, Spd. 30% of party members for 10 minutes. \0	BranchSys.icon.br_four_leaf_clover_box_i00
+1030082	Baekyi Hwamae Agathion	a,	BranchSys.icon.br_aga_bluebird_i00
+1030083	Kwanwoo Hwamae Agathion	a,	BranchSys.icon.br_aga_hatbird_i00
+1030084	Special July 7th Parcel	a,	icon.etc_pi_gift_box_i04
+1030085	Monster Eye Hat 30 Day Pack	a,	icon.etc_pi_gift_box_i01
+1030086	Fungus Hat 30 Day Pack	a,	icon.etc_pi_gift_box_i01
+1030087	Agathion Cash Cow 7-Day Pack	a,	BranchSys.icon.br_four_leaf_clover_box_i00
+1030088	Agathion Lucky Cow 7-Day Pack	a,	BranchSys.icon.br_four_leaf_clover_box_i00
+1030089	Little Angel's Wings 7 Day Pack	a,Mana Regeneration\0	BranchSys.icon.br_four_leaf_clover_box_i00
+1030090	Visor 7 Day Pack	a,Mana Regeneration\0	BranchSys.icon.br_four_leaf_clover_box_i00
+1030091	Plastic Wig 7 day Pack	a,Blessed Escape\0	BranchSys.icon.br_four_leaf_clover_box_i00
+1030092	Plastic Wig	a,	BranchSys.icon.br_plastic_hair_f_i00
+1030093	Christmas Part 2 Grade A Gift Pack	a,	BranchSys.icon.br_four_leaf_clover_box_i00
+1030094	Christmas Part 2 Grade S Gift Pack	a,	BranchSys.icon.br_four_leaf_clover_box_i00
+1030095	Rudolph's Gift	a,	BranchSys.icon.br_four_leaf_clover_box_i00
+1040001	Small fortuna box	a,	br_cashtex.item.br_cash_lucky_box_i00
+1040002	Middle fortuna box	a,	br_cashtex.item.br_cash_lucky_box_i00
+1040003	Large fortuna box	a,	br_cashtex.item.br_cash_lucky_box_i00
+1040004	Small fortuna cube	a,	br_cashtex.item.br_cash_lucky_cube_i00
+1040005	Middle fortuna cube	a,	br_cashtex.item.br_cash_lucky_cube_i00
+1040006	Large fortuna cube	a,	br_cashtex.item.br_cash_lucky_cube_i00
+1040007	Weapon-type Enhance Backup Stone (D-Grade) 	a,	icon.ench_wp_stone_i00
+1040008	Weapon-type Enhance Backup Stone (C-Grade) 	a,	icon.ench_wp_stone_i01
+1040009	Weapon-type Enhance Backup Stone (B-Grade) 	a,	icon.ench_wp_stone_i02
+1040010	Weapon-type Enhance Backup Stone (A-Grade) 	a,	icon.ench_wp_stone_i03
+1040011	Weapon-type Enhance Backup Stone (S-Grade) 	a,	icon.ench_wp_stone_i04
+1040012	Armor-type Enhance Backup Stone (D-Grade) 	a,	icon.ench_am_stone_i00
+1040013	Armor-type Enhance Backup Stone (C-Grade) 	a,	icon.ench_am_stone_i01
+1040014	Armor-type Enhance Backup Stone (B-Grade) 	a,	icon.ench_am_stone_i02
+1040015	Armor-type Enhance Backup Stone (A-Grade) 	a,	icon.ench_am_stone_i03
+1040016	Armor-type Enhance Backup Stone (S-Grade) 	a,	icon.ench_am_stone_i04
+1040017	Rune of Exp. Points 50% 5 hours pack	a,	BranchSys.icon.br_four_leaf_clover_box_i00
+1040018	Rune of Exp. Points 50% 10 hours pack	a,	BranchSys.icon.br_four_leaf_clover_box_i00
+1040019	Rune of SP 50% 5 hour pack	a,	BranchSys.icon.br_four_leaf_clover_box_i00
+1040020	Rune of SP 50% 10 hour pack	a,	BranchSys.icon.br_four_leaf_clover_box_i00
+1040021	Rune of Feathers 24 hour pack	a,	BranchSys.icon.br_four_leaf_clover_box_i00
+1040022	Blessed Spiritshot Large Pack - D grade	a,It can be used for D-grade weapons. It is very light. Able to exchange/drop this item.\0	br_cashtex.item.br_cash_large_pack_of_blessed_spiritshot_d_i00
+1040023	Blessed Spiritshot Large Pack - C grade	a,It can be used for C-grade weapons. It is very light. Able to exchange/drop this item.\0	br_cashtex.item.br_cash_large_pack_of_blessed_spiritshot_c_i00
+1040024	Blessed Spiritshot Large Pack - B grade	a,It can be used for B-grade weapons. It is very light. Able to exchange/drop this item.\0	br_cashtex.item.br_cash_large_pack_of_blessed_spiritshot_b_i00
+1040025	Blessed Spiritshot Large Pack - A grade	a,It can be used for A-grade weapons. It is very light. Able to exchange/drop this item.\0	br_cashtex.item.br_cash_large_pack_of_blessed_spiritshot_a_i00
+1040026	Blessed Spiritshot Large Pack - S grade	a,It can be used for S-grade weapons. It is very light. Able to exchange/drop this item.\0	br_cashtex.item.br_cash_large_pack_of_blessed_spiritshot_s_i00
+1040027	Soulshot Large Pack - D grade	a,It can be used for D-grade weapons. It is very light. Able to exchange/drop this item.\0	br_cashtex.item.br_cash_large_pack_of_soulshot_d_i00
+1040028	Soulshot Large Pack - C grade	a,It can be used for C-grade weapons. It is very light. Able to exchange/drop this item.\0	br_cashtex.item.br_cash_large_pack_of_soulshot_c_i00
+1040029	Soulshot Large Pack -  B grade	a,It can be used for B-grade weapons. It is very light. Able to exchange/drop this item.\0	br_cashtex.item.br_cash_large_pack_of_soulshot_b_i00
+1040030	Soulshot Large Pack - A grade	a,It can be used for A-grade weapons. It is very light. Able to exchange/drop this item.\0	br_cashtex.item.br_cash_large_pack_of_soulshot_a_i00
+1040031	Soulshot Large Pack - S grade	a,It can be used for S-grade weapons. It is very light. Able to exchange/drop this item.\0	br_cashtex.item.br_cash_large_pack_of_soulshot_s_i00
+1040032	Bone Quiver	a,	br_cashtex.item.br_cash_quiver_of_bone_arrows_i00
+1040033	Steel Quiver	a,	br_cashtex.item.br_cash_quiver_of_fine_steel_arrows_i00
+1040034	Silver Quiver	a,	br_cashtex.item.br_cash_quiver_of_silver_arrows_i00
+1040035	Mithril Quiver	a,	br_cashtex.item.br_cash_quiver_of_mithril_arrows_i00
+1040036	Quiver of Light	a,	br_cashtex.item.br_cash_quiver_of_shining_arrows_i00
+1040037	Bone Bolt Container	a,	br_cashtex.item.br_cash_quiver_of_bone_bolts_i00
+1040038	Steel Bolt Container	a,	br_cashtex.item.br_cash_quiver_of_fine_steel_bolts_i00
+1040039	Silver Bolt Container	a,	br_cashtex.item.br_cash_quiver_of_silver_bolts_i00
+1040040	Mithril Bolt Container	a,	br_cashtex.item.br_cash_quiver_of_mithril_bolts_i00
+1040041	Bolt Container of Light	a,	br_cashtex.item.br_cash_quiver_of_shining_bolts_i00
+1040042	High-grade Healing Potion	a,	br_cashtex.item.br_cash_healing_potion_i00
+1040043	Secret medicine of Will - D grade	a,	br_cashtex.item.br_cash_elixir_of_combative_d_i00
+1040044	Secret medicine of Will - C grade	a,	br_cashtex.item.br_cash_elixir_of_combative_c_i00
+1040045	Secret medicine of Will - B grade	a,	br_cashtex.item.br_cash_elixir_of_combative_b_i00
+1040046	Secret medicine of Will - A grade	a,	br_cashtex.item.br_cash_elixir_of_combative_a_i00
+1040047	Secret medicine of Will - S grade	a,	br_cashtex.item.br_cash_elixir_of_combative_s_i00
+1040048	Secret medicine of Life - D grade	a,	br_cashtex.item.br_cash_elixir_of_life_d_i00
+1040049	Secret medicine of Life - C grade	a,	br_cashtex.item.br_cash_elixir_of_life_c_i00
+1040050	Secret medicine of Life - B grade	a,	br_cashtex.item.br_cash_elixir_of_life_b_i00
+1040051	Secret medicine of Life - A grade	a,	br_cashtex.item.br_cash_elixir_of_life_a_i00
+1040052	Secret medicine of Life - S grade	a,	br_cashtex.item.br_cash_elixir_of_life_s_i00
+1040053	High Grade Potion of Will	a,	BranchSys.icon.br_cp_potion_i01
+1040054	Potion of Energy Maintenance	a,	BranchSys.icon.br_vitality_potion_i00
+1040055	Energy Replenishing Beverage	a,	icon.etc_potion_of_energy_i00
+1040056	Energy Replenishing Beverage 3-Unit	a,	icon.etc_potion_of_energy_i00
+1040057	Color Name	a,	icon.color_name_i00
+1040058	A Scroll Bundle of Fighter	a,State Upkeep Time of 1 Hour.\0	br_cashtex.item.br_cash_fighter_buff_set_i00
+1040059	A Scroll Bundle of Mage	a,State Upkeep Time of 1 Hour.\0	br_cashtex.item.br_cash_mage_buff_set_i00
+1040060	Wind Walk Scroll	a,	br_cashtex.item.br_cash_scroll_of_wind_walk_i00
+1040061	Haste Scroll	a,	br_cashtex.item.br_cash_scroll_of_haste_i00
+1040062	Might Scroll	a,	br_cashtex.item.br_cash_scroll_of_might_i00
+1040063	Shield Scroll	a,	br_cashtex.item.br_cash_scroll_of_shield_i00
+1040064	Death Whisper Scroll	a,	br_cashtex.item.br_cash_scroll_of_death_whisper_i00
+1040065	Guidance Scroll	a,	br_cashtex.item.br_cash_scroll_of_guidance_i00
+1040066	Empower Scroll	a,	br_cashtex.item.br_cash_scroll_of_empower_i00
+1040067	Grater Acumen Scroll	a,	br_cashtex.item.br_cash_scroll_of_greater_acumen_i00
+1040068	Vampiric Rage Scroll	a,	br_cashtex.item.br_cash_scroll_of_vampiric_rage_i00
+1040069	Bless the Body Scroll	a,	br_cashtex.item.br_cash_scroll_of_bless_the_body_i00
+1040070	Berserker Spirit Scroll	a,	br_cashtex.item.br_cash_scroll_of_berserker_spirit_i00
+1040071	Magic Barrier Scroll	a,	br_cashtex.item.br_cash_scroll_of_magic_barrier_i00
+1040072	Bless the Soul Scroll	a,	br_cashtex.item.br_cash_scroll_of_bless_the_soul_i00
+1040073	Clarity Scroll	a,	br_cashtex.item.br_cash_scroll_of_clarity_i00
+1040074	Wild Magic Scroll	a,	br_cashtex.item.br_cash_scroll_of_wild_magic_i00
+1040075	Escape - Elven Village	a,	BranchSys.icon.br_escape_scroll_i00
+1040076	Escape - Dark Elven Village	a,	BranchSys.icon.br_escape_scroll_i00
+1040077	Escape - Orc Village	a,	BranchSys.icon.br_escape_scroll_i00
+1040078	Escape - Dwarven Village	a,	BranchSys.icon.br_escape_scroll_i00
+1040079	Escape - Gludin Village	a,	BranchSys.icon.br_escape_scroll_i00
+1040080	Escape - Town of Gludio	a,	BranchSys.icon.br_escape_scroll_i00
+1040081	Escape - Town of Dion	a,	BranchSys.icon.br_escape_scroll_i00
+1040082	Escape - Floran Village	a,	BranchSys.icon.br_escape_scroll_i00
+1040083	Escape - Giran Castle Town	a,	BranchSys.icon.br_escape_scroll_i00
+1040084	Escape - Hardin's Academy	a,	BranchSys.icon.br_escape_scroll_i00
+1040085	Escape - Heine	a,	BranchSys.icon.br_escape_scroll_i00
+1040086	Escape - Town of Oren	a,	BranchSys.icon.br_escape_scroll_i00
+1040087	Escape - Ivory Tower	a,	BranchSys.icon.br_escape_scroll_i00
+1040088	Escape - Hunters Village	a,	BranchSys.icon.br_escape_scroll_i00
+1040089	Escape - Town of Aden	a,	BranchSys.icon.br_escape_scroll_i00
+1040090	Escape - Town of Goddard	a,	BranchSys.icon.br_escape_scroll_i00
+1040091	Escape - Rune Township	a,	BranchSys.icon.br_escape_scroll_i00
+1040092	Escape - Town of Schuttgart	a,	BranchSys.icon.br_escape_scroll_i00
+1040093	Omen Beast Transformation Scroll	a,Impossible to recover after removal of transformation state No exchange/drop available.\0	BranchSys.icon.br_scroll_of_transformation_i00
+1040094	Death Blader Transformation Scroll	a,Impossible to recover after removal of transformation state No exchange/drop available.\0	BranchSys.icon.br_scroll_of_transformation_i00
+1040095	Grail Apostle Transformation Scroll	a,Impossible to recover after removal of transformation state No exchange/drop available.\0	BranchSys.icon.br_scroll_of_transformation_i00
+1040096	Unicorn Transformation Scroll	a,Impossible to recover after removal of transformation state No exchange/drop available.\0	BranchSys.icon.br_scroll_of_transformation_i00
+1040097	Lilim Knight Transformation Scroll	a,Impossible to recover after removal of transformation state No exchange/drop available.\0	BranchSys.icon.br_scroll_of_transformation_i00
+1040098	Golem Guardian Transformation Scroll	a,Impossible to recover after removal of transformation state No exchange/drop available.\0	BranchSys.icon.br_scroll_of_transformation_i00
+1040099	Inferno Drake Transformation Scroll	a,Impossible to recover after removal of transformation state No exchange/drop available.\0	BranchSys.icon.br_scroll_of_transformation_i00
+1040100	Dragon Bomber Transformation Scroll	a,Impossible to recover after removal of transformation state No exchange/drop available.\0	BranchSys.icon.br_scroll_of_transformation_i00
+1040101	Feather of Blessing	a,	icon.blessed_feather_i00
+1040102	Hunting Helper Exchange Coupon - 5 hours	a,	icon.etc_ticket_red_i00
+1040103	Elite Hunting Helper Exchange Coupon - 5 hours	a,	icon.etc_ticket_red_i00
+1040104	Sweet Fruit Cocktail	a,	BranchSys.icon.br_fruit_cocktail_i00
+1040105	Fresh Fruit Cocktail	a,	BranchSys.icon.br_fruit_cocktail_i01
+1040106	Afro Hair 7 day Pack	a,	BranchSys.icon.br_four_leaf_clover_box_i00
+1040107	Horn Rimmed Glasses 7 day pack	a,	BranchSys.icon.br_four_leaf_clover_box_i00
+1040108	Assassin's Bamboo Hat 7 day pack	a,	BranchSys.icon.br_four_leaf_clover_box_i00
+1040109	Wrapped daisy hairpin	a,	br_cashtex.item.br_cash_wrapped_accessary_i00
+1040110	Wrapped forget-me-not hairpin	a,	br_cashtex.item.br_cash_wrapped_accessary_i00
+1040111	Wrapped Red Horn of Victory	a,	br_cashtex.item.br_cash_wrapped_accessary_i00
+1040112	Wrapped Cat Ear	a,	br_cashtex.item.br_cash_wrapped_accessary_i00
+1040113	Wrapped Artisan's Goggles	a,	br_cashtex.item.br_cash_wrapped_accessary_i00
+1040114	Wrapped Dandy's Chapeau	a,	br_cashtex.item.br_cash_wrapped_accessary_i00
+1040115	Uniform Hat Pack	a,	icon.etc_pi_gift_box_i00
+1040116	Ribbon Hairband Pack	a,	icon.etc_pi_gift_box_i00
+1040117	Ornithomimus Hat 30 Day Pack	a,	icon.etc_pi_gift_box_i00
+1040118	Kat the Cat Hat 30 Day Pack	a,	icon.etc_pi_gift_box_i00
+1040119	Feline Queen Hat 30 Day Pack	a,	icon.etc_pi_gift_box_i00
+1040120	Feline King Hat 30 Day Pack	a,	icon.etc_pi_gift_box_i00
+1040121	Kai the Cat Hat 30 Day Pack	a,	icon.etc_pi_gift_box_i00
+1040122	Monster Eye Hat 30 Day Pack	a,	icon.etc_pi_gift_box_i01
+1040123	Brown Bear Hat 30 Day Pack	a,	icon.etc_pi_gift_box_i01
+1040124	Fungus Hat 30 Day Pack	a,	icon.etc_pi_gift_box_i01
+1040125	Skull Hat 30 Day Pack	a,	icon.etc_pi_gift_box_i01
+1040126	Agathion of Love 30 Day Pack	a,	icon.etc_pi_gift_box_i00
+1040127	Sudden Agathion 30 Day Pack	a,	icon.etc_pi_gift_box_i00
+1040128	Shiny Agathion 30 Day Pack	a,	icon.etc_pi_gift_box_i00
+1040129	Sobbing Agathion 30 Day Pack	a,	icon.etc_pi_gift_box_i00
+1040130	Pumpkin Transformation Stick 30 Day Pack	a,	icon.etc_pi_gift_box_i01
+1040131	Scarecrow Jack Transformation Stick 30 Day Pack	a,	icon.etc_pi_gift_box_i00
+1040132	Tin Golem Transformation Stick 30 Day Pack	a,	icon.etc_pi_gift_box_i00
+1040133	Gold Maned Lion Mounting Bracelet 30 Day Pack	a,	BranchSys.icon.br_four_leaf_clover_box_i00
+1040134	Steam Beatle Mounting Bracelet 30 Day Pack	a,	BranchSys.icon.br_four_leaf_clover_box_i00
+1040135	Light Purple Maned Horse Bracelet 30 Day Pack	a,	BranchSys.icon.br_four_leaf_clover_box_i00
+1040136	Free Teleport Scroll	a,	icon.bookmark_book_i00
+1040137	Free Teleport Spellbook 	a,	icon.bookmark_scroll_i00
+1040138	Free Teleport Flag 	a,	BranchSys.icon.br_flag_of_bookmark_i00
+1040139	Extra Entrance Pass - Kamaloka (Hall of the Abyss) 	a,	icon.ticket_i00
+1040140	Extra Entrance Pass - Near Kamaloka 	a,	icon.ticket_i00
+1040141	Extra Entrance Pass - Kamaloka (Labyrinth of the Abyss) 	a,	icon.ticket_i00
+1040142	Small fortuna box	a,	br_cashtex.item.br_cash_lucky_box_i00
+1040143	Middle fortuna box	a,	br_cashtex.item.br_cash_lucky_box_i00
+1040144	Large fortuna box	a,	br_cashtex.item.br_cash_lucky_box_i00
+1040145	Small fortuna cube	a,	br_cashtex.item.br_cash_lucky_cube_i00
+1040146	Middle fortuna cube	a,	br_cashtex.item.br_cash_lucky_cube_i00
+1040147	Large fortuna cube	a,	br_cashtex.item.br_cash_lucky_cube_i00
+1040148	Weapon-type Enhance Backup Stone (D-Grade) 	a,	icon.ench_wp_stone_i00
+1040149	Weapon-type Enhance Backup Stone (C-Grade) 	a,	icon.ench_wp_stone_i01
+1040150	Weapon-type Enhance Backup Stone (B-Grade) 	a,	icon.ench_wp_stone_i02
+1040151	Weapon-type Enhance Backup Stone (A-Grade) 	a,	icon.ench_wp_stone_i03
+1040152	Weapon-type Enhance Backup Stone (S-Grade) 	a,	icon.ench_wp_stone_i04
+1040153	Armor-type Enhance Backup Stone (D-Grade) 	a,	icon.ench_am_stone_i00
+1040154	Armor-type Enhance Backup Stone (C-Grade) 	a,	icon.ench_am_stone_i01
+1040155	Armor-type Enhance Backup Stone (B-Grade) 	a,	icon.ench_am_stone_i02
+1040156	Armor-type Enhance Backup Stone (A-Grade) 	a,	icon.ench_am_stone_i03
+1040157	Armor-type Enhance Backup Stone (S-Grade) 	a,	icon.ench_am_stone_i04
+1040158	Rune of Exp. Points 50% 5 hours pack	a,	BranchSys.icon.br_four_leaf_clover_box_i00
+1040159	Rune of Exp. Points 50% 10 hours pack	a,	BranchSys.icon.br_four_leaf_clover_box_i00
+1040160	Rune of SP 50% 5 hour pack	a,	BranchSys.icon.br_four_leaf_clover_box_i00
+1040161	Rune of SP 50% 10 hour pack	a,	BranchSys.icon.br_four_leaf_clover_box_i00
+1040162	Rune of Feathers 24 hour pack	a,	BranchSys.icon.br_four_leaf_clover_box_i00
+1040163	Bone Quiver	a,	br_cashtex.item.br_cash_quiver_of_bone_arrows_i00
+1040164	Steel Quiver	a,	br_cashtex.item.br_cash_quiver_of_fine_steel_arrows_i00
+1040165	Silver Quiver	a,	br_cashtex.item.br_cash_quiver_of_silver_arrows_i00
+1040166	Mithril Quiver	a,	br_cashtex.item.br_cash_quiver_of_mithril_arrows_i00
+1040167	Quiver of Light	a,	br_cashtex.item.br_cash_quiver_of_shining_arrows_i00
+1040168	Bone Bolt Container	a,	br_cashtex.item.br_cash_quiver_of_bone_bolts_i00
+1040169	Steel Bolt Container	a,	br_cashtex.item.br_cash_quiver_of_fine_steel_bolts_i00
+1040170	Silver Bolt Container	a,	br_cashtex.item.br_cash_quiver_of_silver_bolts_i00
+1040171	Mithril Bolt Container	a,	br_cashtex.item.br_cash_quiver_of_mithril_bolts_i00
+1040172	Bolt Container of Light	a,	br_cashtex.item.br_cash_quiver_of_shining_bolts_i00
+1040173	High-grade Healing Potion	a,	br_cashtex.item.br_cash_healing_potion_i00
+1040174	Secret medicine of Will - D grade	a,	br_cashtex.item.br_cash_elixir_of_combative_d_i00
+1040175	Secret medicine of Will - C grade	a,	br_cashtex.item.br_cash_elixir_of_combative_c_i00
+1040176	Secret medicine of Will - B grade	a,	br_cashtex.item.br_cash_elixir_of_combative_b_i00
+1040177	Secret medicine of Will - A grade	a,	br_cashtex.item.br_cash_elixir_of_combative_a_i00
+1040178	Secret medicine of Will - S grade	a,	br_cashtex.item.br_cash_elixir_of_combative_s_i00
+1040179	Secret medicine of Life - D grade	a,	br_cashtex.item.br_cash_elixir_of_life_d_i00
+1040180	Secret medicine of Life - C grade	a,	br_cashtex.item.br_cash_elixir_of_life_c_i00
+1040181	Secret medicine of Life - B grade	a,	br_cashtex.item.br_cash_elixir_of_life_b_i00
+1040182	Secret medicine of Life - A grade	a,	br_cashtex.item.br_cash_elixir_of_life_a_i00
+1040183	Secret medicine of Life - S grade	a,	br_cashtex.item.br_cash_elixir_of_life_s_i00
+1040184	High Grade Potion of Will	a,	BranchSys.icon.br_cp_potion_i01
+1040185	Potion of Energy Maintenance	a,	BranchSys.icon.br_vitality_potion_i00
+1040186	Energy Replenishing Beverage	a,	icon.etc_potion_of_energy_i00
+1040187	Energy Replenishing Beverage 3-Unit	a,	icon.etc_potion_of_energy_i00
+1040188	Color Name	a,	icon.color_name_i00
+1040189	A Scroll Bundle of Fighter	a,State Upkeep Time of 1 Hour.\0	br_cashtex.item.br_cash_fighter_buff_set_i00
+1040190	A Scroll Bundle of Mage	a,State Upkeep Time of 1 Hour.\0	br_cashtex.item.br_cash_mage_buff_set_i00
+1040191	Wind Walk Scroll	a,	br_cashtex.item.br_cash_scroll_of_wind_walk_i00
+1040192	Haste Scroll	a,	br_cashtex.item.br_cash_scroll_of_haste_i00
+1040193	Might Scroll	a,	br_cashtex.item.br_cash_scroll_of_might_i00
+1040194	Shield Scroll	a,	br_cashtex.item.br_cash_scroll_of_shield_i00
+1040195	Death Whisper Scroll	a,	br_cashtex.item.br_cash_scroll_of_death_whisper_i00
+1040196	Guidance Scroll	a,	br_cashtex.item.br_cash_scroll_of_guidance_i00
+1040197	Empower Scroll	a,	br_cashtex.item.br_cash_scroll_of_empower_i00
+1040198	Grater Acumen Scroll	a,	br_cashtex.item.br_cash_scroll_of_greater_acumen_i00
+1040199	Vampiric Rage Scroll	a,	br_cashtex.item.br_cash_scroll_of_vampiric_rage_i00
+1040200	Bless the Body Scroll	a,	br_cashtex.item.br_cash_scroll_of_bless_the_body_i00
+1040201	Berserker Spirit Scroll	a,	br_cashtex.item.br_cash_scroll_of_berserker_spirit_i00
+1040202	Magic Barrier Scroll	a,	br_cashtex.item.br_cash_scroll_of_magic_barrier_i00
+1040203	Bless the Soul Scroll	a,	br_cashtex.item.br_cash_scroll_of_bless_the_soul_i00
+1040204	Clarity Scroll	a,	br_cashtex.item.br_cash_scroll_of_clarity_i00
+1040205	Wild Magic Scroll	a,	br_cashtex.item.br_cash_scroll_of_wild_magic_i00
+1040206	Escape - Elven Village	a,	BranchSys.icon.br_escape_scroll_i00
+1040207	Escape - Dark Elven Village	a,	BranchSys.icon.br_escape_scroll_i00
+1040208	Escape - Orc Village	a,	BranchSys.icon.br_escape_scroll_i00
+1040209	Escape - Dwarven Village	a,	BranchSys.icon.br_escape_scroll_i00
+1040210	Escape - Gludin Village	a,	BranchSys.icon.br_escape_scroll_i00
+1040211	Escape - Town of Gludio	a,	BranchSys.icon.br_escape_scroll_i00
+1040212	Escape - Town of Dion	a,	BranchSys.icon.br_escape_scroll_i00
+1040213	Escape - Floran Village	a,	BranchSys.icon.br_escape_scroll_i00
+1040214	Escape - Giran Castle Town	a,	BranchSys.icon.br_escape_scroll_i00
+1040215	Escape - Hardin's Academy	a,	BranchSys.icon.br_escape_scroll_i00
+1040216	Escape - Heine	a,	BranchSys.icon.br_escape_scroll_i00
+1040217	Escape - Town of Oren	a,	BranchSys.icon.br_escape_scroll_i00
+1040218	Escape - Ivory Tower	a,	BranchSys.icon.br_escape_scroll_i00
+1040219	Escape - Hunters Village	a,	BranchSys.icon.br_escape_scroll_i00
+1040220	Escape - Town of Aden	a,	BranchSys.icon.br_escape_scroll_i00
+1040221	Escape - Town of Goddard	a,	BranchSys.icon.br_escape_scroll_i00
+1040222	Escape - Rune Township	a,	BranchSys.icon.br_escape_scroll_i00
+1040223	Escape - Town of Schuttgart	a,	BranchSys.icon.br_escape_scroll_i00
+1040224	Omen Beast Transformation Scroll	a,Impossible to recover after removal of transformation state No exchange/drop available.\0	BranchSys.icon.br_scroll_of_transformation_i00
+1040225	Death Blader Transformation Scroll	a,Impossible to recover after removal of transformation state No exchange/drop available.\0	BranchSys.icon.br_scroll_of_transformation_i00
+1040226	Grail Apostle Transformation Scroll	a,Impossible to recover after removal of transformation state No exchange/drop available.\0	BranchSys.icon.br_scroll_of_transformation_i00
+1040227	Unicorn Transformation Scroll	a,Impossible to recover after removal of transformation state No exchange/drop available.\0	BranchSys.icon.br_scroll_of_transformation_i00
+1040228	Lilim Knight Transformation Scroll	a,Impossible to recover after removal of transformation state No exchange/drop available.\0	BranchSys.icon.br_scroll_of_transformation_i00
+1040229	Golem Guardian Transformation Scroll	a,Impossible to recover after removal of transformation state No exchange/drop available.\0	BranchSys.icon.br_scroll_of_transformation_i00
+1040230	Inferno Drake Transformation Scroll	a,Impossible to recover after removal of transformation state No exchange/drop available.\0	BranchSys.icon.br_scroll_of_transformation_i00
+1040231	Dragon Bomber Transformation Scroll	a,Impossible to recover after removal of transformation state No exchange/drop available.\0	BranchSys.icon.br_scroll_of_transformation_i00
+1040232	Feather of Blessing	a,	icon.blessed_feather_i00
+1040233	Hunting Helper Exchange Coupon - 5 hours	a,	icon.etc_ticket_red_i00
+1040234	Elite Hunting Helper Exchange Coupon - 5 hours	a,	icon.etc_ticket_red_i00
+1040235	Sweet Fruit Cocktail	a,	BranchSys.icon.br_fruit_cocktail_i00
+1040236	Fresh Fruit Cocktail	a,	BranchSys.icon.br_fruit_cocktail_i01
+1040237	Afro Hair 7 day Pack	a,	BranchSys.icon.br_four_leaf_clover_box_i00
+1040238	Horn Rimmed Glasses 7 day pack	a,	BranchSys.icon.br_four_leaf_clover_box_i00
+1040239	Assassin's Bamboo Hat 7 day pack	a,	BranchSys.icon.br_four_leaf_clover_box_i00
+1040240	Wrapped daisy hairpin	a,	br_cashtex.item.br_cash_wrapped_accessary_i00
+1040241	Wrapped forget-me-not hairpin	a,	br_cashtex.item.br_cash_wrapped_accessary_i00
+1040242	Wrapped Red Horn of Victory	a,	br_cashtex.item.br_cash_wrapped_accessary_i00
+1040243	Wrapped Cat Ear	a,	br_cashtex.item.br_cash_wrapped_accessary_i00
+1040244	Wrapped Artisan's Goggles	a,	br_cashtex.item.br_cash_wrapped_accessary_i00
+1040245	Wrapped Dandy's Chapeau	a,	br_cashtex.item.br_cash_wrapped_accessary_i00
+1040246	Uniform Hat Pack	a,	icon.etc_pi_gift_box_i00
+1040247	Ribbon Hairband Pack	a,	icon.etc_pi_gift_box_i00
+1040248	Ornithomimus Hat 30 Day Pack	a,	icon.etc_pi_gift_box_i00
+1040249	Kat the Cat Hat 30 Day Pack	a,	icon.etc_pi_gift_box_i00
+1040250	Feline Queen Hat 30 Day Pack	a,	icon.etc_pi_gift_box_i00
+1040251	Feline King Hat 30 Day Pack	a,	icon.etc_pi_gift_box_i00
+1040252	Kai the Cat Hat 30 Day Pack	a,	icon.etc_pi_gift_box_i00
+1040253	Monster Eye Hat 30 Day Pack	a,	icon.etc_pi_gift_box_i01
+1040254	Brown Bear Hat 30 Day Pack	a,	icon.etc_pi_gift_box_i01
+1040255	Fungus Hat 30 Day Pack	a,	icon.etc_pi_gift_box_i01
+1040256	Skull Hat 30 Day Pack	a,	icon.etc_pi_gift_box_i01
+1040257	Agathion of Love 30 Day Pack	a,	icon.etc_pi_gift_box_i00
+1040258	Sudden Agathion 30 Day Pack	a,	icon.etc_pi_gift_box_i00
+1040259	Shiny Agathion 30 Day Pack	a,	icon.etc_pi_gift_box_i00
+1040260	Sobbing Agathion 30 Day Pack	a,	icon.etc_pi_gift_box_i00
+1040261	Pumpkin Transformation Stick 30 Day Pack	a,	icon.etc_pi_gift_box_i01
+1040262	Scarecrow Jack Transformation Stick 30 Day Pack	a,	icon.etc_pi_gift_box_i00
+1040263	Tin Golem Transformation Stick 30 Day Pack	a,	icon.etc_pi_gift_box_i00
+1040264	Gold Maned Lion Mounting Bracelet 30 Day Pack	a,	BranchSys.icon.br_four_leaf_clover_box_i00
+1040265	Steam Beatle Mounting Bracelet 30 Day Pack	a,	BranchSys.icon.br_four_leaf_clover_box_i00
+1040266	Light Purple Maned Horse Bracelet 30 Day Pack	a,	BranchSys.icon.br_four_leaf_clover_box_i00
+1040267	Free Teleport Scroll	a,	icon.bookmark_book_i00
+1040268	Free Teleport Spellbook 	a,	icon.bookmark_scroll_i00
+1040269	Free Teleport Flag 	a,	BranchSys.icon.br_flag_of_bookmark_i00
+1040270	Extra Entrance Pass - Kamaloka (Hall of the Abyss) 	a,	icon.ticket_i00
+1040271	Extra Entrance Pass - Near Kamaloka 	a,	icon.ticket_i00
+1040272	Extra Entrance Pass - Kamaloka (Labyrinth of the Abyss) 	a,	icon.ticket_i00
+1040273	Weight Decreasing Ring	a,	icon.accessary_ring_of_mana_i00
+1040274	Quiet Footsteps Ring	a,	icon.accessary_ring_of_mana_i00
+1040275	Red Soul Crystal - Stage 12	a,	icon.etc_soul_stone_i00
+1040276	Green Soul Crystal - Stage 12	a,	icon.etc_soul_stone_i02
+1040277	Blue Soul Crystal - Stage 12	a,	icon.etc_soul_stone_i01
+1040278	Red Soul Crystal - Stage 13	a,	icon.etc_soul_stone_i00
+1040279	Green Soul Crystal - Stage 13	a,	icon.etc_soul_stone_i02
+1040280	Blue Soul Crystal - Stage 13	a,	icon.etc_soul_stone_i01
+1040281	Red Soul Crystal - Stage 14	a,	icon.etc_soul_stone_i00
+1040282	Blue Soul Crystal - Stage 14	a,	icon.etc_soul_stone_i02
+1040283	Green Soul Crystal - Stage 14	a,	icon.etc_soul_stone_i01
+1040284	Pig Stick Candy	a,	icon.etc_pig_candy_i00
+1040285	Agathion of Baby Panda 15 Day Pack	a,Big Head\0	icon.etc_pi_gift_box_i00
+1040286	Bamboo Panda Agathion 15 Day Pack	a,Resurrection\0	icon.etc_pi_gift_box_i00
+1040287	Agathion of Sexy Panda 15 Day Pack	a,Escape\0	icon.etc_pi_gift_box_i00
+1040288	Button-Eyed Bear Doll Agathion 7-Day Pack	a,Escape\0	icon.etc_pi_gift_box_i00
+1040289	Button-Eyed Bear Doll Agathion 7-Day Pack	a,Resurrection\0	icon.etc_pi_gift_box_i00
+1040290	Button-Eyed Bear Doll Agathion 7-Day Pack	a,Energy\0	icon.etc_pi_gift_box_i00
+1040291	Bird's Nest	a,	icon.accessory_nest_hat_i00
+1040292	Purple Viking Circlet	a,	icon.accessory_viking_circlet_violet_i00
+1040293	Golden Viking Circlet	a,	icon.accessory_viking_circlet_gold_i00
+1040294	Panda Hat	a,	icon.accessory_panda_cap_i00
+1040295	White Wool Hat	a,	icon.accessory_sheep_cap_white_i00
+1040296	Black Wool Hat	a,	icon.accessory_sheep_cap_black_i00
+1040297	Frog Hat	a,	icon.accessory_frog_cap_i00
+1040298	Fish Hat	a,	icon.accessory_fish_cap_i00
+1040299	Straw Hat	a,	icon.accessory_straw_hat_i00
+1040300	Chicken Hat	a,	icon.accessory_chicken_cap_i00
+1040301	Adventurer Hat	a,	icon.accessory_explorer_hat_i00
+1040302	Medieval Style Party Mask	a,	icon.accessory_middle_age_party_mask_i00
+1040303	Blue Party Hat	a,	icon.accessory_party_hat_blue_i00
+1040304	Soaring Bird 	a,	icon.accessory_soaring_bird_i00
+1040305	Teddy Bear Hat	a,	icon.accessory_bear_cap_i00
+1040306	Piggy Hat	a,	icon.accessory_pig_cap_i00
+1040307	Jester Hat	a,	icon.accessory_jester_cap_i00
+1040308	Dapper Cap	a,	icon.accessory_dandy_cap_i00
+1040309	Iron Circlet	a,	icon.accessory_iron_circlet_i00
+1040310	Half Face	a,	icon.accessory_half_face_i00
+1040311	Suit	a,	icon.armor_t2000_ul_i00
+1040312	Horn Rimmed Glasses 7 day pack	a,Agility\0	icon.etc_pi_gift_box_i01
+1040313	Crystal of Fire	a,	icon.etc_gem_red_i00
+1040314	Crystal of Water	a,	icon.etc_gem_blue_i00
+1040315	Crystal of Earth	a,	icon.etc_gem_yellow_i00
+1040316	Crystal of Wind	a,	icon.etc_gem_green_i00
+1040317	Crystal of Darkness	a,	icon.etc_gem_clear_i00
+1040318	Crystal of Sacred	a,	icon.etc_gem_black_i00
+1040319	Weapon Enchant Scroll - D Grade	a,	icon.etc_scroll_of_enchant_weapon_i01
+1040320	Armor Enchant Scroll - D Grade	a,	icon.etc_scroll_of_enchant_armor_i01
+1040321	Weapon Enchant Scroll - C Grade	a,	icon.etc_scroll_of_enchant_weapon_i02
+1040322	Armor Enchant Scroll - C Grade	a,	icon.etc_scroll_of_enchant_armor_i02
+1040323	Weapon Enchant Scroll - B Grade	a,	icon.etc_scroll_of_enchant_weapon_i03
+1040324	Armor Enchant Scroll - B Grade	a,	icon.etc_scroll_of_enchant_armor_i03
+1040325	Weapon Enchant Scroll - A Grade	a,	icon.etc_scroll_of_enchant_weapon_i04
+1040326	Armor Enchant Scroll - A Grade	a,	icon.etc_scroll_of_enchant_armor_i04
+1040327	Weapon Enchant Scroll - S Grade	a,	icon.etc_scroll_of_enchant_weapon_i05
+1040328	Armor Enchant Scroll - S Grade	a,	icon.etc_scroll_of_enchant_armor_i05
+1040329	Lucky Sky Lantern Summon Scroll	a,	BranchSys.icon.br_lamp_orange_i00
+1040330	Ambience Sky Lantern Summon Scroll	a,	BranchSys.icon.br_lamp_a_yellow_i00
+1040331	Sway Sky Lantern Summon Scroll	a,	BranchSys.icon.br_lamp_b_red_i00
+1040332	Comfort Sky Lantern Summon Scroll	a,	BranchSys.icon.br_lamp_c_pink_i00
+1040333	Golden Jack O'Lantern Mask 7 Day Pack	a,Authority of Golden Jack O'Lantern - Increase max HP 40%, max MP 40%, max CP 40%, Physical Def. 30%, Magic Def. 30%, Spd. 30% of party members for 10 minutes. \0	BranchSys.icon.br_four_leaf_clover_box_i00
+1040334	Zombie Agathion	a,	BranchSys.icon.br_aga_gangsi_i00
+1040335	Zombie Agathion 7 Day Pack	a,	icon.etc_pi_gift_box_i00
+1040336	Baekyi Hwamae Agathion	a,	BranchSys.icon.br_aga_bluebird_i00
+1040337	Kwanwoo Hwamae Agathion	a,	BranchSys.icon.br_aga_hatbird_i00
+1040338	Weight Decreasing Ring	a,	icon.accessary_ring_of_mana_i00
+1040339	Quiet Footsteps Ring	a,	icon.accessary_ring_of_mana_i00
+1040340	Red Soul Crystal - Stage 12	a,	icon.etc_soul_stone_i00
+1040341	Green Soul Crystal - Stage 12	a,	icon.etc_soul_stone_i02
+1040342	Blue Soul Crystal - Stage 12	a,	icon.etc_soul_stone_i01
+1040343	Red Soul Crystal - Stage 13	a,	icon.etc_soul_stone_i00
+1040344	Green Soul Crystal - Stage 13	a,	icon.etc_soul_stone_i02
+1040345	Blue Soul Crystal - Stage 13	a,	icon.etc_soul_stone_i01
+1040346	Red Soul Crystal - Stage 14	a,	icon.etc_soul_stone_i00
+1040347	Blue Soul Crystal - Stage 14	a,	icon.etc_soul_stone_i02
+1040348	Green Soul Crystal - Stage 14	a,	icon.etc_soul_stone_i01
+1040349	Pig Stick Candy	a,	icon.etc_pig_candy_i00
+1040350	Agathion of Baby Panda 15 Day Pack	a,Big Head\0	icon.etc_pi_gift_box_i00
+1040351	Bamboo Panda Agathion 15 Day Pack	a,Resurrection\0	icon.etc_pi_gift_box_i00
+1040352	Agathion of Sexy Panda 15 Day Pack	a,Escape\0	icon.etc_pi_gift_box_i00
+1040353	Button-Eyed Bear Doll Agathion 7-Day Pack	a,Escape\0	icon.etc_pi_gift_box_i00
+1040354	Button-Eyed Bear Doll Agathion 7-Day Pack	a,Resurrection\0	icon.etc_pi_gift_box_i00
+1040355	Button-Eyed Bear Doll Agathion 7-Day Pack	a,Energy\0	icon.etc_pi_gift_box_i00
+1040356	Bird's Nest	a,	icon.accessory_nest_hat_i00
+1040357	Purple Viking Circlet	a,	icon.accessory_viking_circlet_violet_i00
+1040358	Golden Viking Circlet	a,	icon.accessory_viking_circlet_gold_i00
+1040359	Panda Hat	a,	icon.accessory_panda_cap_i00
+1040360	White Wool Hat	a,	icon.accessory_sheep_cap_white_i00
+1040361	Black Wool Hat	a,	icon.accessory_sheep_cap_black_i00
+1040362	Frog Hat	a,	icon.accessory_frog_cap_i00
+1040363	Fish Hat	a,	icon.accessory_fish_cap_i00
+1040364	Straw Hat	a,	icon.accessory_straw_hat_i00
+1040365	Chicken Hat	a,	icon.accessory_chicken_cap_i00
+1040366	Adventurer Hat	a,	icon.accessory_explorer_hat_i00
+1040367	Medieval Style Party Mask	a,	icon.accessory_middle_age_party_mask_i00
+1040368	Blue Party Hat	a,	icon.accessory_party_hat_blue_i00
+1040369	Soaring Bird 	a,	icon.accessory_soaring_bird_i00
+1040370	Teddy Bear Hat	a,	icon.accessory_bear_cap_i00
+1040371	Piggy Hat	a,	icon.accessory_pig_cap_i00
+1040372	Jester Hat	a,	icon.accessory_jester_cap_i00
+1040373	Dapper Cap	a,	icon.accessory_dandy_cap_i00
+1040374	Iron Circlet	a,	icon.accessory_iron_circlet_i00
+1040375	Half Face	a,	icon.accessory_half_face_i00
+1040376	Suit	a,	icon.armor_t2000_ul_i00
+1040377	Horn Rimmed Glasses 7 day pack	a,Agility\0	icon.etc_pi_gift_box_i01
+1040378	Crystal of Fire	a,	icon.etc_gem_red_i00
+1040379	Crystal of Water	a,	icon.etc_gem_blue_i00
+1040380	Crystal of Earth	a,	icon.etc_gem_yellow_i00
+1040381	Crystal of Wind	a,	icon.etc_gem_green_i00
+1040382	Crystal of Darkness	a,	icon.etc_gem_clear_i00
+1040383	Crystal of Sacred	a,	icon.etc_gem_black_i00
+1040384	Weapon Enchant Scroll - D Grade	a,	icon.etc_scroll_of_enchant_weapon_i01
+1040385	Armor Enchant Scroll - D Grade	a,	icon.etc_scroll_of_enchant_armor_i01
+1040386	Weapon Enchant Scroll - C Grade	a,	icon.etc_scroll_of_enchant_weapon_i02
+1040387	Armor Enchant Scroll - C Grade	a,	icon.etc_scroll_of_enchant_armor_i02
+1040388	Weapon Enchant Scroll - B Grade	a,	icon.etc_scroll_of_enchant_weapon_i03
+1040389	Armor Enchant Scroll - B Grade	a,	icon.etc_scroll_of_enchant_armor_i03
+1040390	Weapon Enchant Scroll - A Grade	a,	icon.etc_scroll_of_enchant_weapon_i04
+1040391	Armor Enchant Scroll - A Grade	a,	icon.etc_scroll_of_enchant_armor_i04
+1040392	Weapon Enchant Scroll - S Grade	a,	icon.etc_scroll_of_enchant_weapon_i05
+1040393	Armor Enchant Scroll - S Grade	a,	icon.etc_scroll_of_enchant_armor_i05
+1040394	Lucky Sky Lantern Summon Scroll	a,	BranchSys.icon.br_lamp_orange_i00
+1040395	Ambience Sky Lantern Summon Scroll	a,	BranchSys.icon.br_lamp_a_yellow_i00
+1040396	Sway Sky Lantern Summon Scroll	a,	BranchSys.icon.br_lamp_b_red_i00
+1040397	Comfort Sky Lantern Summon Scroll	a,	BranchSys.icon.br_lamp_c_pink_i00
+1040398	Golden Jack O'Lantern Mask 7 Day Pack	a,Authority of Golden Jack O'Lantern - Increase max HP 40%, max MP 40%, max CP 40%, Physical Def. 30%, Magic Def. 30%, Spd. 30% of party members for 10 minutes. \0	BranchSys.icon.br_four_leaf_clover_box_i00
+1040399	Zombie Agathion	a,	BranchSys.icon.br_aga_gangsi_i00
+1040400	Zombie Agathion 7 Day Pack	a,	icon.etc_pi_gift_box_i00
+1040401	Baekyi Hwamae Agathion	a,	BranchSys.icon.br_aga_bluebird_i00
+1040402	Kwanwoo Hwamae Agathion	a,	BranchSys.icon.br_aga_hatbird_i00
+1050001	Weapon-type Enhance Backup Stone (D-Grade) 	a,	icon.ench_wp_stone_i00
+1050002	Weapon-type Enhance Backup Stone (C-Grade) 	a,	icon.ench_wp_stone_i01
+1050003	Weapon-type Enhance Backup Stone (B-Grade) 	a,	icon.ench_wp_stone_i02
+1050004	Weapon-type Enhance Backup Stone (A-Grade) 	a,	icon.ench_wp_stone_i03
+1050005	Weapon-type Enhance Backup Stone (S-Grade) 	a,	icon.ench_wp_stone_i04
+1050006	Armor-type Enhance Backup Stone (D-Grade) 	a,	icon.ench_am_stone_i00
+1050007	Armor-type Enhance Backup Stone (C-Grade) 	a,	icon.ench_am_stone_i01
+1050008	Armor-type Enhance Backup Stone (B-Grade) 	a,	icon.ench_am_stone_i02
+1050009	Armor-type Enhance Backup Stone (A-Grade) 	a,	icon.ench_am_stone_i03
+1050010	Armor-type Enhance Backup Stone (S-Grade) 	a,	icon.ench_am_stone_i04
+1050011	Secret medicine of Will - D grade	a,	br_cashtex.item.br_cash_elixir_of_combative_d_i00
+1050012	Secret medicine of Will - C grade	a,	br_cashtex.item.br_cash_elixir_of_combative_c_i00
+1050013	Secret medicine of Will - B grade	a,	br_cashtex.item.br_cash_elixir_of_combative_b_i00
+1050014	Secret medicine of Will - A grade	a,	br_cashtex.item.br_cash_elixir_of_combative_a_i00
+1050015	Secret medicine of Will - S grade	a,	br_cashtex.item.br_cash_elixir_of_combative_s_i00
+1050016	Secret medicine of Life - D grade	a,	br_cashtex.item.br_cash_elixir_of_life_d_i00
+1050017	Secret medicine of Life - C grade	a,	br_cashtex.item.br_cash_elixir_of_life_c_i00
+1050018	Secret medicine of Life - B grade	a,	br_cashtex.item.br_cash_elixir_of_life_b_i00
+1050019	Secret medicine of Life - A grade	a,	br_cashtex.item.br_cash_elixir_of_life_a_i00
+1050020	Secret medicine of Life - S grade	a,	br_cashtex.item.br_cash_elixir_of_life_s_i00
+1050021	Powerful Healing Potion	a,	br_cashtex.item.br_cash_greater_healing_potion_i00
+1050022	High-grade Healing Potion	a,	br_cashtex.item.br_cash_healing_potion_i00
+1050023	Potion of Will	a,	br_cashtex.item.br_cash_cp_potion_i00
+1050024	Healing medicine for Mana	a,	br_cashtex.item.br_cash_mana_potion_i00
+1050025	Potion of Energy Maintenance	a,	BranchSys.icon.br_vitality_potion_i00
+1050026	Potion of Energy Replenishing	a,	BranchSys.icon.br_vitality_potion_i01
+1050027	Energy Replenishing Beverage 1-Unit Bundle	a,	icon.etc_potion_of_energy_i00
+1050028	Energy Replenishing Beverage 3-Unit Bundle	a,	icon.etc_potion_of_energy_i00
+1050029	A Scroll Bundle of Fighter	a,	br_cashtex.item.br_cash_fighter_buff_set_i00
+1050030	A Scroll Bundle of Mage	a,	br_cashtex.item.br_cash_mage_buff_set_i00
+1050031	Wind Walk Scroll	a,	br_cashtex.item.br_cash_scroll_of_wind_walk_i00
+1050032	Haste Scroll	a,	br_cashtex.item.br_cash_scroll_of_haste_i00
+1050033	Might Scroll	a,	br_cashtex.item.br_cash_scroll_of_might_i00
+1050034	Shield Scroll	a,	br_cashtex.item.br_cash_scroll_of_shield_i00
+1050035	Death Whisper Scroll	a,	br_cashtex.item.br_cash_scroll_of_death_whisper_i00
+1050036	Guidance Scroll	a,	br_cashtex.item.br_cash_scroll_of_guidance_i00
+1050037	Empower Scroll	a,	br_cashtex.item.br_cash_scroll_of_empower_i00
+1050038	Grater Acumen Scroll	a,	br_cashtex.item.br_cash_scroll_of_greater_acumen_i00
+1050039	Vampiric Rage Scroll	a,	br_cashtex.item.br_cash_scroll_of_vampiric_rage_i00
+1050040	Bless the Body Scroll	a,	br_cashtex.item.br_cash_scroll_of_bless_the_body_i00
+1050041	Berserker Spirit Scroll	a,	br_cashtex.item.br_cash_scroll_of_berserker_spirit_i00
+1050042	Magic Barrier Scroll	a,	br_cashtex.item.br_cash_scroll_of_magic_barrier_i00
+1050043	Bless the Soul Scroll	a,	br_cashtex.item.br_cash_scroll_of_bless_the_soul_i00
+1050044	Clarity Scroll	a,	br_cashtex.item.br_cash_scroll_of_clarity_i00
+1050045	Wild Magic Scroll	a,	br_cashtex.item.br_cash_scroll_of_wild_magic_i00
+1050046	Omen Beast Transformation Scroll	a,	BranchSys.icon.br_scroll_of_transformation_i00
+1050047	Death Blader Transformation Scroll	a,	BranchSys.icon.br_scroll_of_transformation_i00
+1050048	Grail Apostle Transformation Scroll	a,	BranchSys.icon.br_scroll_of_transformation_i00
+1050049	Unicorn Transformation Scroll	a,	BranchSys.icon.br_scroll_of_transformation_i00
+1050050	Lilim Knight Transformation Scroll	a,	BranchSys.icon.br_scroll_of_transformation_i00
+1050051	Golem Guardian Transformation Scroll	a,	BranchSys.icon.br_scroll_of_transformation_i00
+1050052	Inferno Drake Transformation Scroll	a,	BranchSys.icon.br_scroll_of_transformation_i00
+1050053	Dragon Bomber Transformation Scroll	a,	BranchSys.icon.br_scroll_of_transformation_i00
+1050054	Escape - Talking Island Village	a,	BranchSys.icon.br_escape_scroll_i00
+1050055	Escape - Elven Village	a,	BranchSys.icon.br_escape_scroll_i00
+1050056	Escape - Dark Elven Village	a,	BranchSys.icon.br_escape_scroll_i00
+1050057	Escape - Orc Village	a,	BranchSys.icon.br_escape_scroll_i00
+1050058	Escape - Dwarven Village	a,	BranchSys.icon.br_escape_scroll_i00
+1050059	Escape - Gludin Village	a,	BranchSys.icon.br_escape_scroll_i00
+1050060	Escape - Town of Gludio	a,	BranchSys.icon.br_escape_scroll_i00
+1050061	Escape - Town of Dion	a,	BranchSys.icon.br_escape_scroll_i00
+1050062	Escape - Floran Village	a,	BranchSys.icon.br_escape_scroll_i00
+1050063	Escape - Giran Castle Town	a,	BranchSys.icon.br_escape_scroll_i00
+1050064	Escape - Hardin's Academy	a,	BranchSys.icon.br_escape_scroll_i00
+1050065	Escape - Heine	a,	BranchSys.icon.br_escape_scroll_i00
+1050066	Escape - Town of Oren	a,	BranchSys.icon.br_escape_scroll_i00
+1050067	Escape - Ivory Tower	a,	BranchSys.icon.br_escape_scroll_i00
+1050068	Escape - Hunters Village	a,	BranchSys.icon.br_escape_scroll_i00
+1050069	Escape - Town of Aden	a,	BranchSys.icon.br_escape_scroll_i00
+1050070	Escape - Town of Goddard	a,	BranchSys.icon.br_escape_scroll_i00
+1050071	Escape - Rune Township	a,	BranchSys.icon.br_escape_scroll_i00
+1050072	Escape - Town of Schuttgart	a,	BranchSys.icon.br_escape_scroll_i00
+1050073	Free Teleport Scroll	a,	icon.bookmark_book_i00
+1050074	Free Teleport Spellbook 5 Sheet Bundle	a,	icon.bookmark_scroll_i00
+1050075	Free Teleport Spellbook 15 Sheet Bundle	a,	icon.bookmark_scroll_i00
+1050076	Free Teleport Spellbook 40 Sheet Bundle	a,	icon.bookmark_scroll_i00
+1050077	Free Teleport Flag	a,	BranchSys.icon.br_flag_of_bookmark_i00
+1050078	Extra Entrance Pass - Kamaloka (Hall of the Abyss) 3 Sheet Bundle	a,	icon.ticket_i00
+1050079	Extra Entrance Pass - Near Kamaloka 3 Sheet Bundle	a,	icon.ticket_i00
+1050080	Extra Entrance Pass - Kamaloka (Labyrinth of the Abyss) 3 Sheet Bundle	a,	icon.ticket_i00
+1050081	Feather of Blessing 3 Sheet Bundle	a,	icon.blessed_feather_i00
+1050082	Color Name	a,	icon.color_name_i00
+1050083	Kat the Cat Hat 30 Day Pack	a,	icon.etc_pi_gift_box_i00
+1050084	Feline Queen Hat 30 Day Pack	a,	icon.etc_pi_gift_box_i00
+1050085	Skull Hat 30 Day Pack	a,	icon.etc_pi_gift_box_i00
+1050086	Assassin's Bamboo Hat Energy - 3 hours	a,	BranchSys.icon.br_Bamboo_Hat_i00
+1050087	Assassin's Bamboo Hat Energy - 3 days	a,	BranchSys.icon.br_Bamboo_Hat_i00
+1050088	Assassin's Bamboo Hat Energy - 30 days	a,	BranchSys.icon.br_Bamboo_Hat_i00
+1050089	Horn Rimmed Glasses Energy - 3 hours	a,	BranchSys.icon.br_Eye_Glasses_i00
+1050090	Horn Rimmed Glasses Energy - 3 days	a,	BranchSys.icon.br_Eye_Glasses_i00
+1050091	Horn Rimmed Glasses Energy - 30 days	a,	BranchSys.icon.br_Eye_Glasses_i00
+1050092	Agathion of Love 30 Day Pack	a,	icon.etc_pi_gift_box_i00
+1050093	Sudden Agathion 30 Day Pack	a,	icon.etc_pi_gift_box_i00
+1050094	Shiny Agathion 30 Day Pack	a,	icon.etc_pi_gift_box_i00
+1050095	Sobbing Agathion 30 Day Pack	a,	icon.etc_pi_gift_box_i00
+1050096	Plaipitak Agathion 30 Day Pack - Big Head	a,	icon.etc_pi_gift_box_i00
+1050097	Plaipitak Agathion 30 Day Pack - Blessed Resurrection	a,	icon.etc_pi_gift_box_i00
+1050098	Plaipitak Agathion 30 Day Pack - Blessed Return	a,	icon.etc_pi_gift_box_i00
+1050099	Baby Panda Agathion Pack	a,	icon.etc_pi_gift_box_i00
+1050100	Bamboo Panda Agathion Pack	a,	icon.etc_pi_gift_box_i00
+1050101	Sexy Panda Agathion Pack	a,	icon.etc_pi_gift_box_i00
+1050102	Hunting Helper Exchange Coupon - 1 sheet	a,	icon.etc_ticket_red_i00
+1050103	Hunting Helper Exchange Coupon - 5 sheet	a,	icon.etc_ticket_red_i00
+1050104	High Quality Hunting Helper Exchange Coupon - 1 sheet	a,	icon.etc_ticket_red_i00
+1050105	High Quality Hunting Helper Exchange Coupon - 5 sheet	a,	icon.etc_ticket_red_i00
+1050106	Purple Maned Horse 7 Day Pack	a,	icon.etc_pi_gift_box_i00
+1050107	Light Purple Maned Horse Bracelet 30 Day Pack	a,	icon.etc_pi_gift_box_i00
+1050108	Light Purple Maned Horse Bracelet Pack	a,	icon.etc_pi_gift_box_i00
+1070001	Small fortuna box	a,	br_cashtex.item.br_cash_lucky_box_i00
+1070002	Middle fortuna box	a,	br_cashtex.item.br_cash_lucky_box_i00
+1070003	Large fortuna box	a,	br_cashtex.item.br_cash_lucky_box_i00
+1070004	Small fortuna cube	a,	br_cashtex.item.br_cash_lucky_cube_i00
+1070005	Middle fortuna cube	a,	br_cashtex.item.br_cash_lucky_cube_i00
+1070006	Large fortuna cube	a,	br_cashtex.item.br_cash_lucky_cube_i00
+1070007	Powerful Healing Potion	a,	br_cashtex.item.br_cash_greater_healing_potion_i00
+1070008	High-grade Healing Potion	a,	br_cashtex.item.br_cash_healing_potion_i00
+1070009	Secret medicine of Will - D grade	a,	br_cashtex.item.br_cash_elixir_of_combative_d_i00
+1070010	Secret medicine of Will - C grade	a,	br_cashtex.item.br_cash_elixir_of_combative_c_i00
+1070011	Secret medicine of Will - B grade	a,	br_cashtex.item.br_cash_elixir_of_combative_b_i00
+1070012	Secret medicine of Will - A grade	a,	br_cashtex.item.br_cash_elixir_of_combative_a_i00
+1070013	Secret medicine of Will - S grade	a,	br_cashtex.item.br_cash_elixir_of_combative_s_i00
+1070014	Secret medicine of Life - D grade	a,	br_cashtex.item.br_cash_elixir_of_life_d_i00
+1070015	Secret medicine of Life - C grade	a,	br_cashtex.item.br_cash_elixir_of_life_c_i00
+1070016	Secret medicine of Life - B grade	a,	br_cashtex.item.br_cash_elixir_of_life_b_i00
+1070017	Secret medicine of Life - A grade	a,	br_cashtex.item.br_cash_elixir_of_life_a_i00
+1070018	Secret medicine of Life - S grade	a,	br_cashtex.item.br_cash_elixir_of_life_s_i00
+1070019	Potion of Will	a,	br_cashtex.item.br_cash_cp_potion_i00
+1070020	Healing medicine for Mana	a,	br_cashtex.item.br_cash_mana_potion_i00
+1070021	Wind Walk Scroll	a,	br_cashtex.item.br_cash_scroll_of_wind_walk_i00
+1070022	Haste Scroll	a,	br_cashtex.item.br_cash_scroll_of_haste_i00
+1070023	Might Scroll	a,	br_cashtex.item.br_cash_scroll_of_might_i00
+1070024	Shield Scroll	a,	br_cashtex.item.br_cash_scroll_of_shield_i00
+1070025	Death Whisper Scroll	a,	br_cashtex.item.br_cash_scroll_of_death_whisper_i00
+1070026	Guidance Scroll	a,	br_cashtex.item.br_cash_scroll_of_guidance_i00
+1070027	Empower Scroll	a,	br_cashtex.item.br_cash_scroll_of_empower_i00
+1070028	Grater Acumen Scroll	a,	br_cashtex.item.br_cash_scroll_of_greater_acumen_i00
+1070029	Vampiric Rage Scroll	a,	br_cashtex.item.br_cash_scroll_of_vampiric_rage_i00
+1070030	Bless the Body Scroll	a,	br_cashtex.item.br_cash_scroll_of_bless_the_body_i00
+1070031	Berserker Spirit Scroll	a,	br_cashtex.item.br_cash_scroll_of_berserker_spirit_i00
+1070032	Magic Barrier Scroll	a,	br_cashtex.item.br_cash_scroll_of_magic_barrier_i00
+1070033	Bless the Soul Scroll	a,	br_cashtex.item.br_cash_scroll_of_bless_the_soul_i00
+1070034	Clarity Scroll	a,	br_cashtex.item.br_cash_scroll_of_clarity_i00
+1070035	Wild Magic Scroll	a,	br_cashtex.item.br_cash_scroll_of_wild_magic_i00
+1070036	Rune of Experience Points	a,	br_cashtex.item.br_cash_rune_of_exp_i00
+1070037	Rune of Experience Points	a,	br_cashtex.item.br_cash_rune_of_exp_i00
+1070038	Rune of Experience Points	a,	br_cashtex.item.br_cash_rune_of_exp_i00
+1070039	Rune of Experience Points	a,	br_cashtex.item.br_cash_rune_of_exp_i00
+1070040	Rune of SP	a,	br_cashtex.item.br_cash_rune_of_sp_i00
+1070041	Rune of SP	a,	br_cashtex.item.br_cash_rune_of_sp_i00
+1070042	Rune of SP	a,	br_cashtex.item.br_cash_rune_of_sp_i00
+1070043	Rune of SP	a,	br_cashtex.item.br_cash_rune_of_sp_i00
+1070044	Crystal form Rune	a,	br_cashtex.item.br_cash_rune_of_rp_i00
+1070045	Crystal form Rune	a,	br_cashtex.item.br_cash_rune_of_rp_i00
+1070046	Crystal form Rune	a,	br_cashtex.item.br_cash_rune_of_rp_i00
+1070047	Crystal form Rune	a,	br_cashtex.item.br_cash_rune_of_rp_i00
+1070048	Rune of Feather	a,	br_cashtex.item.br_cash_rune_of_feather_i00
+1070049	A Scroll Bundle of Fighter	a,	br_cashtex.item.br_cash_fighter_buff_set_i00
+1070050	A Scroll Bundle of Mage	a,	br_cashtex.item.br_cash_mage_buff_set_i00
+1070051	Bone Quiver	a,	br_cashtex.item.br_cash_quiver_of_bone_arrows_i00
+1070052	Steel Quiver	a,	br_cashtex.item.br_cash_quiver_of_fine_steel_arrows_i00
+1070053	Silver Quiver	a,	br_cashtex.item.br_cash_quiver_of_silver_arrows_i00
+1070054	Mithril Quiver	a,	br_cashtex.item.br_cash_quiver_of_mithril_arrows_i00
+1070055	Quiver of Light	a,	br_cashtex.item.br_cash_quiver_of_shining_arrows_i00
+1070056	Bone Bolt Container	a,	br_cashtex.item.br_cash_quiver_of_bone_bolts_i00
+1070057	Steel Bolt Container	a,	br_cashtex.item.br_cash_quiver_of_fine_steel_bolts_i00
+1070058	Silver Bolt Container	a,	br_cashtex.item.br_cash_quiver_of_silver_bolts_i00
+1070059	Mithril Bolt Container	a,	br_cashtex.item.br_cash_quiver_of_mithril_bolts_i00
+1070060	Bolt Container of Light	a,	br_cashtex.item.br_cash_quiver_of_shining_bolts_i00
+1070061	Blessed Spiritshot Pack - D grade	a,	br_cashtex.item.br_cash_pack_of_blessed_spiritshot_d_i00
+1070062	Blessed Spiritshot Pack - C grade	a,	br_cashtex.item.br_cash_pack_of_blessed_spiritshot_c_i00
+1070063	Blessed Spiritshot Pack - B grade	a,	br_cashtex.item.br_cash_pack_of_blessed_spiritshot_b_i00
+1070064	Blessed Spiritshot Pack - A grade	a,	br_cashtex.item.br_cash_pack_of_blessed_spiritshot_a_i00
+1070065	Blessed Spiritshot Pack - S grade	a,	br_cashtex.item.br_cash_pack_of_blessed_spiritshot_s_i00
+1070066	Spiritshot Pack - D grade	a,	br_cashtex.item.br_cash_pack_of_spiritshot_d_i00
+1070067	Spiritshot Pack - C grade	a,	br_cashtex.item.br_cash_pack_of_spiritshot_c_i00
+1070068	Spiritshot Pack -  B grade	a,	br_cashtex.item.br_cash_pack_of_spiritshot_b_i00
+1070069	Spiritshot Pack - A grade	a,	br_cashtex.item.br_cash_pack_of_spiritshot_a_i00
+1070070	Spiritshot Pack - S grade	a,	br_cashtex.item.br_cash_pack_of_spiritshot_s_i00
+1070071	Soulshot Pack - D grade	a,	br_cashtex.item.br_cash_pack_of_soulshot_d_i00
+1070072	Soulshot Pack - C grade	a,	br_cashtex.item.br_cash_pack_of_soulshot_c_i00
+1070073	Soulshot Pack -  B grade	a,	br_cashtex.item.br_cash_pack_of_soulshot_b_i00
+1070074	Soulshot Pack - A grade	a,	br_cashtex.item.br_cash_pack_of_soulshot_a_i00
+1070075	Soulshot Pack - S grade	a,	br_cashtex.item.br_cash_pack_of_soulshot_s_i00
+1070076	Blessed Spiritshot Large Pack - D grade	a,	br_cashtex.item.br_cash_large_pack_of_blessed_spiritshot_d_i00
+1070077	Blessed Spiritshot Large Pack - C grade	a,	br_cashtex.item.br_cash_large_pack_of_blessed_spiritshot_c_i00
+1070078	Blessed Spiritshot Large Pack - B grade	a,	br_cashtex.item.br_cash_large_pack_of_blessed_spiritshot_b_i00
+1070079	Blessed Spiritshot Large Pack - A grade	a,	br_cashtex.item.br_cash_large_pack_of_blessed_spiritshot_a_i00
+1070080	Blessed Spiritshot Large Pack - S grade	a,	br_cashtex.item.br_cash_large_pack_of_blessed_spiritshot_s_i00
+1070081	Spiritshot Large Pack - D grade	a,	br_cashtex.item.br_cash_large_pack_of_spiritshot_d_i00
+1070082	Spiritshot Large Pack - C grade	a,	br_cashtex.item.br_cash_large_pack_of_spiritshot_c_i00
+1070083	Spiritshot Large Pack -  B grade	a,	br_cashtex.item.br_cash_large_pack_of_spiritshot_b_i00
+1070084	Spiritshot Large Pack - A grade	a,	br_cashtex.item.br_cash_large_pack_of_spiritshot_a_i00
+1070085	Spiritshot Large Pack - S grade	a,	br_cashtex.item.br_cash_large_pack_of_spiritshot_s_i00
+1070086	Soulshot Large Pack - D grade	a,	br_cashtex.item.br_cash_large_pack_of_soulshot_d_i00
+1070087	Soulshot Large Pack - C grade	a,	br_cashtex.item.br_cash_large_pack_of_soulshot_c_i00
+1070088	Soulshot Large Pack -  B grade	a,	br_cashtex.item.br_cash_large_pack_of_soulshot_b_i00
+1070089	Soulshot Large Pack - A grade	a,	br_cashtex.item.br_cash_large_pack_of_soulshot_a_i00
+1070090	Soulshot Large Pack - S grade	a,	br_cashtex.item.br_cash_large_pack_of_soulshot_s_i00
+1070091	Wrapped daisy hairpin	a,	br_cashtex.item.br_cash_wrapped_accessary_i00
+1070092	Wrapped forget-me-not hairpin	a,	br_cashtex.item.br_cash_wrapped_accessary_i00
+1070093	Wrapped outlaw's eyepatch	a,	br_cashtex.item.br_cash_wrapped_accessary_i00
+1070094	Wrapped pirate's eyepatch	a,	br_cashtex.item.br_cash_wrapped_accessary_i00
+1070095	Wrapped Monocle	a,	br_cashtex.item.br_cash_wrapped_accessary_i00
+1070096	Wrapped Red Mask of Victory	a,	br_cashtex.item.br_cash_wrapped_accessary_i00
+1070097	Wrapped Red Horn of Victory	a,	br_cashtex.item.br_cash_wrapped_accessary_i00
+1070098	Wrapped Party Mask	a,	br_cashtex.item.br_cash_wrapped_accessary_i00
+1070099	Wrapped Red Party Mask	a,	br_cashtex.item.br_cash_wrapped_accessary_i00
+1070100	Wrapped Cat Ear	a,	br_cashtex.item.br_cash_wrapped_accessary_i00
+1070101	Wrapped Noblewoman's Hairpin	a,	br_cashtex.item.br_cash_wrapped_accessary_i00
+1070102	Wrapped Raccoon Ear	a,	br_cashtex.item.br_cash_wrapped_accessary_i00
+1070103	Wrapped Rabbit Ear	a,	br_cashtex.item.br_cash_wrapped_accessary_i00
+1070104	Wrapped Little Angel's Wings	a,	br_cashtex.item.br_cash_wrapped_accessary_i00
+1070105	Wrapped Fairy's Tentacle	a,	br_cashtex.item.br_cash_wrapped_accessary_i00
+1070106	Wrapped Dandy's Chapeau	a,	br_cashtex.item.br_cash_wrapped_accessary_i00
+1070107	Wrapped Artisan's Goggles	a,	br_cashtex.item.br_cash_wrapped_accessary_i00
+1070108	Wrapped Pet Exchange Ticket - Buffalo	a,	br_cashtex.item.br_cash_wrapped_pet_i00
+1070109	Wrapped Pet Exchange Ticket - Cougar	a,	br_cashtex.item.br_cash_wrapped_pet_i00
+1070110	Wrapped Pet Exchange Ticket - kookaburra	a,	br_cashtex.item.br_cash_wrapped_pet_i00
+1070111	Blessed Wolf Hat Package	a,A wolf hat with a special function is acquired. Shadow Item\0	br_cashtex.item.br_cash_wrapped_accessary_i00
+1070112	Rune of Exp. Points 30% - 5 hours	a,	br_cashtex.item.br_cash_rune_of_exp_i00
+1070113	Rune of Exp. Points 50% - 5 hours	a,	br_cashtex.item.br_cash_rune_of_exp_i00
+1070114	Rune of Exp. Points 30% - 10 hours	a,	br_cashtex.item.br_cash_rune_of_exp_i00
+1070115	Rune of Exp. Points 50% - 10 hours	a,	br_cashtex.item.br_cash_rune_of_exp_i00
+1070116	Rune of Exp. Points 30% - 7 days	a,	br_cashtex.item.br_cash_rune_of_exp_i00
+1070117	Rune of Exp. Points 50% - 7 days	a,	br_cashtex.item.br_cash_rune_of_exp_i00
+1070118	Rune of SP 30% - 5 hours	a,	br_cashtex.item.br_cash_rune_of_sp_i00
+1070119	Rune of SP 50% - 5 hours	a,	br_cashtex.item.br_cash_rune_of_sp_i00
+1070120	Rune of SP 30% - 10 hours	a,	br_cashtex.item.br_cash_rune_of_sp_i00
+1070121	Rune of SP 50% - 10 hours	a,	br_cashtex.item.br_cash_rune_of_sp_i00
+1070122	Rune of SP 30% - 7 days	a,	br_cashtex.item.br_cash_rune_of_sp_i00
+1070123	Rune of SP 50% - 7 days	a,	br_cashtex.item.br_cash_rune_of_sp_i00
+1070124	Rune of Crystal level 3 - 5 hours	a,	br_cashtex.item.br_cash_rune_of_rp_i00
+1070125	Rune of Crystal level 5 - 5 hours	a,	br_cashtex.item.br_cash_rune_of_rp_i00
+1070126	Rune of Crystal level 3 - 10 hours	a,	br_cashtex.item.br_cash_rune_of_rp_i00
+1070127	Rune of Crystal level 5 - 10 hours	a,	br_cashtex.item.br_cash_rune_of_rp_i00
+1070128	Rune of Crystal level 3 - 7 days	a,	br_cashtex.item.br_cash_rune_of_rp_i00
+1070129	Rune of Crystal level 5 - 7 days	a,	br_cashtex.item.br_cash_rune_of_rp_i00
+1070130	Weapon-type Enhance Backup Stone (D-Grade) 	a,	icon.ench_wp_stone_i00
+1070131	Weapon-type Enhance Backup Stone (C-Grade) 	a,	icon.ench_wp_stone_i01
+1070132	Weapon-type Enhance Backup Stone (B-Grade) 	a,	icon.ench_wp_stone_i02
+1070133	Weapon-type Enhance Backup Stone (A-Grade) 	a,	icon.ench_wp_stone_i03
+1070134	Weapon-type Enhance Backup Stone (S-Grade) 	a,	icon.ench_wp_stone_i04
+1070135	Armor-type Enhance Backup Stone (D-Grade) 	a,	icon.ench_am_stone_i00
+1070136	Armor-type Enhance Backup Stone (C-Grade) 	a,	icon.ench_am_stone_i01
+1070137	Armor-type Enhance Backup Stone (B-Grade) 	a,	icon.ench_am_stone_i02
+1070138	Armor-type Enhance Backup Stone (A-Grade) 	a,	icon.ench_am_stone_i03
+1070139	Armor-type Enhance Backup Stone (S-Grade) 	a,	icon.ench_am_stone_i04
+1070140	Beast Soulshot Pack	a,	BranchSys.icon.br_box_beast_soul_shot_i00
+1070141	Beast Spiritshot Pack	a,	BranchSys.icon.br_box_beast_spirit_shot_i00
+1070142	Blessed Beast Spiritshot Pack	a,	BranchSys.icon.br_box_blessed_beast_spirit_shot_i00
+1070143	Beast Soulshot Large Pack	a,	BranchSys.icon.br_box_beast_soul_shot_i00
+1070144	Beast Spiritshot Large Pack	a,	BranchSys.icon.br_box_beast_spirit_shot_i00
+1070145	Blessed Beast Spiritshot Large Pack	a,	BranchSys.icon.br_box_blessed_beast_spirit_shot_i00
+1070146	Omen Beast Transformation Scroll	a,	BranchSys.icon.br_scroll_of_transformation_i00
+1070147	Death Blader Transformation Scroll	a,	BranchSys.icon.br_scroll_of_transformation_i00
+1070148	Grail Apostle Transformation Scroll	a,	BranchSys.icon.br_scroll_of_transformation_i00
+1070149	Unicorn Transformation Scroll	a,	BranchSys.icon.br_scroll_of_transformation_i00
+1070150	Lilim Knight Transformation Scroll	a,	BranchSys.icon.br_scroll_of_transformation_i00
+1070151	Golem Guardian Transformation Scroll	a,	BranchSys.icon.br_scroll_of_transformation_i00
+1070152	Inferno Drake Transformation Scroll	a,	BranchSys.icon.br_scroll_of_transformation_i00
+1070153	Dragon Bomber Transformation Scroll	a,	BranchSys.icon.br_scroll_of_transformation_i00
+1070154	Escape - Talking Island Village	a,	BranchSys.icon.br_escape_scroll_i00
+1070155	Escape - Elven Village	a,	BranchSys.icon.br_escape_scroll_i00
+1070156	Escape - Dark Elven Village	a,	BranchSys.icon.br_escape_scroll_i00
+1070157	Escape - Orc Village	a,	BranchSys.icon.br_escape_scroll_i00
+1070158	Escape - Dwarven Village	a,	BranchSys.icon.br_escape_scroll_i00
+1070159	Escape - Gludin Village	a,	BranchSys.icon.br_escape_scroll_i00
+1070160	Escape - Town of Gludio	a,	BranchSys.icon.br_escape_scroll_i00
+1070161	Escape - Town of Dion	a,	BranchSys.icon.br_escape_scroll_i00
+1070162	Escape - Floran Village	a,	BranchSys.icon.br_escape_scroll_i00
+1070163	Escape - Giran Castle Town	a,	BranchSys.icon.br_escape_scroll_i00
+1070164	Escape - Hardin's Academy	a,	BranchSys.icon.br_escape_scroll_i00
+1070165	Escape - Heine	a,	BranchSys.icon.br_escape_scroll_i00
+1070166	Escape - Town of Oren	a,	BranchSys.icon.br_escape_scroll_i00
+1070167	Escape - Ivory Tower	a,	BranchSys.icon.br_escape_scroll_i00
+1070168	Escape - Hunters Village	a,	BranchSys.icon.br_escape_scroll_i00
+1070169	Escape - Town of Aden	a,	BranchSys.icon.br_escape_scroll_i00
+1070170	Escape - Town of Goddard	a,	BranchSys.icon.br_escape_scroll_i00
+1070171	Escape - Rune Township	a,	BranchSys.icon.br_escape_scroll_i00
+1070172	Escape - Town of Schuttgart	a,	BranchSys.icon.br_escape_scroll_i00
+1070173	Free Teleport Scroll	a,	icon.bookmark_book_i00
+1070174	Free Teleport Spellbook 5 Sheet Bundle	a,	icon.bookmark_scroll_i00
+1070175	Free Teleport Spellbook 10 Sheet Bundle	a,	icon.bookmark_scroll_i00
+1070176	Free Teleport Flag 5 Sheet Bundle	a,	BranchSys.icon.br_flag_of_bookmark_i00
+1070177	Free Teleport Flag 10 Sheet Bundle	a,	BranchSys.icon.br_flag_of_bookmark_i00
+1070178	Extra Entrance Pass - Kamaloka (Hall of the Abyss) 5 Sheet Bundle	a,	icon.ticket_i00
+1070179	Extra Entrance Pass - Kamaloka (Hall of the Abyss) 10 Sheet Bundle	a,	icon.ticket_i00
+1070180	Extra Entrance Pass - Near Kamaloka 5 Sheet Bundle	a,	icon.ticket_i00
+1070181	Extra Entrance Pass - Near Kamaloka 10 Sheet Bundle	a,	icon.ticket_i00
+1070182	Extra Entrance Pass - Kamaloka (Labyrinth of the Abyss) 5 Sheet Bundle	a,	icon.ticket_i00
+1070183	Extra Entrance Pass - Kamaloka (Labyrinth of the Abyss) 10 Sheet Bundle	a,	icon.ticket_i00
+1070184	Feather of Blessing	a,	icon.blessed_feather_i00
+1070185	Color Name	a,	icon.color_name_i00
+1070186	High Grade Potion of Will	a,	BranchSys.icon.br_cp_potion_i01
+1070187	Secret medicine of Will - D grade	a,	br_cashtex.item.br_cash_elixir_of_combative_d_i00
+1070188	Secret medicine of Will - C grade	a,	br_cashtex.item.br_cash_elixir_of_combative_c_i00
+1070189	Secret medicine of Will - B grade	a,	br_cashtex.item.br_cash_elixir_of_combative_b_i00
+1070190	Secret medicine of Will - A grade	a,	br_cashtex.item.br_cash_elixir_of_combative_a_i00
+1070191	Secret medicine of Will - S grade	a,	br_cashtex.item.br_cash_elixir_of_combative_s_i00
+1070192	Secret medicine of Life - D grade	a,	br_cashtex.item.br_cash_elixir_of_life_d_i00
+1070193	Secret medicine of Life - C grade	a,	br_cashtex.item.br_cash_elixir_of_life_c_i00
+1070194	Secret medicine of Life - B grade	a,	br_cashtex.item.br_cash_elixir_of_life_b_i00
+1070195	Secret medicine of Life - A grade	a,	br_cashtex.item.br_cash_elixir_of_life_a_i00
+1070196	Secret medicine of Life - S grade	a,	br_cashtex.item.br_cash_elixir_of_life_s_i00
+1070197	Potion of Energy Maintenance	a,	BranchSys.icon.br_vitality_potion_i00
+1070198	Potion of Energy Replenishing	a,	BranchSys.icon.br_vitality_potion_i01
+1070199	Sweet Fruit Cocktail	a,	BranchSys.icon.br_fruit_cocktail_i00
+1070200	Fresh Fruit Cocktail	a,	BranchSys.icon.br_fruit_cocktail_i01
+1070201	Sudden Agathion 7 Day Pack	a,	icon.etc_pi_gift_box_i02
+1070202	Shiny Agathion 7 Day Pack	a,	icon.etc_pi_gift_box_i02
+1070203	Sobbing Agathion 7 Day Pack	a,	icon.etc_pi_gift_box_i02
+1070204	Agathion of Love 7 Day Pack	a,	icon.etc_pi_gift_box_i02
+1070205	Pumpkin Transformation Stick 7 Day Pack	a,	icon.etc_pi_gift_box_i02
+1070206	Kat the Cat Hat 7 Day Pack	a,	icon.etc_pi_gift_box_i02
+1070207	Feline Queen Hat 7 Day Pack	a,	icon.etc_pi_gift_box_i02
+1070208	Monster Eye Hat 7 Day Pack	a,	icon.etc_pi_gift_box_i02
+1070209	Brown Bear Hat 7 Day Pack	a,	icon.etc_pi_gift_box_i02
+1070210	Fungus Hat 7 Day Pack	a,	icon.etc_pi_gift_box_i02
+1070211	Skull Hat 7 Day Pack	a,	icon.etc_pi_gift_box_i02
+1070212	Ornithomimus Hat 7 Day Pack	a,	icon.etc_pi_gift_box_i02
+1070213	Feline King Hat 7 Day Pack	a,	icon.etc_pi_gift_box_i02
+1070214	Kai the Cat Hat 7 Day Pack	a,	icon.etc_pi_gift_box_i02
+1070215	Goggle Pack	a,	BranchSys.icon.br_four_leaf_clover_box_i00
+1070216	Napoleon Hat Pack	a,	BranchSys.icon.br_four_leaf_clover_box_i00
+1070217	Black Gem Mask Pack	a,	BranchSys.icon.br_four_leaf_clover_box_i00
+1070218	Afro Hair Pack - Gold	a,	BranchSys.icon.br_four_leaf_clover_box_i00
+1070219	Afro Hair Pack - Pink	a,	BranchSys.icon.br_four_leaf_clover_box_i00
+1070220	Horn Rimmed Glasses Pack	a,	icon.etc_pi_gift_box_i00
+1070221	Afro Hair Pack 	a,	icon.etc_pi_gift_box_i00
+1070222	Afro Hair Pack - Big Head, Firework	a,	icon.etc_pi_gift_box_i00
+1070223	Afro Hair Pack - Wind Walk	a,	icon.etc_pi_gift_box_i00
+1070224	Uniform Hat Pack	a,	icon.etc_pi_gift_box_i00
+1070225	Assassin's Bamboo Hat Pack	a,	icon.etc_pi_gift_box_i00
+1070226	Ruthless Tribe Mask Pack	a,	icon.etc_pi_gift_box_i00
+1070227	Ribbon Hairband Pack	a,	icon.etc_pi_gift_box_i00
+1070228	Visor Pack	a,	icon.etc_pi_gift_box_i00
+1070229	Hunting Helper Exchange Coupon - 1 sheet	a,	icon.etc_ticket_red_i00
+1070230	Hunting Helper Exchange Coupon - 3 sheet	a,	icon.etc_ticket_red_i00
+1070231	High Quality Hunting Helper Exchange Coupon - 1 sheet	a,	icon.etc_ticket_red_i00
+1070232	High Quality Hunting Helper Exchange Coupon - 3 sheet	a,	icon.etc_ticket_red_i00
+1070233	Steam Beatle Mounting Bracelet 7 Day Pack	a,	icon.etc_pi_gift_box_i00
+1070234	Light Purple Maned Horse Bracelet 30 Day Pack	a,	icon.etc_pi_gift_box_i00
