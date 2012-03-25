@@ -10,7 +10,9 @@ logs\P{PID}_{YEAR}{MONTH}{DAY},{HOUR}{MINUTE}{SECOND}_GameEvents.log	1000	20480	
 logs\P{PID}_{YEAR}{MONTH}{DAY},{HOUR}{MINUTE}{SECOND}_GameOther.log	1000	1024	N	Y	1	Y	0	Y
 
 #L2Tower base log
-logs\P{PID}_{YEAR}{MONTH}{DAY},{HOUR}{MINUTE}{SECOND}_L2Tower.log	1000	1024	N	Y	1	Y	0	Y
+logs\P{PID}_{YEAR}{MONTH}{DAY},{HOUR}{MINUTE}{SECOND}_L2Tower_Base.log	1000	1024	N	Y	1	Y	0	Y
+logs\P{PID}_{YEAR}{MONTH}{DAY},{HOUR}{MINUTE}{SECOND}_L2Tower_Packets.log	1000	1024	N	Y	1	Y	0	Y
+logs\P{PID}_{YEAR}{MONTH}{DAY},{HOUR}{MINUTE}{SECOND}_L2Tower_Logic.log	1000	1024	N	Y	1	Y	0	Y
 
 #Lineage 2 Chat logs (opened and closed durring login & logout)
 chat\{USER}_{YEAR}{MONTH}{DAY},{HOUR}{MINUTE}{SECOND}.chat	1000	512	N	Y	1	N	0	Y
