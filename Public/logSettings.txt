@@ -16,6 +16,7 @@ logs\P{PID}_{YEAR}{MONTH}{DAY},{HOUR}{MINUTE}{SECOND}_L2Tower_Logic.log	1000	102
 
 #Lineage 2 Chat logs (opened and closed durring login & logout)
 chat\{USER}_{YEAR}{MONTH}{DAY},{HOUR}{MINUTE}{SECOND}.chat	1000	512	N	Y	1	N	0	Y
+chat\{USER}_{YEAR}{MONTH}{DAY},{HOUR}{MINUTE}{SECOND}.system	1000	512	N	N	1	N	0	Y
 chat\{USER}_{YEAR}{MONTH}{DAY},{HOUR}{MINUTE}{SECOND}.talk	1000	512	N	Y	1	N	0	Y
 chat\{USER}_{YEAR}{MONTH}{DAY},{HOUR}{MINUTE}{SECOND}.trade	500	512	N	Y	1	N	0	Y
 
