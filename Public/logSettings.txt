@@ -3,15 +3,15 @@ IS=FileName	_U=MemoryItemsLimit	_U=StringBufferSize	_B=StringTrim	_B=LogToFile	_
 #Normal logs captured from L2 client
 logs\P{PID}_{YEAR}{MONTH}{DAY},{HOUR}{MINUTE}{SECOND}_GameNormal.log	1000	1024	N	N	1	Y	0	Y
 logs\P{PID}_{YEAR}{MONTH}{DAY},{HOUR}{MINUTE}{SECOND}_GameError.log	1000	1024	N	N	1	Y	0	Y
-logs\P{PID}_{YEAR}{MONTH}{DAY},{HOUR}{MINUTE}{SECOND}_GameHook.log	1000	1024	N	N	1	Y	0	Y
-logs\P{PID}_{YEAR}{MONTH}{DAY},{HOUR}{MINUTE}{SECOND}_GameHook2.log	1000	1024	N	N	1	Y	0	Y
+logs\P{PID}_{YEAR}{MONTH}{DAY},{HOUR}{MINUTE}{SECOND}_GameHook.log	1000	1024	N	N	1	Y	0	N
+logs\P{PID}_{YEAR}{MONTH}{DAY},{HOUR}{MINUTE}{SECOND}_GameHook2.log	1000	1024	N	N	1	Y	0	N
 logs\P{PID}_{YEAR}{MONTH}{DAY},{HOUR}{MINUTE}{SECOND}_GameNetwork.log	1000	1024	N	N	1	Y	0	Y
-logs\P{PID}_{YEAR}{MONTH}{DAY},{HOUR}{MINUTE}{SECOND}_GameEvents.log	1000	20480	N	N	1	Y	0	Y
+logs\P{PID}_{YEAR}{MONTH}{DAY},{HOUR}{MINUTE}{SECOND}_GameEvents.log	1000	20480	N	N	1	Y	0	N
 logs\P{PID}_{YEAR}{MONTH}{DAY},{HOUR}{MINUTE}{SECOND}_GameOther.log	1000	1024	N	N	1	Y	0	Y
 
 #L2Tower base log
 logs\P{PID}_{YEAR}{MONTH}{DAY},{HOUR}{MINUTE}{SECOND}_L2Tower_Base.log	1000	1024	N	N	1	Y	0	Y
-logs\P{PID}_{YEAR}{MONTH}{DAY},{HOUR}{MINUTE}{SECOND}_L2Tower_Packets.log	1000	1024	N	N	1	Y	1	Y
+logs\P{PID}_{YEAR}{MONTH}{DAY},{HOUR}{MINUTE}{SECOND}_L2Tower_Packets.log	1000	1024	N	N	1	Y	1	N
 logs\P{PID}_{YEAR}{MONTH}{DAY},{HOUR}{MINUTE}{SECOND}_L2Tower_Logic.log	1000	1024	N	N	1	Y	0	Y
 
 #Lineage 2 Chat logs (opened and closed durring login & logout)
