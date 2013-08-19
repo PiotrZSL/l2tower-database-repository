@@ -1,0 +1,706 @@
+Index: DumpLua.h
+===================================================================
+--- DumpLua.h	(revision 0)
++++ DumpLua.h	(working copy)
+@@ -0,0 +1,20 @@
++#pragma once
++
++extern "C"
++{
++	#include "lua.h"
++	#include "lualib.h"
++	#include "lauxlib.h"
++}
++
++#include <luabind/luabind.hpp>
++#include <luabind/function.hpp>
++#include <luabind/object.hpp>
++
++#include <luabind/adopt_policy.hpp>
++#include <luabind/iterator_policy.hpp>
++#include <luabind/out_value_policy.hpp>
++#include <vector>
++#include <string>
++
++std::string getDeclaredItems(lua_State *L);
+\ No newline at end of file
+Index: DumpLua.h
+===================================================================
+--- DumpLua.h	(revision 0)
++++ DumpLua.h	(working copy)
+
+Property changes on: DumpLua.h
+___________________________________________________________________
+Added: svn:eol-style
+## -0,0 +1 ##
++LF
+\ No newline at end of property
+Added: svn:keywords
+## -0,0 +1 ##
++HeadURL Id LastChangedBy LastChangedRevision LastChangedDate
+\ No newline at end of property
+Index: luabind/DumpLua.cpp
+===================================================================
+--- luabind/DumpLua.cpp	(revision 0)
++++ luabind/DumpLua.cpp	(working copy)
+@@ -0,0 +1,97 @@
++#include "../DumpLua.h"
++#include <Windows.h>
++#define DUMP(name, value) /*MessageBoxA(0, value, name, 0);*/ret+=name;ret+=value;ret+="\n"
++
++void DumpLuaTable(const std::string &subName, std::string &ret, luabind::object &o, int dep)
++{
++	//if (0 == dep) return;
++	static char name2[2045] = {0};
++	switch (luabind::type(o))
++	{
++		case LUA_TNIL : DUMP(subName.c_str(), "NULL"); return;
++		case LUA_TBOOLEAN : DUMP(subName.c_str(), "BOOL");return;
++		case LUA_TLIGHTUSERDATA	: DUMP(subName.c_str(), "LIGHTUSERDATA");return;
++		case LUA_TNUMBER : sprintf(name2, "NUMBER: %.4lf", *luabind::object_cast_nothrow<double>(o)); DUMP(subName.c_str(), name2);return;
++		case LUA_TSTRING : sprintf(name2, "STRING: %s", (*(luabind::object_cast_nothrow<std::string>(o))).c_str()); DUMP(subName.c_str(), name2);return;
++		case LUA_TFUNCTION : { luabind::detail::function_object* tmp = luabind::touserdata< luabind::detail::function_object>(o);
++							   if (tmp!=nullptr)
++							   {
++								   DUMP(subName.c_str(), tmp->get_signature(o.interpreter(), subName.c_str()));
++							   }
++							   else
++							   {
++								   DUMP(subName.c_str(), "FUNCTION");
++							   }
++							   return;
++							 }
++		case LUA_TUSERDATA : DUMP(subName.c_str(), "USERDATA");return;
++		case LUA_TTHREAD : DUMP(subName.c_str(), "THREAD");return;
++	}
++
++	if (luabind::type(o) != LUA_TTABLE)
++	{
++		DUMP(subName.c_str(), "UNKNOWN");
++		return;
++	}
++		DUMP(subName.c_str(), "TABLE");
++		for (luabind::iterator i(o), end; i != end; ++i)
++		{
++			static char name[2045] = {0};
++
++			switch (luabind::type(i.key()))
++			{
++				case LUA_TNIL : sprintf(name, "{NIL}"); break;
++				case LUA_TBOOLEAN : sprintf(name, "{BOOL: %d}", (*luabind::object_cast_nothrow<bool>(i.key()))?1:0); break;
++				case LUA_TLIGHTUSERDATA	: sprintf(name, "{LIGHTUSERDATA}"); break;
++				case LUA_TNUMBER :  sprintf(name, "{NUMBER: %.4lf}", *luabind::object_cast_nothrow<double>(i.key())); break;
++				case LUA_TSTRING : sprintf(name, "{STRING: %s}", (*(luabind::object_cast_nothrow<std::string>(i.key()))).c_str()); break;
++				case LUA_TFUNCTION : sprintf(name, "{FUNCTION}"); break;
++				case LUA_TUSERDATA : sprintf(name, "{USERDATA}"); break;
++				case LUA_TTHREAD : sprintf(name, "{THREAD}"); break;
++				case LUA_TTABLE: sprintf(name, "{TABLE}"); break;
++				default:  sprintf(name, "{UNKNOWN-%d}", (luabind::type(i.key()))); break;
++			}
++			if ((strcmp(name, "{STRING: _G}")!=0) && (strcmp(name, "{STRING: loaded}")!=0))
++			DumpLuaTable((subName+"/")+name, ret, (luabind::object)(o[i.key()]), dep-1);
++		}
++}
++
++std::string getDeclaredItems(lua_State *L)
++{
++	std::string ret;
++	using namespace luabind::detail;
++	ret+="BEGIN_CLASS_INFO\n";
++	class_registry *r = luabind::detail::class_registry::get_registry(L);
++	std::map<luabind::type_id, class_rep*> cc = r->get_classes();
++	for(auto it = cc.begin(); it!=cc.end(); ++it)
++	{
++		ret+="BEGIN_ITEM\n";
++		DUMP("type_id:",it->first.name());
++		DUMP("name:", it->second->name());
++		for(auto it2 = it->second->bases().begin(); it2!=it->second->bases().end();++it2)
++		{
++			DUMP("base:", it2->base->name());
++		}
++		DUMP("type:", it->second->get_class_type() == 1?"LUA":"CPP");
++
++		ret+="END_ITEM\n";
++	}
++	MessageBoxA(0, ret.c_str(), "check-TEXT", 0);
++	ret+="END_CLASS_INFO\n";
++	ret+="BEGIN_GLOBAL_TABLE\n";
++
++	luabind::object &o = luabind::globals(L);
++	DumpLuaTable("", ret, o, 20);
++
++	ret+="END_GLOBAL_TABLE\n";
++	MessageBoxA(0, ret.c_str(), "check-TEXT", 0);
++	/*
++	ret+="BEGIN_REGISTRY_TABLE\n";
++
++	luabind::object &o2 = luabind::registry(L);
++	DumpLuaTable("", ret, o2, 4);
++
++	ret+="END_REGISTRY_TABLE\n";*/
++	MessageBoxA(0, ret.c_str(), "check-TEXT", 0);
++	return ret;
++}
+\ No newline at end of file
+Index: luabind/DumpLua.cpp
+===================================================================
+--- luabind/DumpLua.cpp	(revision 0)
++++ luabind/DumpLua.cpp	(working copy)
+
+Property changes on: luabind/DumpLua.cpp
+___________________________________________________________________
+Added: svn:keywords
+## -0,0 +1 ##
++HeadURL Id LastChangedBy LastChangedRevision LastChangedDate
+\ No newline at end of property
+Added: svn:eol-style
+## -0,0 +1 ##
++LF
+\ No newline at end of property
+Index: luabind/luabind/detail/call.hpp
+===================================================================
+--- luabind/luabind/detail/call.hpp	(revision 2728)
++++ luabind/luabind/detail/call.hpp	(working copy)
+@@ -25,7 +25,6 @@
+ #  include <luabind/yield_policy.hpp>
+ 
+ namespace luabind { namespace detail {
+-
+ struct invoke_context;
+ 
+ struct LUABIND_API function_object
+@@ -41,6 +40,7 @@
+     virtual int call(
+         lua_State* L, invoke_context& ctx) const = 0;
+     virtual void format_signature(lua_State* L, char const* function) const = 0;
++	virtual const char* get_signature(lua_State* L, char const* function) const = 0;
+ 
+     lua_CFunction entry;
+     std::string name;
+@@ -189,7 +189,6 @@
+ #  define BOOST_PP_ITERATION_PARAMS_1 \
+     (3, (0, LUABIND_MAX_ARITY, <luabind/detail/call.hpp>))
+ #  include BOOST_PP_ITERATE()
+-
+ }} // namespace luabind::detail
+ 
+ # endif // LUABIND_CALL2_080911_HPP
+@@ -319,5 +318,4 @@
+ 
+ # undef N
+ 
+-#endif
+-
++#endif
+\ No newline at end of file
+Index: luabind/luabind/detail/format_signature.hpp
+===================================================================
+--- luabind/luabind/detail/format_signature.hpp	(revision 2728)
++++ luabind/luabind/detail/format_signature.hpp	(working copy)
+@@ -14,16 +14,13 @@
+ # include <boost/mpl/size.hpp>
+ 
+ namespace luabind {
+-
+ class object;
+ class argument;
+ template <class Base>
+ struct table;
+-
+ } // namespace luabind
+ 
+ namespace luabind { namespace detail {
+-
+ LUABIND_API std::string get_class_name(lua_State* L, type_id const& i);
+ 
+ template <class T>
+@@ -90,6 +87,7 @@
+ LUABIND_TYPE_TO_STRING(void)
+ LUABIND_TYPE_TO_STRING(bool)
+ LUABIND_TYPE_TO_STRING(std::string)
++LUABIND_TYPE_TO_STRING(std::wstring)
+ LUABIND_TYPE_TO_STRING(lua_State)
+ 
+ LUABIND_TYPE_TO_STRING(luabind::object)
+@@ -142,7 +140,28 @@
+     lua_concat(L, static_cast<int>(mpl::size<Signature>()) * 2 + 2);
+ }
+ 
++template <class Signature>
++const char* get_signature(lua_State* L, char const* function, Signature)
++{
++    typedef typename mpl::begin<Signature>::type first;
++
++    type_to_string<typename first::type>::get(L);
++
++    lua_pushstring(L, " ");
++    lua_pushstring(L, function);
++
++    lua_pushstring(L, "(");
++    format_signature_aux(
++        L
++      , true
++      , typename mpl::next<first>::type()
++      , typename mpl::end<Signature>::type()
++    );
++    lua_pushstring(L, ")");
++
++    lua_concat(L, static_cast<int>(mpl::size<Signature>()) * 2 + 2);
++	return lua_tostring(L, -1);
++}
+ }} // namespace luabind::detail
+ 
+-#endif // LUABIND_FORMAT_SIGNATURE_081014_HPP
+-
++#endif // LUABIND_FORMAT_SIGNATURE_081014_HPP
+\ No newline at end of file
+Index: luabind/luabind/make_function.hpp
+===================================================================
+--- luabind/luabind/make_function.hpp	(revision 2728)
++++ luabind/luabind/make_function.hpp	(working copy)
+@@ -13,7 +13,6 @@
+ # include <luabind/detail/format_signature.hpp>
+ 
+ namespace luabind {
+-
+ namespace detail
+ {
+ # ifndef LUABIND_NO_EXCEPTIONS
+@@ -46,6 +45,11 @@
+           detail::format_signature(L, function, Signature());
+       }
+ 
++	  const char* get_signature(lua_State* L, char const* function) const
++	  {
++		 return detail::get_signature(L, function, Signature());
++	  }
++
+       static int entry_point(lua_State* L)
+       {
+           function_object_impl const* impl =
+@@ -97,7 +101,6 @@
+   );
+ 
+   LUABIND_API void add_overload(object const&, char const*, object const&);
+-
+ } // namespace detail
+ 
+ template <class F, class Signature, class Policies>
+@@ -116,8 +119,6 @@
+ {
+     return make_function(L, detail::deduce_signature(f), detail::null_type());
+ }
+-
+ } // namespace luabind
+ 
+-#endif // LUABIND_MAKE_FUNCTION_081014_HPP
+-
++#endif // LUABIND_MAKE_FUNCTION_081014_HPP
+\ No newline at end of file
+Index: luabind/src/scope.cpp
+===================================================================
+--- luabind/src/scope.cpp	(revision 2728)
++++ luabind/src/scope.cpp	(working copy)
+@@ -30,180 +30,172 @@
+ #include <cassert>
+ 
+ namespace luabind { namespace detail {
++	registration::registration()
++		: m_next(0)
++	{
++	}
+ 
+-    registration::registration()
+-        : m_next(0)
+-    {
+-    }
++	registration::~registration()
++	{
++		delete m_next;
++	}
++	} // namespace detail
+ 
+-    registration::~registration()
+-    {
+-        delete m_next;
+-    }
++	scope::scope()
++		: m_chain(0)
++	{
++	}
+ 
+-    } // namespace detail
+-    
+-    scope::scope()
+-        : m_chain(0)
+-    {
+-    }
+-    
+-    scope::scope(std::auto_ptr<detail::registration> reg)
+-        : m_chain(reg.release())
+-    {
+-    }
++	scope::scope(std::auto_ptr<detail::registration> reg)
++		: m_chain(reg.release())
++	{
++	}
+ 
+-    scope::scope(scope const& other)
+-        : m_chain(other.m_chain)
+-    {
+-        const_cast<scope&>(other).m_chain = 0;
+-    }
++	scope::scope(scope const& other)
++		: m_chain(other.m_chain)
++	{
++		const_cast<scope&>(other).m_chain = 0;
++	}
+ 
+-    scope& scope::operator=(scope const& other_)
+-    {
+-        delete m_chain;
+-        m_chain = other_.m_chain;
+-        const_cast<scope&>(other_).m_chain = 0;
+-        return *this;
+-    }
++	scope& scope::operator=(scope const& other_)
++	{
++		delete m_chain;
++		m_chain = other_.m_chain;
++		const_cast<scope&>(other_).m_chain = 0;
++		return *this;
++	}
+ 
+-    scope::~scope()
+-    {
+-        delete m_chain;
+-    }
+-    
+-    scope& scope::operator,(scope s)
+-    {
+-        if (!m_chain) 
+-        {
+-            m_chain = s.m_chain;
+-            s.m_chain = 0;
+-            return *this;
+-        }
+-        
+-        for (detail::registration* c = m_chain;; c = c->m_next)
+-        {
+-            if (!c->m_next)
+-            {
+-                c->m_next = s.m_chain;
+-                s.m_chain = 0;
+-                break;
+-            }
+-        }
++	scope::~scope()
++	{
++		delete m_chain;
++	}
+ 
+-        return *this;
+-    }
++	scope& scope::operator,(scope s)
++	{
++		if (!m_chain)
++		{
++			m_chain = s.m_chain;
++			s.m_chain = 0;
++			return *this;
++		}
+ 
+-    void scope::register_(lua_State* L) const
+-    {
+-        for (detail::registration* r = m_chain; r != 0; r = r->m_next)
+-        {
++		for (detail::registration* c = m_chain;; c = c->m_next)
++		{
++			if (!c->m_next)
++			{
++				c->m_next = s.m_chain;
++				s.m_chain = 0;
++				break;
++			}
++		}
++
++		return *this;
++	}
++
++	void scope::register_(lua_State* L) const
++	{
++		for (detail::registration* r = m_chain; r != 0; r = r->m_next)
++		{
+ 			LUABIND_CHECK_STACK(L);
+-            r->register_(L);
+-        }
+-    }
+-
++			r->register_(L);
++		}
++	}
+ } // namespace luabind
+ 
+ namespace luabind {
++	namespace {
++		struct lua_pop_stack
++		{
++			lua_pop_stack(lua_State* L)
++				: m_state(L)
++			{
++			}
+ 
+-    namespace {
++			~lua_pop_stack()
++			{
++				lua_pop(m_state, 1);
++			}
+ 
+-        struct lua_pop_stack
+-        {
+-            lua_pop_stack(lua_State* L)
+-                : m_state(L)
+-            {
+-            }
++			lua_State* m_state;
++		};
++	} // namespace unnamed
+ 
+-            ~lua_pop_stack()
+-            {
+-                lua_pop(m_state, 1);
+-            }
++	module_::module_(lua_State* L, char const* name = 0)
++		: m_state(L)
++		, m_name(name)
++	{
++	}
+ 
+-            lua_State* m_state;
+-        };
++	void module_::operator[](scope s)
++	{
++		if (m_name)
++		{
++			lua_pushstring(m_state, m_name);
++			lua_gettable(m_state, LUA_GLOBALSINDEX);
+ 
+-    } // namespace unnamed
+-    
+-    module_::module_(lua_State* L, char const* name = 0)
+-        : m_state(L)
+-        , m_name(name)
+-    {
+-    }
++			if (!lua_istable(m_state, -1))
++			{
++				lua_pop(m_state, 1);
+ 
+-    void module_::operator[](scope s)
+-    {
+-        if (m_name)
+-        {
+-            lua_pushstring(m_state, m_name);
+-            lua_gettable(m_state, LUA_GLOBALSINDEX);
++				lua_newtable(m_state);
++				lua_pushstring(m_state, m_name);
++				lua_pushvalue(m_state, -2);
++				lua_settable(m_state, LUA_GLOBALSINDEX);
++			}
++		}
++		else
++		{
++			lua_pushvalue(m_state, LUA_GLOBALSINDEX);
++		}
+ 
+-            if (!lua_istable(m_state, -1))
+-            {
+-                lua_pop(m_state, 1);
++		lua_pop_stack guard(m_state);
+ 
+-                lua_newtable(m_state);
+-                lua_pushstring(m_state, m_name);
+-                lua_pushvalue(m_state, -2);
+-                lua_settable(m_state, LUA_GLOBALSINDEX);
+-            }
+-        }
+-        else
+-        {
+-            lua_pushvalue(m_state, LUA_GLOBALSINDEX);
+-        }
++		s.register_(m_state);
++	}
+ 
+-        lua_pop_stack guard(m_state);
++	struct namespace_::registration_ : detail::registration
++	{
++		registration_(char const* name)
++			: m_name(name)
++		{
++		}
+ 
+-        s.register_(m_state);
+-    }
+-
+-    struct namespace_::registration_ : detail::registration
+-    {
+-        registration_(char const* name)
+-            : m_name(name)
+-        {
+-        }
+-
+-        void register_(lua_State* L) const
+-        {
++		void register_(lua_State* L) const
++		{
+ 			LUABIND_CHECK_STACK(L);
+-            assert(lua_gettop(L) >= 1);
++			assert(lua_gettop(L) >= 1);
+ 
+-            lua_pushstring(L, m_name);
+-            lua_gettable(L, -2);
++			lua_pushstring(L, m_name);
++			lua_gettable(L, -2);
+ 
+ 			detail::stack_pop p(L, 1); // pops the table on exit
+ 
+-            if (!lua_istable(L, -1))
+-            {
+-                lua_pop(L, 1);
++			if (!lua_istable(L, -1))
++			{
++				lua_pop(L, 1);
+ 
+-                lua_newtable(L);
+-                lua_pushstring(L, m_name);
+-                lua_pushvalue(L, -2);
+-                lua_settable(L, -4);
+-            }
++				lua_newtable(L);
++				lua_pushstring(L, m_name);
++				lua_pushvalue(L, -2);
++				lua_settable(L, -4);
++			}
+ 
+-            m_scope.register_(L);
+-        }
++			m_scope.register_(L);
++		}
+ 
+-        char const* m_name;
+-        scope m_scope;
+-    };
++		char const* m_name;
++		scope m_scope;
++	};
+ 
+-    namespace_::namespace_(char const* name)
+-        : scope(std::auto_ptr<detail::registration>(
+-              m_registration = new registration_(name)))
+-    {
+-    }
++	namespace_::namespace_(char const* name)
++		: scope(std::auto_ptr<detail::registration>(
++			  m_registration = new registration_(name)))
++	{
++	}
+ 
+-    namespace_& namespace_::operator[](scope s)
+-    {
+-        m_registration->m_scope.operator,(s);        
+-        return *this;
+-    }
+-
+-} // namespace luabind
+-
++	namespace_& namespace_::operator[](scope s)
++	{
++		m_registration->m_scope.operator,(s);
++		return *this;
++	}
++} // namespace luabind
+\ No newline at end of file
+Index: LuaLib.lib
+===================================================================
+Cannot display: file marked as a binary type.
+svn:mime-type = application/octet-stream
+Index: LuaLib.vcxproj
+===================================================================
+--- LuaLib.vcxproj	(revision 2728)
++++ LuaLib.vcxproj	(working copy)
+@@ -11,6 +11,7 @@
+     </ProjectConfiguration>
+   </ItemGroup>
+   <ItemGroup>
++    <ClInclude Include="DumpLua.h" />
+     <ClInclude Include="luabind\luabind\adopt_policy.hpp" />
+     <ClInclude Include="luabind\luabind\back_reference.hpp" />
+     <ClInclude Include="luabind\luabind\back_reference_fwd.hpp" />
+@@ -41,7 +42,6 @@
+     <ClInclude Include="luabind\luabind\detail\link_compatibility.hpp" />
+     <ClInclude Include="luabind\luabind\detail\make_instance.hpp" />
+     <ClInclude Include="luabind\luabind\detail\most_derived.hpp" />
+-    <ClInclude Include="luabind\luabind\detail\object.hpp" />
+     <ClInclude Include="luabind\luabind\detail\object_call.hpp" />
+     <ClInclude Include="luabind\luabind\detail\object_rep.hpp" />
+     <ClInclude Include="luabind\luabind\detail\open.hpp" />
+@@ -64,7 +64,6 @@
+     <ClInclude Include="luabind\luabind\exception_handler.hpp" />
+     <ClInclude Include="luabind\luabind\from_stack.hpp" />
+     <ClInclude Include="luabind\luabind\function.hpp" />
+-    <ClInclude Include="luabind\luabind\function_introspection.hpp" />
+     <ClInclude Include="luabind\luabind\get_main_thread.hpp" />
+     <ClInclude Include="luabind\luabind\get_pointer.hpp" />
+     <ClInclude Include="luabind\luabind\handle.hpp" />
+@@ -94,6 +93,7 @@
+     <ClInclude Include="luabind\luabind\yield_policy.hpp" />
+   </ItemGroup>
+   <ItemGroup>
++    <ClCompile Include="luabind\DumpLua.cpp" />
+     <ClCompile Include="luabind\src\class.cpp" />
+     <ClCompile Include="luabind\src\class_info.cpp" />
+     <ClCompile Include="luabind\src\class_registry.cpp" />
+Index: LuaLib.vcxproj.filters
+===================================================================
+--- LuaLib.vcxproj.filters	(revision 2728)
++++ LuaLib.vcxproj.filters	(working copy)
+@@ -63,9 +63,6 @@
+     <ClInclude Include="luabind\luabind\function.hpp">
+       <Filter>Header Files</Filter>
+     </ClInclude>
+-    <ClInclude Include="luabind\luabind\function_introspection.hpp">
+-      <Filter>Header Files</Filter>
+-    </ClInclude>
+     <ClInclude Include="luabind\luabind\get_main_thread.hpp">
+       <Filter>Header Files</Filter>
+     </ClInclude>
+@@ -210,9 +207,6 @@
+     <ClInclude Include="luabind\luabind\detail\most_derived.hpp">
+       <Filter>Header Files\detail</Filter>
+     </ClInclude>
+-    <ClInclude Include="luabind\luabind\detail\object.hpp">
+-      <Filter>Header Files\detail</Filter>
+-    </ClInclude>
+     <ClInclude Include="luabind\luabind\detail\object_call.hpp">
+       <Filter>Header Files\detail</Filter>
+     </ClInclude>
+@@ -261,6 +255,9 @@
+     <ClInclude Include="luabind\luabind\detail\yes_no.hpp">
+       <Filter>Header Files\detail</Filter>
+     </ClInclude>
++    <ClInclude Include="DumpLua.h">
++      <Filter>Header Files</Filter>
++    </ClInclude>
+   </ItemGroup>
+   <ItemGroup>
+     <ClCompile Include="luabind\src\class.cpp">
+@@ -314,5 +311,8 @@
+     <ClCompile Include="luabind\src\wrapper_base.cpp">
+       <Filter>Source Files</Filter>
+     </ClCompile>
++    <ClCompile Include="luabind\DumpLua.cpp">
++      <Filter>Header Files</Filter>
++    </ClCompile>
+   </ItemGroup>
+ </Project>
+\ No newline at end of file

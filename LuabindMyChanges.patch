@@ -1,0 +1,3300 @@
+Index: luabind/adopt_policy.hpp
+===================================================================
+--- luabind/adopt_policy.hpp	(revision 2961)
++++ luabind/adopt_policy.hpp	(working copy)
+@@ -47,7 +47,7 @@
+     inline void adjust_backref_ownership(void*, mpl::false_)
+     {}
+ 
+-	template <class Pointer, class Direction = lua_to_cpp>
++	template<class Direction = lua_to_cpp>
+     struct adopt_pointer : pointer_converter
+ 	{
+ 		typedef adopt_pointer type;
+@@ -83,21 +83,9 @@
+ 		void converter_postcall(lua_State*, T, int) {}
+ 	};
+ 
+-    template <class Pointer, class T>
+-    struct pointer_or_default
++	template<>
++	struct adopt_pointer<cpp_to_lua>
+     {
+-        typedef Pointer type;
+-    };
+-
+-    template <class T>
+-    struct pointer_or_default<void, T>
+-    {
+-        typedef std::auto_ptr<T> type;
+-    };
+-
+-	template <class Pointer>
+-	struct adopt_pointer<Pointer, cpp_to_lua>
+-	{
+ 		typedef adopt_pointer type;
+ 
+ 		template<class T>
+@@ -115,14 +103,12 @@
+ 			if (luabind::move_back_reference(L, ptr))
+ 				return;
+ 
+-            typedef typename pointer_or_default<Pointer, T>::type
+-                pointer_type;
+-
+-            make_instance(L, pointer_type(ptr));
++            make_instance(L, std::auto_ptr<T>(ptr));
+ 		}
+ 	};
+ 
+-	template <int N, class Pointer = void>
++	template<int N>
++//	struct adopt_policy : converter_policy_tag
+ 	struct adopt_policy : conversion_policy<N>
+ 	{
+ //		BOOST_STATIC_CONSTANT(int, index = N);
+@@ -136,11 +122,7 @@
+ 		struct apply
+ 		{
+ 			typedef luabind::detail::is_nonconst_pointer<T> is_nonconst_p;
+-			typedef typename boost::mpl::if_<
+-                is_nonconst_p
+-              , adopt_pointer<Pointer, Direction>
+-              , only_accepts_nonconst_pointers
+-            >::type type;
++			typedef typename boost::mpl::if_<is_nonconst_p, adopt_pointer<Direction>, only_accepts_nonconst_pointers>::type type;
+ 		};
+ 	};
+ 
+@@ -154,14 +136,7 @@
+ 	{ 
+ 		return detail::policy_cons<detail::adopt_policy<N>, detail::null_type>(); 
+ 	}
+-
+-    template <class Pointer, int N>
+-    detail::policy_cons<detail::adopt_policy<N, Pointer>, detail::null_type>
+-    adopt(LUABIND_PLACEHOLDER_ARG(N))
+-    {
+-        return detail::policy_cons<detail::adopt_policy<N, Pointer>, detail::null_type>();
+     }
+-}
+ 
+ #endif // LUABIND_ADOPT_POLICY_HPP_INCLUDE
+ 
+Index: luabind/array_converter.hpp
+===================================================================
+--- luabind/array_converter.hpp	(revision 0)
++++ luabind/array_converter.hpp	(working copy)
+@@ -0,0 +1,112 @@
++/*
++ * Copyright © 2008-2010  Peter Colberg
++ *
++ * This file is part of HALMD.
++ *
++ * HALMD is free software: you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation, either version 3 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
++ */
++
++#ifndef HALMD_UTILITY_LUA_ARRAY_CONVERTER_HPP
++#define HALMD_UTILITY_LUA_ARRAY_CONVERTER_HPP
++
++#include <boost/array.hpp>
++#include <boost/multi_array.hpp>
++#include <luabind/luabind.hpp>
++
++namespace luabind {
++
++/**
++ * Luabind converter for Boost array
++ */
++template <typename T, std::size_t N>
++struct default_converter<boost::array<T, N> >
++  : native_converter_base<boost::array<T, N> >
++{
++    //! compute Lua to C++ conversion score
++    static int compute_score(lua_State* L, int index)
++    {
++        return lua_type(L, index) == LUA_TTABLE && lua_objlen(L, index) == N ? 0 : -1;
++    }
++
++    //! convert from Lua to C++
++    boost::array<T, N> from(lua_State* L, int index)
++    {
++        boost::array<T, N> v;
++        object table(from_stack(L, index));
++        for (std::size_t i = 0; i < v.size(); ++i) {
++            v[i] = object_cast<T>(table[i + 1]);
++        }
++        return v;
++    }
++
++    //! convert from C++ to Lua
++    void to(lua_State* L, boost::array<T, N> const& array)
++    {
++        luabind::object table = luabind::newtable(L);
++        for (std::size_t i = 0; i < array.size(); ++i) {
++            // default_converter<T> only invoked with reference wrapper
++            table[i + 1] = boost::cref(array[i]);
++        }
++        table.push(L);
++    }
++};
++
++template <typename T, std::size_t N>
++struct default_converter<boost::array<T, N> const&>
++  : default_converter<boost::array<T, N> > {};
++
++/**
++ * Luabind converter for 1-dimensional Boost multi_array
++ */
++template <typename T>
++struct default_converter<boost::multi_array<T, 1> >
++  : native_converter_base<boost::multi_array<T, 1> >
++{
++    //! compute Lua to C++ conversion score
++    static int compute_score(lua_State* L, int index)
++    {
++        return lua_type(L, index) == LUA_TTABLE ? 0 : -1;
++    }
++
++    //! convert from Lua to C++
++    boost::multi_array<T, 1> from(lua_State* L, int index)
++    {
++        std::size_t size = luaL_getn(L, index);
++        boost::multi_array<T, 1> v(boost::extents[size]);
++        object table(from_stack(L, index));
++        for (std::size_t i = 0; i < v.size(); ++i) {
++            v[i] = object_cast<T>(table[i + 1]);
++        }
++        return v;
++    }
++
++    //! convert from C++ to Lua
++    void to(lua_State* L, boost::multi_array<T, 1> const& array)
++    {
++        luabind::object table = luabind::newtable(L);
++        for (std::size_t i = 0; i < array.size(); ++i) {
++            // default_converter<T> only invoked with reference wrapper
++            table[i + 1] = boost::cref(array[i]);
++        }
++        table.push(L);
++    }
++};
++
++template <typename T>
++struct default_converter<boost::multi_array<T, 1> const&>
++  : default_converter<boost::multi_array<T, 1> > {};
++
++} // namespace luabind
++
++#endif /* ! HALMD_UTILITY_LUA_ARRAY_CONVERTER_HPP */
+Index: luabind/class.hpp
+===================================================================
+--- luabind/class.hpp	(revision 2961)
++++ luabind/class.hpp	(working copy)
+@@ -71,13 +71,14 @@
+ #include <luabind/config.hpp>
+ 
+ #include <string>
++#include <map>
++#include <vector>
+ #include <cassert>
+ 
+-#ifndef LUABIND_CPP0x
++#include <boost/bind.hpp>
+ #include <boost/preprocessor/repetition/enum_params.hpp>
+ #include <boost/preprocessor/repetition/enum_params_with_a_default.hpp>
+ #include <boost/preprocessor/repetition/repeat.hpp>
+-#endif
+ #include <boost/type_traits/is_same.hpp>
+ #include <boost/type_traits/is_member_object_pointer.hpp>
+ #include <boost/mpl/apply.hpp>
+@@ -86,7 +87,6 @@
+ #include <boost/mpl/find_if.hpp>
+ #include <boost/mpl/eval_if.hpp>
+ #include <boost/mpl/logical.hpp>
+-#include <boost/mpl/vector/vector10.hpp>
+ 
+ #include <luabind/config.hpp>
+ #include <luabind/scope.hpp>
+@@ -96,21 +96,22 @@
+ #include <luabind/detail/constructor.hpp>
+ #include <luabind/detail/call.hpp>
+ #include <luabind/detail/deduce_signature.hpp>
++#include <luabind/detail/compute_score.hpp>
+ #include <luabind/detail/primitives.hpp>
+ #include <luabind/detail/property.hpp>
+ #include <luabind/detail/typetraits.hpp>
+ #include <luabind/detail/class_rep.hpp>
+ #include <luabind/detail/call.hpp>
+ #include <luabind/detail/object_rep.hpp>
++#include <luabind/detail/calc_arity.hpp>
+ #include <luabind/detail/call_member.hpp>
+ #include <luabind/detail/enum_maker.hpp>
+ #include <luabind/detail/operator_id.hpp>
+ #include <luabind/detail/pointee_typeid.hpp>
+ #include <luabind/detail/link_compatibility.hpp>
+ #include <luabind/detail/inheritance.hpp>
+-#include <luabind/detail/signature_match.hpp>
+-#include <luabind/no_dependency.hpp>
+ #include <luabind/typeid.hpp>
++#include <luabind/HelpContainer.h>
+ 
+ // to remove the 'this' used in initialization list-warning
+ #ifdef _MSC_VER
+@@ -153,16 +154,6 @@
+ 		return 0;
+ 	}
+ 
+-# ifdef LUABIND_CPP0x
+-
+-    template <class... Args>
+-    struct bases
+-    {};
+-
+-    typedef bases<> no_bases;
+-
+-# else
+-
+     template <
+         BOOST_PP_ENUM_PARAMS_WITH_A_DEFAULT(
+             LUABIND_MAX_BASES, class A, detail::null_type)
+@@ -172,8 +163,6 @@
+ 
+     typedef bases<detail::null_type> no_bases;
+ 
+-# endif // LUABIND_CPP0x
+-
+ 	namespace detail
+ 	{
+         template <class T>
+@@ -181,17 +170,10 @@
+           : mpl::false_
+         {};
+ 
+-# ifdef LUABIND_CPP0x
+-        template <class... Args>
+-        struct is_bases<bases<Args...> >
+-          : mpl::true_
+-        {};
+-# else
+         template <BOOST_PP_ENUM_PARAMS(LUABIND_MAX_BASES, class A)>
+         struct is_bases<bases<BOOST_PP_ENUM_PARAMS(LUABIND_MAX_BASES, A)> >
+           : mpl::true_
+         {};
+-# endif
+ 
+         template <class T, class P>
+         struct is_unspecified
+@@ -334,6 +316,8 @@
+ 				  , name
+ 				  , fn
+ 				);
++				if (TowerLua::HelpContainer::enabled)
++					TowerLua::HelpContainer::AddInfo("METHOD", name, TowerLua::void_cast<F>(f), typeid(F).name());
+ 			}
+ 
+ 			char const* name;
+@@ -379,6 +363,8 @@
+                   , "__init"
+                   , fn
+                 );
++				if (TowerLua::HelpContainer::enabled)
++				TowerLua::HelpContainer::AddInfo("CONSTRUCTOR", "", &typeid(Class), typeid(Signature::type).name());
+             }
+ 
+             Policies policies;
+@@ -393,24 +379,10 @@
+             >
+         {};
+ 
+-        template <class T>
+-        struct reference_argument
+-          : mpl::if_<
+-                mpl::or_<boost::is_pointer<T>, is_primitive<T> >
+-              , T
+-              , typename boost::add_reference<
+-                    typename boost::add_const<T>::type
+-                >::type
+-            >
+-        {};
+-
+         template <class T, class Policies>
+         struct inject_dependency_policy
+           : mpl::if_<
+-                mpl::or_<
+                     is_primitive<T>
+-                  , has_policy<Policies, detail::no_dependency_policy>
+-                >
+               , Policies
+               , policy_cons<dependency_policy<0, 1>, Policies>
+             >
+@@ -446,6 +418,8 @@
+                   , make_get(L, get, boost::is_member_object_pointer<Get>())
+                   , set
+                 );
++				if (TowerLua::HelpContainer::enabled)
++				TowerLua::HelpContainer::AddInfo("PROPERTY", name, TowerLua::void_cast<Get>(get), typeid(Get).name(), TowerLua::void_cast<Set>(set), typeid(Set).name());
+             }
+ 
+             template <class F>
+@@ -480,12 +454,10 @@
+             template <class T, class D>
+             object make_set(lua_State* L, D T::* mem_ptr, mpl::true_) const
+             {
+-                typedef typename reference_argument<D>::type argument_type;
+-
+                 return make_function(
+                     L
+                   , access_member_ptr<T, D>(mem_ptr)
+-                  , mpl::vector3<void, Class&, argument_type>()
++                  , mpl::vector3<void, Class&, D const&>()
+                   , set_policies
+                 );
+             }
+@@ -584,8 +556,6 @@
+ 		void gen_base_info(detail::type_<detail::null_type>)
+ 		{}
+ 
+-# ifndef LUABIND_CPP0x
+-
+ #define LUABIND_GEN_BASE_INFO(z, n, text) gen_base_info(detail::type_<BaseClass##n>());
+ 
+ 		template<BOOST_PP_ENUM_PARAMS(LUABIND_MAX_BASES, class BaseClass)>
+@@ -596,20 +566,6 @@
+ 
+ #undef LUABIND_GEN_BASE_INFO
+ 
+-# else // !LUABIND_CPP0x
+-
+-        template <class... Args>
+-        void ignore(Args&&...)
+-        {}
+-
+-        template <class... Bases>
+-        void generate_baseclass_list(detail::type_<bases<Bases...> >)
+-        {
+-            ignore((gen_base_info(detail::type_<Bases>()), 0)...);
+-        }
+-
+-# endif // !LUABIND_CPP0x
+-
+ 		class_(const char* name): class_base(name), scope(*this)
+ 		{
+ #ifndef NDEBUG
+@@ -644,16 +600,6 @@
+ 			  , policies, boost::mpl::false_());
+ 		}
+ 
+-# ifdef LUABIND_CPP0x
+-
+-        template <class... Args, class Policies = detail::null_type>
+-        class_& def(constructor<Args...>, Policies const& policies = Policies())
+-        {
+-            return this->def_constructor((constructor<Args...>*)0, policies);
+-        }
+-
+-# else
+-
+ 		template<BOOST_PP_ENUM_PARAMS(LUABIND_MAX_ARITY, class A)>
+ 		class_& def(constructor<BOOST_PP_ENUM_PARAMS(LUABIND_MAX_ARITY, A)> sig)
+ 		{
+@@ -666,8 +612,6 @@
+             return this->def_constructor(&sig, policies);
+ 		}
+ 
+-# endif // LUABIND_CPP0x
+-
+         template <class Getter>
+         class_& property(const char* name, Getter g)
+         {
+Index: luabind/config.hpp
+===================================================================
+--- luabind/config.hpp	(revision 2961)
++++ luabind/config.hpp	(working copy)
+@@ -118,15 +118,6 @@
+ # define LUABIND_API
+ #endif
+ 
+-#if !defined(LUABIND_CPP0x) \
+- && !defined(BOOST_NO_DECLTYPE) \
+- && !defined(BOOST_NO_FUNCTION_TEMPLATE_DEFAULT_ARGS) \
+- && !defined(BOOST_NO_VARIADIC_TEMPLATES)
+-
+-# define LUABIND_CPP0x
+-
+-#endif
+-
+ namespace luabind {
+ 
+ LUABIND_API void disable_super_deprecation();
+Index: luabind/detail/calc_arity.hpp
+===================================================================
+--- luabind/detail/calc_arity.hpp	(revision 0)
++++ luabind/detail/calc_arity.hpp	(working copy)
+@@ -0,0 +1,61 @@
++// Copyright (c) 2003 Daniel Wallin and Arvid Norberg
++
++// Permission is hereby granted, free of charge, to any person obtaining a
++// copy of this software and associated documentation files (the "Software"),
++// to deal in the Software without restriction, including without limitation
++// the rights to use, copy, modify, merge, publish, distribute, sublicense,
++// and/or sell copies of the Software, and to permit persons to whom the
++// Software is furnished to do so, subject to the following conditions:
++
++// The above copyright notice and this permission notice shall be included
++// in all copies or substantial portions of the Software.
++
++// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF
++// ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
++// TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
++// PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT
++// SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR
++// ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN
++// ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
++// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE
++// OR OTHER DEALINGS IN THE SOFTWARE.
++
++#if !BOOST_PP_IS_ITERATING
++
++# include <luabind/detail/signature_match.hpp>
++
++#ifndef LUABIND_CALC_ARITY_HPP_INCLUDED
++#define LUABIND_CALC_ARITY_HPP_INCLUDED
++
++#define LUABIND_FIND_CONV(z,n,text) typedef typename find_conversion_policy<n + 1, Policies>::type p##n;
++#define LUABIND_CALC_ARITY(z,n,text) + BOOST_PP_CAT(p,n)::has_arg
++
++namespace luabind { namespace detail
++{
++	template<int N> struct calc_arity;
++
++	#define BOOST_PP_ITERATION_PARAMS_1 (4, (0, LUABIND_MAX_ARITY, <luabind/detail/calc_arity.hpp>, 1))
++	#include BOOST_PP_ITERATE()
++}}
++
++#undef LUABIND_CALC_ARITY
++#undef LUABIND_FIND_CONV
++
++
++#endif // LUABIND_CALC_ARITY_HPP_INCLUDED
++
++#else // BOOST_PP_ITERATE
++
++	template<>
++	struct calc_arity<BOOST_PP_ITERATION()>
++	{
++		template<BOOST_PP_ENUM_PARAMS(LUABIND_MAX_ARITY, class A), class Policies>
++		static int apply(constructor<BOOST_PP_ENUM_PARAMS(LUABIND_MAX_ARITY, A)>, Policies*)
++		{
++			BOOST_PP_REPEAT(BOOST_PP_ITERATION(), LUABIND_FIND_CONV, _)
++			return 0 BOOST_PP_REPEAT(BOOST_PP_ITERATION(), LUABIND_CALC_ARITY, _);
++		}
++	};
++
++#endif
++
+Index: luabind/detail/call.hpp
+===================================================================
+--- luabind/detail/call.hpp	(revision 2961)
++++ luabind/detail/call.hpp	(working copy)
+@@ -7,12 +7,6 @@
+ # ifndef LUABIND_CALL2_080911_HPP
+ #  define LUABIND_CALL2_080911_HPP
+ 
+-#  include <luabind/config.hpp>
+-
+-#  ifdef LUABIND_CPP0x
+-#   include <luabind/detail/call_0x.hpp>
+-#  else
+-
+ #  include <boost/mpl/apply_wrap.hpp>
+ #  include <boost/mpl/begin_end.hpp>
+ #  include <boost/mpl/deref.hpp>
+@@ -26,6 +20,7 @@
+ #  include <boost/preprocessor/repetition/enum_trailing_params.hpp>
+ #  include <boost/type_traits/is_void.hpp>
+ 
++#  include <luabind/config.hpp>
+ #  include <luabind/detail/policy.hpp>
+ #  include <luabind/yield_policy.hpp>
+ 
+@@ -120,7 +115,7 @@
+ int maybe_yield(lua_State* L, int results, Policies*)
+ {
+     return maybe_yield_aux(
+-        L, results, has_policy<Policies, yield_policy>());
++        L, results, mpl::bool_<has_yield<Policies>::value>());
+ }
+ 
+ inline int sum_scores(int const* first, int const* last)
+@@ -197,8 +192,6 @@
+ 
+ }} // namespace luabind::detail
+ 
+-# endif // LUABIND_CPP0x
+-
+ # endif // LUABIND_CALL2_080911_HPP
+ 
+ #else // BOOST_PP_IS_ITERATING
+Index: luabind/detail/call_function.hpp
+===================================================================
+--- luabind/detail/call_function.hpp	(revision 2961)
++++ luabind/detail/call_function.hpp	(working copy)
+@@ -31,14 +31,12 @@
+ #include <boost/mpl/if.hpp>
+ #include <boost/tuple/tuple.hpp>
+ #include <boost/mpl/or.hpp>
+-#ifndef LUABIND_CPP0x
+ # include <boost/preprocessor/repeat.hpp>
+ # include <boost/preprocessor/iteration/iterate.hpp>
+ # include <boost/preprocessor/repetition/enum.hpp>
+ # include <boost/preprocessor/repetition/enum_params.hpp>
+ # include <boost/preprocessor/repetition/enum_binary_params.hpp>
+ # include <boost/preprocessor/punctuation/comma_if.hpp>
+-#endif
+ 
+ #include <luabind/error.hpp>
+ #include <luabind/detail/convert_to_lua.hpp>
+@@ -91,11 +89,7 @@
+ 					int top = lua_gettop(L);
+ 
+ 					push_args_from_tuple<1>::apply(L, m_args);
+-# ifdef LUABIND_CPP0x
+-                    if (m_fun(L, std::tuple_size<Tuple>::value, 0))
+-# else
+ 					if (m_fun(L, boost::tuples::length<Tuple>::value, 0))
+-# endif
+ 					{
+ 						assert(lua_gettop(L) == top - m_params + 1);
+ #ifndef LUABIND_NO_EXCEPTIONS
+@@ -125,11 +119,7 @@
+ 					int top = lua_gettop(L);
+ 
+ 					push_args_from_tuple<1>::apply(L, m_args);
+-# ifdef LUABIND_CPP0x
+-                    if (m_fun(L, std::tuple_size<Tuple>::value, 1))
+-# else
+ 					if (m_fun(L, boost::tuples::length<Tuple>::value, 1))
+-# endif
+ 					{
+ 						assert(lua_gettop(L) == top - m_params + 1);
+ #ifndef LUABIND_NO_EXCEPTIONS
+@@ -147,6 +137,8 @@
+ 					// pops the return values from the function call
+ 					stack_pop pop(L, lua_gettop(L) - top + m_params);
+ 
++#ifndef LUABIND_NO_ERROR_CHECKING
++
+ 					if (converter.match(L, LUABIND_DECORATE_TYPE(Ret), -1) < 0)
+ 					{
+ #ifndef LUABIND_NO_EXCEPTIONS
+@@ -158,8 +150,10 @@
+ 						assert(0 && "the lua function's return value could not be converted."
+ 									" If you want to handle the error you can use luabind::set_error_callback()");
+ 						std::terminate();
++
+ #endif
+ 					}
++#endif
+ 					return converter.apply(L, LUABIND_DECORATE_TYPE(Ret), -1);
+ 				}
+ 
+@@ -175,11 +169,7 @@
+ 					int top = lua_gettop(L);
+ 
+ 					detail::push_args_from_tuple<1>::apply(L, m_args, p);
+-# ifdef LUABIND_CPP0x
+-                    if (m_fun(L, std::tuple_size<Tuple>::value, 1))
+-# else
+ 					if (m_fun(L, boost::tuples::length<Tuple>::value, 1))
+-# endif
+ 					{ 
+ 						assert(lua_gettop(L) == top - m_params + 1);
+ #ifndef LUABIND_NO_EXCEPTIONS
+@@ -197,6 +187,8 @@
+ 					// pops the return values from the function call
+ 					stack_pop pop(L, lua_gettop(L) - top + m_params);
+ 
++#ifndef LUABIND_NO_ERROR_CHECKING
++
+ 					if (converter.match(L, LUABIND_DECORATE_TYPE(Ret), -1) < 0)
+ 					{
+ #ifndef LUABIND_NO_EXCEPTIONS
+@@ -211,7 +203,7 @@
+ 
+ #endif
+ 					}
+-
++#endif
+ 					return converter.apply(L, LUABIND_DECORATE_TYPE(Ret), -1);
+ 				}
+ 
+@@ -229,6 +221,7 @@
+ 			template<class Tuple>
+ 			class proxy_function_void_caller
+ 			{
++			friend class luabind::object;
+ 			public:
+ 
+ 				typedef int(*function_t)(lua_State*, int, int);
+@@ -266,11 +259,7 @@
+ 					int top = lua_gettop(L);
+ 
+ 					push_args_from_tuple<1>::apply(L, m_args);
+-# ifdef LUABIND_CPP0x
+-                    if (m_fun(L, std::tuple_size<Tuple>::value, 0))
+-# else
+ 					if (m_fun(L, boost::tuples::length<Tuple>::value, 0))
+-# endif
+ 					{
+ 						assert(lua_gettop(L) == top - m_params + 1);
+ #ifndef LUABIND_NO_EXCEPTIONS
+@@ -297,11 +286,7 @@
+ 					int top = lua_gettop(L);
+ 
+ 					detail::push_args_from_tuple<1>::apply(L, m_args, p);
+-# ifdef LUABIND_CPP0x
+-                    if (m_fun(L, std::tuple_size<Tuple>::value, 0))
+-# else
+ 					if (m_fun(L, boost::tuples::length<Tuple>::value, 0))
+-# endif
+ 					{
+ 						assert(lua_gettop(L) == top - m_params + 1);
+ #ifndef LUABIND_NO_EXCEPTIONS
+@@ -331,90 +316,9 @@
+ 
+ 	}
+ 
+-# ifdef LUABIND_CPP0x
+-
+-
+-namespace detail
+-{
+-
+-  template <class R, class... Args>
+-  struct make_proxy
+-  {
+-      typedef proxy_function_caller<R, std::tuple<Args const*...> > type;
+-  };
+-
+-  template <class... Args>
+-  struct make_proxy<void, Args...>
+-  {
+-      typedef proxy_function_void_caller<std::tuple<Args const*...> > type;
+-  };
+-
+-} // namespace detail
+-
+-template <class R, class... Args>
+-typename detail::make_proxy<R, Args...>::type call_function(
+-    lua_State* L, char const* name, Args const&... args)
+-{
+-    assert(name && "luabind::call_function() expects a function name");
+-
+-    lua_pushstring(L, name);
+-    lua_gettable(L, LUA_GLOBALSINDEX);
+-
+-    typedef typename detail::make_proxy<R, Args...>::type proxy_type;
+-    return proxy_type(L, 1, &detail::pcall, std::tuple<Args const*...>(&args...));
+-}
+-
+-template <class R, class... Args>
+-typename detail::make_proxy<R, Args...>::type call_function(
+-    object const& obj, Args const&... args)
+-{
+-    obj.push(obj.interpreter());
+-
+-    typedef typename detail::make_proxy<R, Args...>::type proxy_type;
+-    return proxy_type(
+-        obj.interpreter(), 1, &detail::pcall, std::tuple<Args const*...>(&args...));
+-}
+-
+-template <class R, class... Args>
+-typename detail::make_proxy<R, Args...>::type resume_function(
+-    lua_State* L, char const* name, Args const&... args)
+-{
+-    assert(name && "luabind::call_function() expects a function name");
+-
+-    lua_pushstring(L, name);
+-    lua_gettable(L, LUA_GLOBALSINDEX);
+-
+-    typedef typename detail::make_proxy<R, Args...>::type proxy_type;
+-    return proxy_type(L, 1, &detail::resume_impl, std::tuple<Args const*...>(&args...));
+-}
+-
+-template <class R, class... Args>
+-typename detail::make_proxy<R, Args...>::type resume_function(
+-    object const& obj, Args const&... args)
+-{
+-    obj.push(obj.interpreter());
+-
+-    typedef typename detail::make_proxy<R, Args...>::type proxy_type;
+-    return proxy_type(
+-        obj.interpreter(), 1, &detail::resume_impl, std::tuple<Args const*...>(&args...));
+-}
+-
+-template <class R, class... Args>
+-typename detail::make_proxy<R, Args...>::type resume(
+-    lua_State* L, Args const&... args)
+-{
+-    typedef typename detail::make_proxy<R, Args...>::type proxy_type;
+-    return proxy_type(
+-        L, 0, &detail::resume_impl, std::tuple<Args const*...>(&args...));
+-}
+-
+-# else // LUABIND_CPP0x
+-
+ 	#define BOOST_PP_ITERATION_PARAMS_1 (4, (0, LUABIND_MAX_ARITY, <luabind/detail/call_function.hpp>, 1))
+ 	#include BOOST_PP_ITERATE()
+ 
+-# endif // LUABIND_CPP0x
+-
+ }
+ 
+ #endif // LUABIND_CALL_FUNCTION_HPP_INCLUDED
+Index: luabind/detail/call_member.hpp
+===================================================================
+--- luabind/detail/call_member.hpp	(revision 2961)
++++ luabind/detail/call_member.hpp	(working copy)
+@@ -33,13 +33,11 @@
+ #include <luabind/detail/stack_utils.hpp>
+ #include <luabind/object.hpp> // TODO: REMOVE DEPENDENCY
+ 
+-#ifndef LUABIND_CPP0x
+ # include <boost/tuple/tuple.hpp>
+ 
+ # include <boost/preprocessor/control/if.hpp>
+ # include <boost/preprocessor/facilities/expand.hpp>
+ # include <boost/preprocessor/repetition/enum.hpp>
+-#endif
+ 
+ #include <boost/mpl/apply_wrap.hpp>
+ 
+@@ -86,11 +84,7 @@
+ 					// and all the parameters
+ 
+ 					push_args_from_tuple<1>::apply(L, m_args);
+-# ifdef LUABIND_CPP0x
+-                    if (pcall(L, std::tuple_size<Tuple>::value + 1, 0))
+-# else
+ 					if (pcall(L, boost::tuples::length<Tuple>::value + 1, 0))
+-# endif
+ 					{
+ 						assert(lua_gettop(L) == top + 1);
+ #ifndef LUABIND_NO_EXCEPTIONS
+@@ -121,11 +115,7 @@
+ 					// pcall will pop the function and self reference
+ 					// and all the parameters
+ 					push_args_from_tuple<1>::apply(L, m_args);
+-# ifdef LUABIND_CPP0x
+-                    if (pcall(L, std::tuple_size<Tuple>::value + 1, 1))
+-# else
+ 					if (pcall(L, boost::tuples::length<Tuple>::value + 1, 1))
+-# endif
+ 					{
+ 						assert(lua_gettop(L) == top + 1);
+ #ifndef LUABIND_NO_EXCEPTIONS
+@@ -143,6 +133,8 @@
+ 					// pops the return values from the function
+ 					stack_pop pop(L, lua_gettop(L) - top);
+ 
++#ifndef LUABIND_NO_ERROR_CHECKING
++
+ 					if (converter.match(L, LUABIND_DECORATE_TYPE(Ret), -1) < 0)
+ 					{
+ 						assert(lua_gettop(L) == top + 1);
+@@ -157,7 +149,7 @@
+ 						std::terminate();
+ #endif
+ 					}
+-
++#endif
+ 					return converter.apply(L, LUABIND_DECORATE_TYPE(Ret), -1);
+ 				}
+ 
+@@ -177,11 +169,7 @@
+ 					// and all the parameters
+ 
+ 					detail::push_args_from_tuple<1>::apply(L, m_args, p);
+-# ifdef LUABIND_CPP0x
+-                    if (pcall(L, std::tuple_size<Tuple>::value + 1, 1))
+-# else
+ 					if (pcall(L, boost::tuples::length<Tuple>::value + 1, 1))
+-# endif
+ 					{
+ 						assert(lua_gettop(L) == top + 1);
+ #ifndef LUABIND_NO_EXCEPTIONS
+@@ -199,6 +187,8 @@
+ 					// pops the return values from the function
+ 					stack_pop pop(L, lua_gettop(L) - top);
+ 
++#ifndef LUABIND_NO_ERROR_CHECKING
++
+ 					if (converter.match(L, LUABIND_DECORATE_TYPE(Ret), -1) < 0)
+ 					{
+ 						assert(lua_gettop(L) == top + 1);
+@@ -213,7 +203,7 @@
+ 						std::terminate();
+ #endif
+ 					}
+-
++#endif
+ 					return converter.apply(L, LUABIND_DECORATE_TYPE(Ret), -1);
+ 				}
+ 
+@@ -261,11 +251,7 @@
+ 					// and all the parameters
+ 
+ 					push_args_from_tuple<1>::apply(L, m_args);
+-# ifdef LUABIND_CPP0x
+-                    if (pcall(L, std::tuple_size<Tuple>::value + 1, 0))
+-# else
+ 					if (pcall(L, boost::tuples::length<Tuple>::value + 1, 0))
+-# endif
+ 					{
+ 						assert(lua_gettop(L) == top + 1);
+ #ifndef LUABIND_NO_EXCEPTIONS
+@@ -296,11 +282,7 @@
+ 					// and all the parameters
+ 
+ 					detail::push_args_from_tuple<1>::apply(L, m_args, p);
+-# ifdef LUABIND_CPP0x
+-                    if (pcall(L, std::tuple_size<Tuple>::value + 1, 0))
+-# else
+ 					if (pcall(L, boost::tuples::length<Tuple>::value + 1, 0))
+-# endif
+ 					{
+ 						assert(lua_gettop(L) == top + 1);
+ #ifndef LUABIND_NO_EXCEPTIONS
+@@ -327,49 +309,9 @@
+ 
+ 	} // detail
+ 
+-# ifdef LUABIND_CPP0x
+-
+-namespace detail
+-{
+-
+-  template <class R, class... Args>
+-  struct make_member_proxy
+-  {
+-      typedef proxy_member_caller<R, std::tuple<Args const*...> > type;
+-  };
+-
+-  template <class... Args>
+-  struct make_member_proxy<void, Args...>
+-  {
+-      typedef proxy_member_void_caller<std::tuple<Args const*...> > type;
+-  };
+-
+-} // namespace detail
+-
+-template <class R, class... Args>
+-typename detail::make_member_proxy<R, Args...>::type call_member(
+-    object const& obj, char const* name, Args const&... args)
+-{
+-    // get the function
+-    obj.push(obj.interpreter());
+-    lua_pushstring(obj.interpreter(), name);
+-    lua_gettable(obj.interpreter(), -2);
+-    // duplicate the self-object
+-    lua_pushvalue(obj.interpreter(), -2);
+-    // remove the bottom self-object
+-    lua_remove(obj.interpreter(), -3);
+-
+-    typedef typename detail::make_member_proxy<R, Args...>::type proxy_type;
+-    return proxy_type(obj.interpreter(), std::tuple<Args const*...>(&args...));
+-}
+-
+-# else // LUABIND_CPP0x
+-
+ 	#define BOOST_PP_ITERATION_PARAMS_1 (4, (0, LUABIND_MAX_ARITY, <luabind/detail/call_member.hpp>, 1))
+ 	#include BOOST_PP_ITERATE()
+ 
+-# endif
+-
+ }
+ 
+ #endif // LUABIND_CALL_MEMBER_HPP_INCLUDED
+Index: luabind/detail/class_cache.hpp
+===================================================================
+--- luabind/detail/class_cache.hpp	(revision 0)
++++ luabind/detail/class_cache.hpp	(working copy)
+@@ -0,0 +1,89 @@
++// Copyright (c) 2004 Daniel Wallin
++
++// Permission is hereby granted, free of charge, to any person obtaining a
++// copy of this software and associated documentation files (the "Software"),
++// to deal in the Software without restriction, including without limitation
++// the rights to use, copy, modify, merge, publish, distribute, sublicense,
++// and/or sell copies of the Software, and to permit persons to whom the
++// Software is furnished to do so, subject to the following conditions:
++
++// The above copyright notice and this permission notice shall be included
++// in all copies or substantial portions of the Software.
++
++// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF
++// ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
++// TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
++// PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT
++// SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR
++// ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN
++// ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
++// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE
++// OR OTHER DEALINGS IN THE SOFTWARE.
++
++#ifndef CLASS_CACHE_040218_HPP
++#define CLASS_CACHE_040218_HPP
++
++#include <luabind/prefix.hpp>
++#include <boost/type_traits/add_reference.hpp>
++#include <boost/type_traits/add_const.hpp>
++
++namespace luabind { namespace detail {
++
++#ifdef LUABIND_NOT_THREADSAFE
++    
++    class class_rep;
++    
++    template<class T>
++    struct class_cache_impl
++    {
++        static lua_State* state;
++        static class_rep* class_;
++    };
++
++    template<class T>
++    lua_State* class_cache_impl<T>::state = 0;
++
++    template<class T>
++    class_rep* class_cache_impl<T>::class_ = 0;
++
++    template<class T>
++    struct class_cache
++        : class_cache_impl<
++              typename boost::add_reference<
++                  typename boost::add_const<
++                      T
++                  >::type
++              >::type
++          >
++    {
++    };
++    
++    template<class T>
++    class_rep* get_class_rep(lua_State* L, void(*)(T*) = 0)
++    {
++        if (class_cache<T>::state != L)
++        {
++            class_cache<T>::state = L;
++
++            class_registry* registry = class_registry::get_registry(L);
++			class_cache<T>::class_ = registry->find_class(typeid(T));
++        }
++
++        return class_cache<T>::class_;
++    }
++
++#else
++
++    template<class T>
++    class_rep* get_class_rep(lua_State* L, void(*)(T*) = 0)
++    {
++        class_registry* registry = class_registry::get_registry(L);
++        return registry->find_class(typeid(T));
++    }
++
++#endif
++
++}} // namespace luabind::detail
++
++#endif // CLASS_CACHE_040218_HPP
++
+Index: luabind/detail/class_rep.hpp
+===================================================================
+--- luabind/detail/class_rep.hpp	(revision 2961)
++++ luabind/detail/class_rep.hpp	(working copy)
+@@ -25,6 +25,7 @@
+ #define LUABIND_CLASS_REP_HPP_INCLUDED
+ 
+ #include <boost/limits.hpp>
++#include <boost/preprocessor/repetition/enum_params_with_a_default.hpp>
+ 
+ #include <string>
+ #include <utility>
+@@ -32,6 +33,7 @@
+ 
+ #include <luabind/config.hpp>
+ #include <luabind/lua_include.hpp>
++#include <luabind/detail/object_rep.hpp>
+ #include <luabind/detail/garbage_collector.hpp>
+ #include <luabind/detail/operator_id.hpp>
+ #include <luabind/detail/class_registry.hpp>
+Index: luabind/detail/compute_score.hpp
+===================================================================
+--- luabind/detail/compute_score.hpp	(revision 0)
++++ luabind/detail/compute_score.hpp	(working copy)
+@@ -0,0 +1,73 @@
++// Copyright Daniel Wallin 2008. Use, modification and distribution is
++// subject to the Boost Software License, Version 1.0. (See accompanying
++// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
++
++#ifndef LUABIND_COMPUTE_RANK_081006_HPP
++# define LUABIND_COMPUTE_RANK_081006_HPP
++
++# include <luabind/config.hpp>
++# include <luabind/detail/policy.hpp>
++# include <boost/mpl/apply_wrap.hpp>
++# include <boost/mpl/begin_end.hpp>
++# include <boost/mpl/int.hpp>
++# include <boost/mpl/next.hpp>
++
++namespace luabind { namespace detail {
++
++namespace mpl = boost::mpl;
++
++template <class Idx, class Iter, class End, class Policies>
++int compute_score_aux(
++    lua_State*L, int index, Idx, Iter, End end, Policies const& policies)
++{
++    typedef typename Iter::type arg_type;
++    typedef typename find_conversion_policy<Idx::value, Policies>::type
++        conversion_policy;
++    typedef typename mpl::apply_wrap2<
++        conversion_policy, arg_type, lua_to_cpp>::type converter;
++
++    int score = converter::match(L, LUABIND_DECORATE_TYPE(arg_type), index);
++
++    if (score < 0)
++        return score;
++
++    if (conversion_policy::has_arg)
++        ++index;
++
++    int next = compute_score_aux( //-V573
++        L
++      , index
++      , typename mpl::next<Idx>::type()
++      , typename mpl::next<Iter>::type()
++      , end
++      , policies
++    );
++
++    if (next < 0)
++        return next;
++
++    return score + next;
++}
++
++template <class Idx, class End, class Policies>
++int compute_score_aux(lua_State*, int, Idx, End, End, Policies const&)
++{
++    return 0;
++}
++
++template <class Signature, class Policies>
++int compute_score(lua_State* L, Signature, Policies const& policies)
++{
++    return compute_score_aux(
++        L
++      , 1
++      , mpl::int_<1>()
++      , typename mpl::next<typename mpl::begin<Signature>::type>::type()
++      , typename mpl::end<Signature>::type()
++      , policies
++    );
++}
++
++}} // namespace luabind::detail
++
++#endif // LUABIND_COMPUTE_RANK_081006_HPP
+Index: luabind/detail/constructor.hpp
+===================================================================
+--- luabind/detail/constructor.hpp	(revision 2961)
++++ luabind/detail/constructor.hpp	(working copy)
+@@ -12,12 +12,10 @@
+ #  include <luabind/wrapper_base.hpp>
+ #  include <luabind/detail/inheritance.hpp>
+ 
+-#  ifndef LUABIND_CPP0x
+ #   include <boost/preprocessor/iteration/iterate.hpp>
+ #   include <boost/preprocessor/iteration/local.hpp>
+ #   include <boost/preprocessor/repetition/enum_params.hpp>
+ #   include <boost/preprocessor/repetition/enum_binary_params.hpp>
+-#  endif
+ 
+ namespace luabind { namespace detail {
+ 
+@@ -30,35 +28,6 @@
+     weak_ref(get_main_thread(L), L, 1).swap(wrap_access::ref(*p));
+ }
+ 
+-#  ifdef LUABIND_CPP0x
+-
+-template <class T, class Pointer, class Signature>
+-struct construct;
+-
+-template <class T, class Pointer, class R, class Self, class... Args>
+-struct construct<T, Pointer, vector<R, Self, Args...> >
+-{
+-    typedef pointer_holder<Pointer, T> holder_type;
+-
+-    void operator()(argument const& self_, Args... args) const
+-    {
+-        object_rep* self = touserdata<object_rep>(self_);
+-
+-        std::auto_ptr<T> instance(new T(args...));
+-        inject_backref(self_.interpreter(), instance.get(), instance.get());
+-
+-        void* naked_ptr = instance.get();
+-        Pointer ptr(instance.release());
+-
+-        void* storage = self->allocate(sizeof(holder_type));
+-
+-        self->set_instance(new (storage) holder_type(
+-            ptr, registered_class<T>::id, naked_ptr));
+-    }
+-};
+-
+-#   else // LUABIND_CPP0x
+-
+ template <std::size_t Arity, class T, class Pointer, class Signature>
+ struct construct_aux;
+ 
+@@ -75,6 +44,7 @@
+     void operator()(argument const& self_) const
+     {
+         object_rep* self = touserdata<object_rep>(self_);
++        class_rep* cls = self->crep();
+ 
+         std::auto_ptr<T> instance(new T);
+         inject_backref(self_.interpreter(), instance.get(), instance.get());
+@@ -85,7 +55,7 @@
+         void* storage = self->allocate(sizeof(holder_type));
+ 
+         self->set_instance(new (storage) holder_type(
+-            ptr, registered_class<T>::id, naked_ptr));
++            ptr, registered_class<T>::id, naked_ptr, cls));
+     }
+ };
+ 
+@@ -93,8 +63,6 @@
+     (3, (1, LUABIND_MAX_ARITY, <luabind/detail/constructor.hpp>))
+ #  include BOOST_PP_ITERATE()
+ 
+-#  endif // LUABIND_CPP0x
+-
+ }} // namespace luabind::detail
+ 
+ # endif // LUABIND_DETAIL_CONSTRUCTOR_081018_HPP
+@@ -122,6 +90,7 @@
+     void operator()(argument const& self_, BOOST_PP_ENUM_BINARY_PARAMS(N,a,_)) const
+     {
+         object_rep* self = touserdata<object_rep>(self_);
++        class_rep* cls = self->crep();
+ 
+         std::auto_ptr<T> instance(new T(BOOST_PP_ENUM_PARAMS(N,_)));
+         inject_backref(self_.interpreter(), instance.get(), instance.get());
+@@ -132,7 +101,7 @@
+         void* storage = self->allocate(sizeof(holder_type));
+ 
+         self->set_instance(new (storage) holder_type(
+-            ptr, registered_class<T>::id, naked_ptr));
++            ptr, registered_class<T>::id, naked_ptr, cls));
+     }
+ };
+ 
+Index: luabind/detail/deduce_signature.hpp
+===================================================================
+--- luabind/detail/deduce_signature.hpp	(revision 2961)
++++ luabind/detail/deduce_signature.hpp	(working copy)
+@@ -8,9 +8,7 @@
+ #  define LUABIND_DEDUCE_SIGNATURE_080911_HPP
+ 
+ #  include <luabind/detail/most_derived.hpp>
+-#  include <luabind/vector.hpp>
+ 
+-#  ifndef LUABIND_CPP0x
+ #   if LUABIND_MAX_ARITY <= 8
+ #    include <boost/mpl/vector/vector10.hpp>
+ #   else
+@@ -19,80 +17,9 @@
+ #   include <boost/preprocessor/cat.hpp>
+ #   include <boost/preprocessor/iteration/iterate.hpp>
+ #   include <boost/preprocessor/repetition/enum_params.hpp>
+-#  endif
+ 
+ namespace luabind { namespace detail {
+ 
+-#  ifdef LUABIND_CPP0x
+-
+-template <class R, class... Args>
+-vector<R, Args...> deduce_signature(R(*)(Args...), ...)
+-{
+-    return vector<R, Args...>();
+-}
+-
+-template <class R, class T, class... Args>
+-vector<R, T&, Args...> deduce_signature(R(T::*)(Args...))
+-{
+-    return vector<R, T&, Args...>();
+-}
+-
+-template <class R, class T, class Wrapped, class... Args>
+-vector<R, typename most_derived<T,Wrapped>::type&, Args...>
+-deduce_signature(R(T::*)(Args...), Wrapped*)
+-{
+-    return vector<R, typename most_derived<T,Wrapped>::type&, Args...>();
+-}
+-
+-template <class R, class T, class... Args>
+-vector<R, T const&, Args...> deduce_signature(R(T::*)(Args...) const)
+-{
+-    return vector<R, T const&, Args...>();
+-}
+-
+-template <class R, class T, class Wrapped, class... Args>
+-vector<R, typename most_derived<T,Wrapped>::type const&, Args...>
+-deduce_signature(R(T::*)(Args...) const, Wrapped*)
+-{
+-    return vector<R, typename most_derived<T,Wrapped>::type const&, Args...>();
+-}
+-
+-// This is primarily intended to catch C++0x lambda closures. It figures out
+-// the signature of a function object, and strips the object type from the
+-// resulting signature:
+-//
+-//   vector<void, unspecified const&, ...>
+-//
+-//     into
+-//
+-//   vector<void, ...>
+-//
+-// This overload is all luabind needs to correctly handle monomorphic function
+-// objects with a fixed signature such as C++0x lambdas. The standard doesn't
+-// explicitly say that an implementation isn't allowed to add additional
+-// overloads of operator() to the closure type, in practice however, noone
+-// seems to.
+-
+-template <class Signature>
+-struct strip_this_argument;
+-
+-template <class R, class T, class... Args>
+-struct strip_this_argument<vector<R, T, Args...> >
+-{
+-    typedef vector<R, Args...> type;
+-};
+-
+-template <class F>
+-typename strip_this_argument<
+-    decltype(deduce_signature(&F::operator()))
+->::type deduce_signature(F const&)
+-{
+-    return typename strip_this_argument<
+-        decltype(deduce_signature(&F::operator()))>::type();
+-}
+-
+-#  else // LUABIND_CPP0x
+-
+ namespace mpl = boost::mpl;
+ 
+ template <class R>
+@@ -131,8 +58,6 @@
+     (3, (1, LUABIND_MAX_ARITY, <luabind/detail/deduce_signature.hpp>))
+ #  include BOOST_PP_ITERATE()
+ 
+-#  endif // LUABIND_CPP0x
+-
+ }} // namespace luabind::detail
+ 
+ # endif // LUABIND_DEDUCE_SIGNATURE_080911_HPP
+Index: luabind/detail/enum_maker.hpp
+===================================================================
+--- luabind/detail/enum_maker.hpp	(revision 2961)
++++ luabind/detail/enum_maker.hpp	(working copy)
+@@ -49,7 +49,7 @@
+ 		template<class T>
+ 		value(const char* name, T v)
+ 			: name_(name)
+-			, val_(v)
++			, val_(static_cast<int>(v))
+ 		{}
+ 
+ 		const char* name_;
+Index: luabind/detail/format_signature.hpp
+===================================================================
+--- luabind/detail/format_signature.hpp	(revision 2961)
++++ luabind/detail/format_signature.hpp	(working copy)
+@@ -13,20 +13,13 @@
+ # include <boost/mpl/next.hpp>
+ # include <boost/mpl/size.hpp>
+ 
+-namespace luabind { namespace adl
+-{
++namespace luabind {
+ 
+   class object;
+   class argument;
+   template <class Base>
+   struct table;
+ 
+-} // namespace adl
+-
+-using adl::object;
+-using adl::argument;
+-using adl::table;
+-
+ } // namespace luabind
+ 
+ namespace luabind { namespace detail {
+@@ -114,8 +107,6 @@
+     }
+ };
+ 
+-# ifndef LUABIND_CPP0x
+-
+ template <class End>
+ void format_signature_aux(lua_State*, bool, End, End)
+ {}
+@@ -151,37 +142,6 @@
+     lua_concat(L, static_cast<int>(mpl::size<Signature>()) * 2 + 2);
+ }
+ 
+-# else // LUABIND_CPP0x
+-
+-inline void format_signature_aux(lua_State*, vector<>, bool)
+-{}
+-
+-template <class T, class... Args>
+-void format_signature_aux(lua_State* L, vector<T, Args...>, bool first = true)
+-{
+-    if (!first)
+-        lua_pushstring(L, ",");
+-    type_to_string<T>::get(L);
+-    format_signature_aux(L, vector<Args...>(), false);
+-}
+-
+-template <class R, class... Args>
+-void format_signature(lua_State* L, char const* function, vector<R, Args...>)
+-{
+-    type_to_string<R>::get(L);
+-
+-    lua_pushstring(L, " ");
+-    lua_pushstring(L, function);
+-
+-    lua_pushstring(L, "(");
+-    format_signature_aux(L, vector<R, Args...>());
+-    lua_pushstring(L, ")");
+-
+-    lua_concat(L, (sizeof...(Args) + 1) * 2 + 2);
+-}
+-
+-# endif // LUABIND_CPP0x
+-
+ }} // namespace luabind::detail
+ 
+ #endif // LUABIND_FORMAT_SIGNATURE_081014_HPP
+Index: luabind/detail/instance_holder.hpp
+===================================================================
+--- luabind/detail/instance_holder.hpp	(revision 2961)
++++ luabind/detail/instance_holder.hpp	(working copy)
+@@ -6,6 +6,7 @@
+ # define LUABIND_INSTANCE_HOLDER_081024_HPP
+ 
+ # include <luabind/detail/inheritance.hpp>
++# include <luabind/detail/class_rep.hpp> // TODO
+ # include <luabind/get_pointer.hpp>
+ # include <luabind/typeid.hpp>
+ # include <boost/type_traits/is_polymorphic.hpp>
+@@ -16,24 +17,30 @@
+ class instance_holder
+ {
+ public:
+-    instance_holder(bool pointee_const)
+-      : m_pointee_const(pointee_const)
++    instance_holder(class_rep* cls, bool pointee_const)
++      : m_cls(cls)
++      , m_pointee_const(pointee_const)
+     {}
+ 
+     virtual ~instance_holder()
+     {}
+ 
+-    virtual std::pair<void*, int> get(
+-        cast_graph const& casts, class_id target) const = 0;
++    virtual std::pair<void*, int> get(class_id target) const = 0;
+ 
+     virtual void release() = 0;
+ 
++    class_rep* get_class() const
++    {
++        return m_cls;
++    }
++
+     bool pointee_const() const
+     {
+         return m_pointee_const;
+     }
+ 
+ private:
++    class_rep* m_cls;
+     bool m_pointee_const;
+ };
+ 
+@@ -73,16 +80,16 @@
+ {
+ public:
+     pointer_holder(
+-        P p, class_id dynamic_id, void* dynamic_ptr
++        P p, class_id dynamic_id, void* dynamic_ptr, class_rep* cls
+     )
+-      : instance_holder(check_const_pointer(false ? get_pointer(p) : 0))
++      : instance_holder(cls, check_const_pointer(false ? get_pointer(p) : 0))
+       , p(p)
+       , weak(0)
+       , dynamic_id(dynamic_id)
+       , dynamic_ptr(dynamic_ptr)
+     {}
+ 
+-    std::pair<void*, int> get(cast_graph const& casts, class_id target) const
++    std::pair<void*, int> get(class_id target) const
+     {
+         if (target == registered_class<P>::id)
+             return std::pair<void*, int>(&this->p, 0);
+@@ -93,7 +100,7 @@
+         if (!naked_ptr)
+             return std::pair<void*, int>((void*)0, 0);
+ 
+-        return casts.cast(
++        return get_class()->casts().cast(
+             naked_ptr
+           , static_class_id(false ? get_pointer(p) : 0)
+           , target
+Index: luabind/detail/is_indirect_const.hpp
+===================================================================
+--- luabind/detail/is_indirect_const.hpp	(revision 0)
++++ luabind/detail/is_indirect_const.hpp	(working copy)
+@@ -0,0 +1,70 @@
++// Copyright (c) 2004 Daniel Wallin and Arvid Norberg
++
++// Permission is hereby granted, free of charge, to any person obtaining a
++// copy of this software and associated documentation files (the "Software"),
++// to deal in the Software without restriction, including without limitation
++// the rights to use, copy, modify, merge, publish, distribute, sublicense,
++// and/or sell copies of the Software, and to permit persons to whom the
++// Software is furnished to do so, subject to the following conditions:
++
++// The above copyright notice and this permission notice shall be included
++// in all copies or substantial portions of the Software.
++
++// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF
++// ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
++// TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
++// PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT
++// SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR
++// ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN
++// ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
++// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE
++// OR OTHER DEALINGS IN THE SOFTWARE.
++
++#ifndef IS_INDIRECT_CONST_040211_HPP
++#define IS_INDIRECT_CONST_040211_HPP
++
++#include <luabind/detail/yes_no.hpp>
++#include <boost/type_traits/is_const.hpp>
++#include <boost/mpl/bool.hpp>
++
++namespace luabind {
++
++    namespace detail {
++
++    template<class T>
++    typename boost::is_const<T>::type
++    is_indirect_const_check(T(*)(), int);
++
++    template<class T>
++    typename boost::is_const<T>::type 
++    is_indirect_const_check(T*(*)(), long);
++
++    template<class T>
++    typename boost::is_const<T>::type 
++    is_indirect_const_check(T&(*)(), long);
++    
++    yes_t to_yes_no(boost::mpl::true_);
++    no_t to_yes_no(boost::mpl::false_);
++
++    } // namespace detail
++
++    // returns true for:
++    //    T = U*  is_const<U>
++    //    T = U&  is_const<U>
++    //    T = U   is_const<U>
++    template<class T>
++    struct is_indirect_const
++    {
++        BOOST_STATIC_CONSTANT(int, value = (
++            sizeof(
++                detail::to_yes_no(
++                    detail::is_indirect_const_check((T(*)())0, 0L)
++            ))
++         == sizeof(detail::yes_t)
++        ));
++    };
++
++} // namespace luabind
++
++#endif // IS_INDIRECT_CONST_040211_HPP
++
+Index: luabind/detail/make_instance.hpp
+===================================================================
+--- luabind/detail/make_instance.hpp	(revision 2961)
++++ luabind/detail/make_instance.hpp	(working copy)
+@@ -88,7 +88,7 @@
+ 
+     try
+     {
+-        new (storage) holder_type(p, dynamic.first, dynamic.second);
++        new (storage) holder_type(p, dynamic.first, dynamic.second, cls);
+     }
+     catch (...)
+     {
+Index: luabind/detail/object_funs.hpp
+===================================================================
+--- luabind/detail/object_funs.hpp	(revision 0)
++++ luabind/detail/object_funs.hpp	(working copy)
+@@ -0,0 +1,224 @@
++// Copyright (c) 2003 Daniel Wallin and Arvid Norberg
++
++// Permission is hereby granted, free of charge, to any person obtaining a
++// copy of this software and associated documentation files (the "Software"),
++// to deal in the Software without restriction, including without limitation
++// the rights to use, copy, modify, merge, publish, distribute, sublicense,
++// and/or sell copies of the Software, and to permit persons to whom the
++// Software is furnished to do so, subject to the following conditions:
++
++// The above copyright notice and this permission notice shall be included
++// in all copies or substantial portions of the Software.
++
++// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF
++// ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
++// TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
++// PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT
++// SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR
++// ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN
++// ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
++// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE
++// OR OTHER DEALINGS IN THE SOFTWARE.
++
++#ifndef LUABIND_OBJECT_PROXY_HPP_INCLUDED
++#define LUABIND_OBJECT_PROXY_HPP_INCLUDED
++
++#include <boost/optional.hpp>
++
++#include <luabind/config.hpp>
++#include <luabind/detail/policy.hpp>
++#include <luabind/error.hpp>
++#include <luabind/detail/convert_to_lua.hpp>
++#include <luabind/detail/debug.hpp>
++#include <luabind/detail/stack_utils.hpp>
++
++#include <boost/mpl/apply_wrap.hpp>
++
++namespace luabind
++{
++
++	namespace detail
++	{
++
++		namespace mpl = boost::mpl;
++
++		template<class T, class Obj, class Policies>
++		inline T object_cast_impl(const Obj& obj, const Policies&)
++		{
++			if (obj.lua_state() == 0) 
++			{
++#ifndef LUABIND_NO_EXCEPTIONS
++				throw cast_failed(0, typeid(T));
++#else
++				lua_State* L = obj.lua_state();
++				cast_failed_callback_fun e = get_cast_failed_callback();
++				if (e) e(L, typeid(T));
++
++				assert(0 && "object_cast failed. If you want to handle this error use luabind::set_error_callback()");
++				std::terminate();
++#endif
++			}
++
++			LUABIND_CHECK_STACK(obj.lua_state());
++
++			typedef typename detail::find_conversion_policy<0, Policies>::type converter_policy;
++			typename mpl::apply_wrap2<converter_policy,T,lua_to_cpp>::type converter;
++
++			obj.pushvalue();
++
++			lua_State* L = obj.lua_state();
++			detail::stack_pop p(L, 1);
++
++#ifndef LUABIND_NO_ERROR_CHECKING
++
++			if (converter.match(L, LUABIND_DECORATE_TYPE(T), -1) < 0)
++			{
++#ifndef LUABIND_NO_EXCEPTIONS
++				throw cast_failed(L, typeid(T));
++#else
++				cast_failed_callback_fun e = get_cast_failed_callback();
++				if (e) e(L, typeid(T));
++
++				assert(0 && "object_cast failed. If you want to handle this error use luabind::set_error_callback()");
++				std::terminate();
++#endif
++			}
++#endif
++
++			return converter.apply(L, LUABIND_DECORATE_TYPE(T), -1);
++		}
++
++		template<class T, class Obj, class Policies>
++		boost::optional<T> object_cast_nothrow_impl(const Obj& obj, const Policies&)
++		{
++			typedef typename detail::find_conversion_policy<0, Policies>::type converter_policy;
++			typename mpl::apply_wrap2<converter_policy,T,lua_to_cpp>::type converter;
++
++			if (obj.lua_state() == 0) return boost::optional<T>();
++			LUABIND_CHECK_STACK(obj.lua_state());
++
++			obj.pushvalue();
++
++			lua_State* L = obj.lua_state();
++			detail::stack_pop p(L, 1);
++
++#ifndef LUABIND_NO_ERROR_CHECKING
++
++			if (converter.match(L, LUABIND_DECORATE_TYPE(T), -1) < 0)
++				return boost::optional<T>();
++#endif
++
++			return boost::optional<T>(converter.apply(L, LUABIND_DECORATE_TYPE(T), -1));
++		}
++	}
++	
++	template<class T>
++	T object_cast(const object& obj)
++	{ return detail::object_cast_impl<T>(obj, detail::null_type()); }
++	
++	template<class T, class Policies>
++	T object_cast(const object& obj, const Policies& p)
++	{ return detail::object_cast_impl<T>(obj, p); }
++	
++	template<class T>
++	boost::optional<T> object_cast_nothrow(const object& obj)
++	{ return detail::object_cast_nothrow_impl<T>(obj, detail::null_type()); }
++
++	template<class T, class Policies>
++	boost::optional<T> object_cast_nothrow(const object& obj, const Policies& p)
++	{ return detail::object_cast_nothrow_impl<T>(obj, p); }
++	
++
++	template<class T>
++	T object_cast(const detail::proxy_object& obj)
++	{ return detail::object_cast_impl<T>(obj, detail::null_type()); }
++	
++	template<class T, class Policies>
++	T object_cast(const detail::proxy_object& obj, const Policies& p)
++	{ return detail::object_cast_impl<T>(obj, p); }
++	
++	template<class T>
++	boost::optional<T> object_cast_nothrow(const detail::proxy_object& obj)
++	{ return detail::object_cast_nothrow_impl<T>(obj, detail::null_type()); }
++	
++	template<class T, class Policies>
++	boost::optional<T> object_cast_nothrow(const detail::proxy_object& obj, const Policies& p)
++	{ return detail::object_cast_nothrow_impl<T>(obj, p); }
++
++	
++	template<class T>
++	T object_cast(const detail::proxy_raw_object& obj)
++	{ return detail::object_cast_impl<T>(obj, detail::null_type()); }
++
++	template<class T, class Policies>
++	T object_cast(const detail::proxy_raw_object& obj, const Policies& p)
++	{ return detail::object_cast_impl<T>(obj, p); }
++
++	template<class T>
++	boost::optional<T> object_cast_nothrow(const detail::proxy_raw_object& obj)
++	{ return detail::object_cast_nothrow_impl<T>(obj, detail::null_type()); }
++
++	template<class T, class Policies>
++	boost::optional<T> object_cast_nothrow(const detail::proxy_raw_object& obj, const Policies& p)
++	{ return detail::object_cast_nothrow_impl<T>(obj, p); }
++
++	
++	template<class T>
++	T object_cast(const detail::proxy_array_object& obj)
++	{ return detail::object_cast_impl<T>(obj, detail::null_type()); }
++	
++	template<class T, class Policies>
++	T object_cast(const detail::proxy_array_object& obj, const Policies& p)
++	{ return detail::object_cast_impl<T>(obj, p); }
++	
++	template<class T>
++	boost::optional<T> object_cast_nothrow(const detail::proxy_array_object& obj)
++	{ return detail::object_cast_nothrow_impl<T>(obj, detail::null_type()); }
++	
++	template<class T, class Policies>
++	boost::optional<T> object_cast_nothrow(const detail::proxy_array_object& obj, const Policies& p)
++	{ return detail::object_cast_nothrow_impl<T>(obj, p); }
++
++
++
++
++	inline object get_globals(lua_State* L)
++	{
++		lua_pushvalue(L, LUA_GLOBALSINDEX);
++		detail::lua_reference ref;
++		ref.set(L);
++		return object(L, ref, true/*object::reference()*/);
++	}
++
++	inline object get_registry(lua_State* L)
++	{
++		lua_pushvalue(L, LUA_REGISTRYINDEX);
++		detail::lua_reference ref;
++		ref.set(L);
++		return object(L, ref, true/*object::reference()*/);
++	}
++
++	inline object newtable(lua_State* L)
++	{
++		lua_newtable(L);
++		detail::lua_reference ref;
++		ref.set(L);
++		return object(L, ref, true/*object::reference()*/);
++	}
++}
++
++/*
++
++struct A
++{
++};
++
++object f = class_<A>();
++
++A* ptr = object_cast<A*>(f(), adopt(_1));
++
++delete ptr;
++
++*/
++
++#endif // LUABIND_OBJECT_PROXY_HPP_INCLUDED
+Index: luabind/detail/object_rep.hpp
+===================================================================
+--- luabind/detail/object_rep.hpp	(revision 2961)
++++ luabind/detail/object_rep.hpp	(working copy)
+@@ -26,12 +26,13 @@
+ 
+ #include <boost/aligned_storage.hpp>
+ #include <luabind/config.hpp>
+-#include <luabind/detail/class_rep.hpp>
+ #include <luabind/detail/instance_holder.hpp>
+ #include <luabind/detail/ref.hpp>
+ 
+ namespace luabind { namespace detail
+ {
++	class class_rep;
++
+ 	void finalize(lua_State* L, class_rep* crep);
+ 
+ 	// this class is allocated inside lua for each pointer.
+@@ -55,7 +56,7 @@
+ 		{
+ 			if (m_instance == 0)
+ 				return std::pair<void*, int>((void*)0, -1);
+-			return m_instance->get(m_classrep->casts(), target);
++			return m_instance->get(target);
+ 		}
+ 
+ 		bool is_const() const
+Index: luabind/detail/policy.hpp
+===================================================================
+--- luabind/detail/policy.hpp	(revision 2961)
++++ luabind/detail/policy.hpp	(working copy)
+@@ -42,7 +42,6 @@
+ #include <boost/type_traits/is_pointer.hpp>
+ #include <boost/type_traits/is_base_and_derived.hpp>
+ #include <boost/bind/arg.hpp>
+-#include <boost/bind/placeholders.hpp>
+ #include <boost/limits.hpp>
+ #include <boost/tuple/tuple.hpp>
+ #include <boost/version.hpp>
+@@ -51,6 +50,7 @@
+ #include <luabind/detail/primitives.hpp>
+ #include <luabind/detail/object_rep.hpp>
+ #include <luabind/detail/typetraits.hpp>
++#include <luabind/detail/class_cache.hpp>
+ #include <luabind/detail/debug.hpp>
+ #include <luabind/detail/class_rep.hpp>
+ #include <luabind/detail/has_get_pointer.hpp>
+@@ -696,6 +696,8 @@
+ 
+ LUABIND_NUMBER_CONVERTER(unsigned int, number)
+ LUABIND_NUMBER_CONVERTER(unsigned long, number)
++LUABIND_NUMBER_CONVERTER(unsigned __int64, number)
++LUABIND_NUMBER_CONVERTER(__int64, number)
+ 
+ LUABIND_NUMBER_CONVERTER(signed long, integer)
+ LUABIND_NUMBER_CONVERTER(float, number)
+@@ -765,6 +767,44 @@
+ {};
+ 
+ template <>
++struct default_converter<std::wstring>
++  : native_converter_base<std::wstring>
++{
++	static int compute_score(lua_State* L, int index)
++	{
++		return lua_type(L, index) == LUA_TSTRING ? 0 : -1;
++	}
++
++	std::wstring from(lua_State* L, int index)
++	{
++		std::string s(lua_tostring(L, index), lua_strlen(L, index));
++		std::wstring temp(s.length(),L' ');
++		std::copy(s.begin(), s.end(), temp.begin());
++		return temp;
++	}
++
++	void to(lua_State* L, std::wstring const& value)
++	{
++		std::string temp(value.length(), ' ');
++		for(unsigned int i=0;i<value.size();i++)
++		{
++			temp[i] = (char)value[i];
++		}
++		lua_pushlstring(L, temp.data(), temp.size());
++	}
++};
++
++template <>
++struct default_converter<std::wstring const>
++  : default_converter<std::wstring>
++{};	
++
++template <>
++struct default_converter<std::wstring const&>
++  : default_converter<std::wstring>
++{};
++
++template <>
+ struct default_converter<char const*>
+ {
+     typedef boost::mpl::true_ is_native;
+@@ -985,20 +1025,6 @@
+ 		static void apply(lua_State*, int) {}
+ 	};
+ 
+-    template <class Policies, class Sought>
+-    struct has_policy
+-      : mpl::if_<
+-            boost::is_same<typename Policies::head, Sought>
+-          , mpl::true_
+-          , has_policy<typename Policies::tail, Sought>
+-        >::type
+-    {};
+-
+-    template <class Sought>
+-    struct has_policy<null_type, Sought>
+-      : mpl::false_
+-    {};
+-
+ }} // namespace luabind::detail
+ 
+ 
+Index: luabind/detail/signature_match.hpp
+===================================================================
+--- luabind/detail/signature_match.hpp	(revision 2961)
++++ luabind/detail/signature_match.hpp	(working copy)
+@@ -26,15 +26,14 @@
+ #include <luabind/config.hpp>
+ 
+ #include <boost/config.hpp>
+-#ifndef LUABIND_CPP0x
+ # include <boost/preprocessor/repetition/enum_params.hpp>
+ # include <boost/preprocessor/repetition/enum_params_with_a_default.hpp>
+ # include <boost/preprocessor/cat.hpp>
+ # include <boost/preprocessor/arithmetic/inc.hpp>
++
+ # include <boost/mpl/vector.hpp>
+ # include <boost/mpl/size.hpp>
+ # include <boost/mpl/remove.hpp>
+-#endif
+ 
+ namespace luabind
+ {
+@@ -44,16 +43,6 @@
+ 		class argument;
+ 	}
+ 
+-# ifdef LUABIND_CPP0x
+-
+-    template <class... Args>
+-    struct constructor
+-    {
+-        typedef vector<void, argument const&, Args...> signature;
+-    };
+-
+-# else
+-
+ 	template<BOOST_PP_ENUM_PARAMS_WITH_A_DEFAULT(LUABIND_MAX_ARITY, class A, detail::null_type)>
+ 	struct constructor
+ 	{
+@@ -65,9 +54,6 @@
+ 		typedef typename boost::mpl::remove<
+ 			signature0, detail::null_type>::type signature;
+ 	};
+-
+-# endif // LUABIND_CPP0x
+-
+ }
+ 
+ #endif // LUABIND_SIGNATURE_MATCH_HPP_INCLUDED
+Index: luabind/error.hpp
+===================================================================
+--- luabind/error.hpp	(revision 2961)
++++ luabind/error.hpp	(working copy)
+@@ -32,7 +32,6 @@
+ 
+ namespace luabind
+ {
+-
+ #ifndef LUABIND_NO_EXCEPTIONS
+ 
+ 	// this exception usually means that the lua function you called
+@@ -46,14 +45,12 @@
+ 	class LUABIND_API error : public std::exception
+ 	{
+ 	public:
+-		explicit error(lua_State* L): m_L(L) {}
++		explicit error(lua_State* L);
+ 		lua_State* state() const throw() { return m_L; }
+-		virtual const char* what() const throw()
+-		{
+-			return "lua runtime error";
+-		}
++		virtual const char* what() const throw() { return m_error.c_str(); }
+ 	private:
+ 		lua_State* m_L;
++		std::string m_error;
+ 	};
+ 
+ 	// if an object_cast<>() fails, this is thrown
+@@ -62,13 +59,14 @@
+ 	class LUABIND_API cast_failed : public std::exception
+ 	{
+ 	public:
+-		cast_failed(lua_State* L, type_id const& i): m_L(L), m_info(i) {}
++		cast_failed(lua_State* L, type_id const& i);
+ 		lua_State* state() const throw() { return m_L; }
+ 		type_id info() const throw() { return m_info; }
+-		virtual const char* what() const throw() { return "unable to make cast"; }
++		virtual const char* what() const throw() { return  m_error.c_str(); }
+ 	private:
+ 		lua_State* m_L;
+ 		type_id m_info;
++		std::string m_error;
+ 	};
+ 
+ #else
+@@ -86,8 +84,6 @@
+ 	typedef int(*pcall_callback_fun)(lua_State*);
+ 	LUABIND_API void set_pcall_callback(pcall_callback_fun e);
+ 	LUABIND_API pcall_callback_fun get_pcall_callback();
+-
+ }
+ 
+-#endif // LUABIND_ERROR_HPP_INCLUDED
+-
++#endif // LUABIND_ERROR_HPP_INCLUDED
+\ No newline at end of file
+Index: luabind/function.hpp
+===================================================================
+--- luabind/function.hpp	(revision 2961)
++++ luabind/function.hpp	(working copy)
+@@ -8,6 +8,7 @@
+ # include <luabind/make_function.hpp>
+ # include <luabind/scope.hpp>
+ # include <luabind/detail/call_function.hpp>
++#include <luabind/HelpContainer.h>
+ 
+ namespace luabind {
+ 
+@@ -32,6 +33,8 @@
+             , name
+             , fn
+           );
++		  if (TowerLua::HelpContainer::enabled)
++		  TowerLua::HelpContainer::AddInfo("FUNCTION", name, f, typeid(F).name());
+       }
+ 
+       char const* name;
+Index: luabind/HelpContainer.h
+===================================================================
+--- luabind/HelpContainer.h	(revision 0)
++++ luabind/HelpContainer.h	(working copy)
+@@ -0,0 +1,120 @@
++#pragma once
++
++#include <vector>
++#include <string>
++#include <boost/shared_ptr.hpp>
++
++#include <boost/typeof/std/utility.hpp>
++#include <iostream>
++#include <boost/make_shared.hpp>
++#include <typeinfo>
++#include <boost/mpl/if.hpp>
++
++namespace TowerLua
++{
++	template<class Src>
++	const void* void_cast(Src src)
++	{
++		union
++		{
++			void* d;
++			Src s;
++		} convertor;
++		convertor.d = nullptr;
++		convertor.s = src;
++		return (convertor.d);
++	}
++
++	class HelpContainer
++	{
++		private:
++			static std::string m_buffer;
++			HelpContainer()	{}
++		public:
++			static bool enabled;
++
++			static inline std::string & GetString()
++			{
++				return m_buffer;
++			}
++
++			static inline void ClearString()
++			{
++				m_buffer.clear();
++			}
++
++			static void AddInfo(const char* type, const char* name, const void *ptr=nullptr, const char* ex1 = nullptr, const void *ptr2 = nullptr, const char* ex2 = nullptr)
++			{
++				std::string tmp;
++				tmp+=type;
++				tmp+="|";
++				tmp+=name;
++				tmp+="|";
++
++				if (ex1!=nullptr)
++				{
++					char t[20]={0};
++					sprintf_s(t,"%p", ptr);
++					tmp+=t;
++					tmp+="|";
++					tmp+=ex1;
++					tmp+="|";
++				}
++				if (ex2!=nullptr)
++				{
++					char t[20]={0};
++					sprintf_s(t,"%p", ptr2);
++					tmp+=t;
++					tmp+="|";
++					tmp+=ex2;
++					tmp+="|";
++				}
++				tmp+="\n";
++				m_buffer+=tmp;
++			}
++	};
++
++	class HelpNavigator
++	{
++		private:
++			static std::string *m_string;
++		public:
++			HelpNavigator(const char* type, const char* symbol, const char* fileName, unsigned int line, const void* pointer)
++			{
++				if (nullptr == m_string)
++					m_string = new std::string();
++				(*m_string)+=type;
++				(*m_string)+="|";
++				(*m_string)+=symbol;
++				(*m_string)+="|";
++				(*m_string)+=fileName;
++				(*m_string)+="|";
++				char t[30]={0};
++				sprintf_s(t,"%u|%p\n", line, pointer);
++				(*m_string)+=t;
++			}
++
++			static inline std::string& GetString()
++			{
++				if (nullptr == m_string)
++					m_string = new std::string();
++				return (*m_string);
++			}
++	};
++
++	#define TowerLua__JOIN2(x,y) x##y
++	#define TowerLua__JOIN(x,y) TowerLua__JOIN2(x,y)
++	#define __HELP_MARK(type, symbol, ptr) static TowerLua::HelpNavigator TowerLua__JOIN(g_helpMarker,__COUNTER__)(type, symbol, __FILE__, __LINE__, TowerLua::void_cast(ptr));
++	#define __HELP_MARK2(type, symbol) static TowerLua::HelpNavigator TowerLua__JOIN(g_helpMarker,__COUNTER__)(type, symbol, __FILE__, __LINE__, nullptr);
++	
++	#define HELP_CLASS(type)					__HELP_MARK2("CLASS", typeid(type).name())
++	#define HELP_METHOD(ptr)					__HELP_MARK("METHOD", typeid(ptr).name(), ptr)
++	#define HELP_FUNCTION(ptr)					__HELP_MARK("FUNCTION", typeid(ptr).name(), ptr)
++	#define HELP_PROPERTY(ptr)					__HELP_MARK("PROPERTY", typeid(ptr).name(), ptr)
++	#define HELP_CONSTRUCTOR(_class, number)	__HELP_MARK("CONSTRUCTOR", typeid(_class).name(), number)
++	#define HELP_MODULE(fullName)				__HELP_MARK2("MODULE", fullName)
++	#define HELP_NAMESPACE(fullName)			__HELP_MARK2("NAMESPACE", fullName)
++	#define HELP_ENUM(type)						__HELP_MARK2("ENUM", typeid(type).name())
++	#define HELP_ENUM_ITEM(value)				__HELP_MARK("ENUM_ITEM", typeid(value).name(), value)
++	#define HELP_BASE(type)						__HELP_MARK2("BASE", typeid(type).name())
++}
+\ No newline at end of file
+Index: luabind/luabind.hpp
+===================================================================
+--- luabind/luabind.hpp	(revision 2961)
++++ luabind/luabind.hpp	(working copy)
+@@ -25,8 +25,13 @@
+ #define LUABIND_BIND_HPP_INCLUDED
+ 
+ #include <luabind/config.hpp>
++#include <luabind/std_shared_ptr.hpp>
+ #include <luabind/class.hpp>
+ #include <luabind/function.hpp>
+ #include <luabind/open.hpp>
++#include <luabind/array_converter.hpp>
++#include <luabind/map_converter.hpp>
++#include <luabind/shared_ptr_converter.hpp>
+ 
++
+ #endif // LUABIND_BIND_HPP_INCLUDED
+Index: luabind/make_function.hpp
+===================================================================
+--- luabind/make_function.hpp	(revision 2961)
++++ luabind/make_function.hpp	(working copy)
+@@ -7,8 +7,8 @@
+ 
+ # include <luabind/config.hpp>
+ # include <luabind/object.hpp>
+-# include <luabind/vector.hpp>
+ # include <luabind/detail/call.hpp>
++# include <luabind/detail/compute_score.hpp>
+ # include <luabind/detail/deduce_signature.hpp>
+ # include <luabind/detail/format_signature.hpp>
+ 
+@@ -103,11 +103,9 @@
+ template <class F, class Signature, class Policies>
+ object make_function(lua_State* L, F f, Signature, Policies)
+ {
+-    typedef typename detail::as_vector<Signature>::type signature;
+-
+     return detail::make_function_aux(
+         L
+-      , new detail::function_object_impl<F, signature, Policies>(
++      , new detail::function_object_impl<F, Signature, Policies>(
+             f, Policies()
+         )
+     );
+Index: luabind/map_converter.hpp
+===================================================================
+--- luabind/map_converter.hpp	(revision 0)
++++ luabind/map_converter.hpp	(working copy)
+@@ -0,0 +1,71 @@
++/*
++ * Copyright © 2010  Peter Colberg
++ *
++ * This file is part of HALMD.
++ *
++ * HALMD is free software: you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation, either version 3 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
++ */
++
++#ifndef HALMD_UTILITY_LUA_MAP_CONVERTER_HPP
++#define HALMD_UTILITY_LUA_MAP_CONVERTER_HPP
++
++#include <luabind/luabind.hpp>
++#include <map>
++
++namespace luabind {
++
++/**
++ * Luabind converter for STL map
++ */
++template <typename Key, typename T>
++struct default_converter<std::map<Key, T> >
++  : native_converter_base<std::map<Key, T> >
++{
++
++    //! compute Lua to C++ conversion score
++    static int compute_score(lua_State* L, int index)
++    {
++        return lua_type(L, index) == LUA_TTABLE ? 0 : -1;
++    }
++
++    //! convert from Lua to C++
++    std::map<Key, T> from(lua_State* L, int index)
++    {
++        std::map<Key, T> m;
++        for (iterator i(object(from_stack(L, index))), end; i != end; ++i) {
++            m[object_cast<Key>(i.key())] = object_cast<T>(*i);
++        }
++        return m;
++    }
++
++    //! convert from C++ to Lua
++    void to(lua_State* L, std::map<Key, T> const& m)
++    {
++        object table = newtable(L);
++        typename std::map<Key, T>::const_iterator i, end = m.end();
++        for (i = m.begin(); i != end; ++i) {
++            // default_converter<T> only invoked with reference wrapper
++            table[i->first] = boost::cref(i->second);
++        }
++        table.push(L);
++    }
++};
++
++template <typename Key, typename T>
++struct default_converter<std::map<Key, T> const&>
++  : default_converter<std::map<Key, T> > {};
++
++} // namespace luabind
++
++#endif /* ! HALMD_UTILITY_LUA_MAP_CONVERTER_HPP */
+Index: luabind/object.hpp
+===================================================================
+--- luabind/object.hpp	(revision 2961)
++++ luabind/object.hpp	(working copy)
+@@ -42,13 +42,10 @@
+ 
+ #include <boost/iterator/iterator_facade.hpp> // iterator
+ 
+-#ifndef LUABIND_CPP0x
+ #include <boost/preprocessor/iteration/iterate.hpp>
+-#endif
+ #include <boost/utility/enable_if.hpp>
+ 
+ namespace luabind {
+-
+ namespace detail 
+ {
+   namespace mpl = boost::mpl;
+@@ -90,7 +87,6 @@
+   {
+       push(interpreter, value, null_type());
+   }
+-
+ } // namespace detail
+ 
+ namespace adl
+@@ -118,7 +114,6 @@
+ 
+         typedef mpl::bool_<value> type;
+     };
+-
+   } // namespace detail
+ 
+   template <class T>
+@@ -277,19 +272,6 @@
+   public:
+       ~object_interface() {}
+ 
+-# ifdef LUABIND_CPP0x
+-
+-      template <class... Args>
+-      call_proxy<
+-          Derived, std::tuple<Args const*...>
+-      > operator()(Args const& ...args)
+-      {
+-          typedef std::tuple<Args const*...> arguments;
+-          return call_proxy<Derived, arguments>(derived(), arguments(&args...));
+-      }
+-
+-# else
+-
+       call_proxy<Derived, boost::tuples::tuple<> > operator()();
+ 
+       template<class A0>
+@@ -325,8 +307,6 @@
+           (3, LUABIND_MAX_ARITY, <luabind/detail/object_call.hpp>))
+       #include BOOST_PP_ITERATE()
+ 
+-# endif // LUABIND_CPP0x
+-
+       operator safe_bool_type*() const
+       {
+           lua_State* L = value_wrapper_traits<Derived>::interpreter(derived());
+@@ -435,7 +415,6 @@
+       int m_table_index;
+       int m_key_index;
+   };
+-
+ } // namespace adl
+ 
+ namespace detail
+@@ -574,12 +553,10 @@
+   LUABIND_OPERATOR_ADL_WKND(!=)
+ 
+ #undef LUABIND_OPERATOR_ADL_WKND
+- 
+ } // namespace detail
+ 
+ namespace adl
+ {
+- 
+ #ifdef LUABIND_USE_VALUE_WRAPPER_TAG
+   struct index_proxy_tag;    
+ #endif
+@@ -679,7 +656,6 @@
+ 
+       Next const& m_next;
+   };
+-
+ } // namespace adl
+ 
+ typedef detail::basic_iterator<detail::basic_access> iterator;
+@@ -734,7 +710,6 @@
+ 
+ namespace adl
+ {
+-
+   // An object holds a reference to a Lua value residing
+   // in the registry.
+   class object : public object_interface<object>
+@@ -835,7 +810,6 @@
+ 	  lua_State* m_interpreter;
+ 	  int m_index;
+   };
+-
+ } // namespace adl
+ 
+ using adl::object;
+@@ -944,7 +918,6 @@
+ 
+ namespace detail 
+ {
+-
+   template<
+       class T
+     , class ValueWrapper
+@@ -980,10 +953,12 @@
+ 
+       typename mpl::apply_wrap2<converter_generator, T, lua_to_cpp>::type cv;
+ 
++#ifndef LUABIND_NO_ERROR_CHECKING
+       if (cv.match(interpreter, LUABIND_DECORATE_TYPE(T), -1) < 0)
+       {
+           return ErrorPolicy::handle_error(interpreter, typeid(T));
+       }
++#endif
+ 
+       return cv.apply(interpreter, LUABIND_DECORATE_TYPE(T), -1);
+   }
+@@ -1024,7 +999,6 @@
+           return boost::optional<T>();
+       }
+   };
+-
+ } // namespace detail
+ 
+ template<class T, class ValueWrapper>
+@@ -1077,41 +1051,9 @@
+ 
+ namespace detail
+ {
+-
+   template<int Index>
+   struct push_args_from_tuple
+   {
+-# ifdef LUABIND_CPP0x
+-
+-      template <class Args, class Policies, class N, class E>
+-      static void push_args(
+-          lua_State* L, Args const& args, Policies const& policies, N, E)
+-      {
+-          convert_to_lua_p<N::value + 1>(L, *std::get<N::value>(args), policies);
+-          push_args(
+-              L, args, policies, std::integral_constant<int, N::value + 1>(), E());
+-      }
+-
+-      template <class Args, class Policies, class E>
+-      static void push_args(lua_State* L, Args const&, Policies const&, E, E)
+-      {}
+-
+-      template <class... Args, class Policies = null_type>
+-      static void apply(
+-          lua_State* L, std::tuple<Args...> const& args
+-        , Policies const policies = Policies())
+-      {
+-          push_args(
+-              L
+-            , args
+-            , policies
+-            , std::integral_constant<int, 0>()
+-            , std::integral_constant<int, sizeof...(Args)>()
+-          );
+-      }
+-
+-# else // LUABIND_CPP0x
+-
+       template<class H, class T, class Policies>
+       inline static void apply(lua_State* L, const boost::tuples::cons<H, T>& x, const Policies& p) 
+       {
+@@ -1130,15 +1072,11 @@
+       inline static void apply(lua_State*, const boost::tuples::null_type&, const Policies&) {}
+ 
+       inline static void apply(lua_State*, const boost::tuples::null_type&) {}
+-
+-# endif // LUABIND_CPP0x
+   };
+-
+ } // namespace detail
+ 
+ namespace adl
+ {
+-
+   template<class ValueWrapper, class Arguments>
+   struct call_proxy
+   {
+@@ -1187,11 +1125,7 @@
+ 
+           detail::push_args_from_tuple<1>::apply(interpreter, arguments, Policies());
+ 
+-# ifdef LUABIND_CPP0x
+-          if (detail::pcall(interpreter, std::tuple_size<Arguments>::value, 1))
+-# else
+           if (detail::pcall(interpreter, boost::tuples::length<Arguments>::value, 1))
+-# endif
+           {
+ #ifndef LUABIND_NO_EXCEPTIONS
+               throw luabind::error(interpreter);
+@@ -1213,8 +1147,6 @@
+       Arguments arguments;
+   };
+ 
+-# ifndef LUABIND_CPP0x
+-
+   template<class Derived>
+   call_proxy<Derived, boost::tuples::tuple<> >
+   object_interface<Derived>::operator()()
+@@ -1225,8 +1157,6 @@
+       );
+   }
+ 
+-# endif
+-
+   // Simple value_wrapper adaptor with the sole purpose of helping with
+   // overload resolution. Use this as a function parameter type instead
+   // of "object" or "argument" to restrict the parameter to Lua tables.
+@@ -1237,7 +1167,6 @@
+         : Base(stack_reference)
+       {}
+   };
+-
+ } // namespace adl
+ 
+ using adl::table;
+@@ -1456,11 +1385,7 @@
+     detail::stack_pop pop(interpreter, 1);
+ 
+     return object(from_stack(interpreter, -1));
+-
+ }
+-
+-
+ } // namespace luabind
+ 
+-#endif // LUABIND_OBJECT_050419_HPP
+-
++#endif // LUABIND_OBJECT_050419_HPP
+\ No newline at end of file
+Index: luabind/operator.hpp
+===================================================================
+--- luabind/operator.hpp	(revision 2961)
++++ luabind/operator.hpp	(working copy)
+@@ -26,10 +26,8 @@
+ #include <boost/mpl/eval_if.hpp>
+ #include <boost/mpl/identity.hpp>
+ #include <boost/mpl/apply_wrap.hpp>
+-#ifndef LUABIND_CPP0x
+ #include <boost/preprocessor/repetition/enum_trailing.hpp>
+ #include <boost/preprocessor/repetition/enum_trailing_params.hpp>
+-#endif
+ #include <boost/type_traits/is_same.hpp>
+ #include <luabind/detail/other.hpp>
+ #include <luabind/raw_policy.hpp>
+@@ -67,63 +65,19 @@
+ 
+ namespace luabind { namespace operators {
+ 
+-# ifdef LUABIND_CPP0x
+-
+-template <class Self, class... Args>
+-struct call_operator
+-  : detail::operator_<call_operator>
+-{
+-    call_operator(int)
+-    {}
+-
+-    template <class T, class Policies>
+-    struct apply
+-    {
+-        static void execute(
+-            lua_State* L
+-          , typename detail::unwrap_parameter_type<T, Self>::type self
+-          , detail::unwrap_parameter_type<T, Args>::type args...
+-        )
+-        {
+-            using namespace detail;
+-            operator_result(
+-                L
+-              , (self(args...), detail::operator_void_return())
+-              , (Policies*)0
+-            );
+-        }
+-    };
+-
+-    static char const* name() { return "__call"; }
+-};
+-
+-# else // LUABIND_CPP_0x
+    #define BOOST_PP_ITERATION_PARAMS_1 (3, \
+        (0, LUABIND_MAX_ARITY, <luabind/detail/call_operator_iterate.hpp>))
+    #include BOOST_PP_ITERATE()
+-# endif // LUABIND_CPP_0x
+     
+ }} // namespace luabind::operators
+ 
+-#ifndef LUABIND_CPP0x
+ # include <boost/preprocessor/iteration/local.hpp>
+-#endif
+ 
+ namespace luabind {
+ 
+     template<class Derived>
+     struct self_base
+     {
+-# ifdef LUABIND_CPP0x
+-
+-        template <class... Args>
+-        operators::call_operator<Derived, Args...> operator()(Args const&...) const
+-        {
+-            return 0;
+-        }
+-
+-# else // LUABIND_CPP0x
+-
+         operators::call_operator0<Derived> operator()() const
+         {
+             return 0;
+@@ -145,8 +99,6 @@
+ #define BOOST_PP_LOCAL_LIMITS (1, LUABIND_MAX_ARITY)
+ #include BOOST_PP_LOCAL_ITERATE()
+ 
+-# endif // LUABIND_CPP0x
+-
+     };
+ 
+     struct self_type : self_base<self_type>
+Index: luabind/shared_ptr_converter.hpp
+===================================================================
+--- luabind/shared_ptr_converter.hpp	(revision 2961)
++++ luabind/shared_ptr_converter.hpp	(working copy)
+@@ -9,6 +9,7 @@
+ # include <luabind/handle.hpp>
+ # include <luabind/detail/policy.hpp>
+ # include <boost/shared_ptr.hpp>
++# include <memory>
+ 
+ namespace luabind {
+ 
+@@ -78,6 +79,53 @@
+   : default_converter<boost::shared_ptr<T> >
+ {};
+ 
++template <class T>
++struct default_converter<std::shared_ptr<T> >
++  : default_converter<T*>
++{
++    typedef boost::mpl::false_ is_native;
++
++    template <class U>
++    int match(lua_State* L, U, int index)
++    {
++        return default_converter<T*>::match(
++            L, LUABIND_DECORATE_TYPE(T*), index);
++    }
++
++    template <class U>
++    std::shared_ptr<T> apply(lua_State* L, U, int index)
++    {
++        T* raw_ptr = default_converter<T*>::apply(
++            L, LUABIND_DECORATE_TYPE(T*), index);
++        if (!raw_ptr)
++            return std::shared_ptr<T>();
++        return std::shared_ptr<T>(
++            raw_ptr, detail::shared_ptr_deleter(L, index));
++    }
++
++    void apply(lua_State* L, std::shared_ptr<T> const& p)
++    {
++        if (detail::shared_ptr_deleter* d =
++                std::get_deleter<detail::shared_ptr_deleter>(p))
++        {
++            d->life_support.push(L);
++        }
++        else
++        {
++            detail::value_converter().apply(L, p);
++        }
++    }
++
++    template <class U>
++    void converter_postcall(lua_State*, U const&, int)
++    {}
++};
++
++template <class T>
++struct default_converter<std::shared_ptr<T> const&>
++  : default_converter<std::shared_ptr<T> >
++{};
++
+ } // namespace luabind
+ 
+ #endif // LUABIND_SHARED_PTR_CONVERTER_090211_HPP
+Index: luabind/std_shared_ptr.hpp
+===================================================================
+--- luabind/std_shared_ptr.hpp	(revision 0)
++++ luabind/std_shared_ptr.hpp	(working copy)
+@@ -0,0 +1,63 @@
++// Copyright (c) 2012 Christopher Gassib
++
++// Permission is hereby granted, free of charge, to any person obtaining a
++// copy of this software and associated documentation files (the "Software"),
++// to deal in the Software without restriction, including without limitation
++// the rights to use, copy, modify, merge, publish, distribute, sublicense,
++// and/or sell copies of the Software, and to permit persons to whom the
++// Software is furnished to do so, subject to the following conditions:
++
++// The above copyright notice and this permission notice shall be included
++// in all copies or substantial portions of the Software.
++
++// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF
++// ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
++// TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
++// PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT
++// SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR
++// ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN
++// ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
++// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE
++// OR OTHER DEALINGS IN THE SOFTWARE.
++
++#ifndef LUABIND_STD_SHARED_PTR_120603_HPP
++# define LUABIND_STD_SHARED_PTR_120603_HPP
++
++//
++// This is a work around for luabind which allows use of std:: shared
++// pointers.  This code needs to be parsed before boost's
++// <get_pointer.hpp> header. Because it depends on standard <memory>,
++// it's probably desirable to make this an optional user include.
++//
++
++# include <memory>
++/*
++namespace luabind { namespace detail { namespace has_get_pointer_ {
++
++    template<typename T> inline T* get_pointer(const std::shared_ptr<T>& p)
++    {
++        return p.get();
++    }
++
++    template<typename T> inline T* get_pointer(std::shared_ptr<T>& p)
++    {
++        return p.get();
++    }
++
++} } } // namespace luabind::detail::has_get_pointer_*/
++
++namespace boost {
++
++    template<typename T> inline T* get_pointer(const std::shared_ptr<T>& p)
++    {
++        return p.get();
++    }
++
++    template<typename T> inline T* get_pointer(std::shared_ptr<T>& p)
++    {
++        return p.get();
++    }
++
++} // namespace boost
++
++#endif // LUABIND_STD_SHARED_PTR_120603_HPP
+Index: luabind/tag_function.hpp
+===================================================================
+--- luabind/tag_function.hpp	(revision 2961)
++++ luabind/tag_function.hpp	(working copy)
+@@ -7,7 +7,6 @@
+ # ifndef LUABIND_TAG_FUNCTION_081129_HPP
+ #  define LUABIND_TAG_FUNCTION_081129_HPP
+ 
+-#  ifndef LUABIND_CPP0x
+ #   if LUABIND_MAX_ARITY <= 8
+ #    include <boost/mpl/vector/vector10.hpp>
+ #   else
+@@ -17,7 +16,6 @@
+ #   include <boost/preprocessor/iterate.hpp>
+ #   include <boost/preprocessor/repetition/enum_params.hpp>
+ #   include <boost/preprocessor/repetition/enum_trailing_params.hpp>
+-#  endif
+ 
+ namespace luabind {
+ 
+@@ -40,28 +38,6 @@
+       return Signature();
+   }
+ 
+-  template <class Function>
+-  struct signature_from_function;
+-
+-#  ifdef LUABIND_CPP0x
+-
+-  template <class... Args, class F, class Policies>
+-  int invoke(
+-      lua_State* L, function_object const& self, invoke_context& ctx
+-    , tagged_function<vector<Args...>, F> const& tagged
+-    , vector<Args...>, Policies const& policies)
+-  {
+-      return invoke(L, self, ctx, tagged.f, vector<Args...>(), policies);
+-  }
+-
+-  template <class R, class... Args>
+-  struct signature_from_function<R(Args...)>
+-  {
+-      typedef vector<R, Args...> type;
+-  };
+-
+-#  else // LUABIND_CPP0x
+-
+   template <class Signature, class F, class Policies>
+   int invoke(
+       lua_State* L, function_object const& self, invoke_context& ctx
+@@ -71,12 +47,13 @@
+       return invoke(L, self, ctx, tagged.f, Signature(), policies);
+   }
+ 
++  template <class Function>
++  struct signature_from_function;
++
+ #   define BOOST_PP_ITERATION_PARAMS_1 \
+   (3, (0, LUABIND_MAX_ARITY, <luabind/tag_function.hpp>))
+ #  include BOOST_PP_ITERATE()
+ 
+-# endif // LUABIND_CPP0x
+-
+ } // namespace detail
+ 
+ template <class Signature, class F>
+Index: luabind/typeid.hpp
+===================================================================
+--- luabind/typeid.hpp	(revision 2961)
++++ luabind/typeid.hpp	(working copy)
+@@ -51,7 +51,7 @@
+         return id->name();
+     }
+ 
+-private:
++
+     std::type_info const* id;
+ };
+ 
+Index: luabind/wrapper_base.hpp
+===================================================================
+--- luabind/wrapper_base.hpp	(revision 2961)
++++ luabind/wrapper_base.hpp	(working copy)
+@@ -30,10 +30,8 @@
+ #include <luabind/detail/ref.hpp>
+ #include <luabind/detail/call_member.hpp>
+ 
+-#ifndef LUABIND_CPP0x
+ # include <boost/preprocessor/repetition/enum_trailing_params.hpp>
+ # include <boost/preprocessor/repetition/enum_trailing_binary_params.hpp>
+-#endif
+ 
+ #include <stdexcept>
+ 
+@@ -62,58 +60,16 @@
+ 		friend struct detail::wrap_access;
+ 		wrap_base() {}
+ 
+-# ifdef LUABIND_CPP0x
+-
+-        template <class R, class... Args>
+-        typename detail::make_member_proxy<R, Args...>::type call(
+-            char const* name, Args const&... args) const
+-        {
+-            lua_State* L = m_self.state();
+-            m_self.get(L);
+-            assert(!lua_isnil(L, -1));
+-            detail::do_call_member_selection(L, name);
+-
+-            if (lua_isnil(L, -1))
+-            {
+-                lua_pop(L, 1);
+-                throw std::runtime_error("Attempt to call nonexistent function");
+-            }
+-
+-            // push the self reference as the first parameter
+-            m_self.get(L);
+-
+-            typedef typename detail::make_member_proxy<R, Args...>::type
+-                proxy_type;
+-            return proxy_type(L, std::tuple<Args const*...>(&args...));
+-        }
+-
+-# else // LUABIND_CPP0x
+-
+     #define BOOST_PP_ITERATION_PARAMS_1 (4, (0, LUABIND_MAX_ARITY, <luabind/wrapper_base.hpp>, 1))
+ 	#include BOOST_PP_ITERATE()
+ 
+-# endif // LUABIND_CPP0x
+-
+ 	private:
+ 		wrapped_self_t m_self;
+ 	};
+ 
+-# ifdef LUABIND_CPP0x
+-
+-    template <class R, class... Args>
+-    typename detail::make_member_proxy<R, Args...>::type call_member(
+-        wrap_base const* self, char const* name, Args const&... args)
+-    {
+-        return self->call<R>(name, args...);
+-    }
+-
+-# else // LUABIND_CPP0x
+-
+ #  define BOOST_PP_ITERATION_PARAMS_1 (4, (0, LUABIND_MAX_ARITY, <luabind/wrapper_base.hpp>, 2))
+ #include BOOST_PP_ITERATE()
+ 
+-# endif // LUABIND_CPP0x
+-
+ 	namespace detail
+ 	{
+ 		struct wrap_access
+Index: luabind/yield_policy.hpp
+===================================================================
+--- luabind/yield_policy.hpp	(revision 2961)
++++ luabind/yield_policy.hpp	(working copy)
+@@ -34,6 +34,20 @@
+ 		static void precall(lua_State*, const index_map&) {}
+ 		static void postcall(lua_State*, const index_map&) {}
+ 	};
++
++	template<class T>
++	struct has_yield
++	{
++		BOOST_STATIC_CONSTANT(bool,
++			value = (boost::is_same<yield_policy, typename T::head>::value ||
++					  has_yield<typename T::tail>::value));
++	};
++
++	template<>
++	struct has_yield<null_type>
++	{
++		BOOST_STATIC_CONSTANT(bool, value = false);
++	};
+ }}
+ 
+ namespace luabind
+Index: src/class.cpp
+===================================================================
+--- src/class.cpp	(revision 2961)
++++ src/class.cpp	(working copy)
+@@ -38,6 +38,10 @@
+    LUABIND_API detail::nil_type nil;
+ }
+ 
++bool TowerLua::HelpContainer::enabled = false;
++std::string TowerLua::HelpContainer::m_buffer;
++std::string* TowerLua::HelpNavigator::m_string = nullptr;
++
+ namespace luabind { namespace detail {
+     
+ 
+@@ -82,13 +86,15 @@
+         scope m_default_members;
+     };
+ 
+-    class_registration::class_registration(char const* name)
++    class_registration::class_registration(char const* name) : m_name(name) { }
++
++    void class_registration::register_(lua_State* L) const
+     {
+-        m_name = name;
++		if (TowerLua::HelpContainer::enabled)
++		{
++			TowerLua::HelpContainer::AddInfo("CLASS_BEGIN", m_name, TowerLua::void_cast(&m_type.id), m_type.name());
+     }
+ 
+-    void class_registration::register_(lua_State* L) const
+-    {
+         LUABIND_CHECK_STACK(L);
+ 
+         assert(lua_type(L, -1) == LUA_TTABLE);
+@@ -130,6 +136,16 @@
+         if (has_wrapper)
+             classes.put(m_wrapper_id, crep);
+ 
++		if (TowerLua::HelpContainer::enabled)
++		{
++			for(auto it:m_static_constants)
++			{
++				char tmp[20] = {0};
++				sprintf_s(tmp, "%d", it.second);
++				TowerLua::HelpContainer::AddInfo("ENUM", it.first, nullptr,tmp);
++			}
++		}
++
+         crep->m_static_constants.swap(m_static_constants);
+ 
+ 		detail::class_registry* registry = detail::class_registry::get_registry(L);
+@@ -169,7 +185,10 @@
+             i != m_bases.end(); ++i)
+         {
+             LUABIND_CHECK_STACK(L);
+-
++			if (TowerLua::HelpContainer::enabled)
++			{
++				TowerLua::HelpContainer::AddInfo("BASE", "", nullptr, i->first.name());
++			}
+             // the baseclass' class_rep structure
+             detail::class_rep* bcrep = registry->find_class(i->first);
+ 
+@@ -230,7 +249,11 @@
+ 		}
+ 
+         lua_settable(L, -3);
++		if (TowerLua::HelpContainer::enabled)
++		{
++			TowerLua::HelpContainer::AddInfo("CLASS_END", m_name, TowerLua::void_cast(&m_type.id), m_type.name());
+     }
++    }
+     
+     // -- interface ---------------------------------------------------------
+ 
+Index: src/error.cpp
+===================================================================
+--- src/error.cpp	(revision 2961)
++++ src/error.cpp	(working copy)
+@@ -21,13 +21,11 @@
+ // OR OTHER DEALINGS IN THE SOFTWARE.
+ 
+ #define LUABIND_BUILDING
+-
++#include <luabind/lua_include.hpp>
+ #include <luabind/error.hpp>
+ 
+-
+ namespace luabind
+ {
+-
+ 	namespace
+ 	{
+ 		pcall_callback_fun pcall_callback = 0;
+@@ -37,7 +35,32 @@
+ #endif
+ 	}
+ 
++#ifndef LUABIND_NO_EXCEPTIONS
++error::error(lua_State* L): m_L(L), m_error("Lua error: ")
++{
++	const char* tmp = lua_tostring(L,-1);
++	if (tmp!=NULL)
++	{
++		m_error+=tmp;
++	}
++	else
++	{
++		m_error+="Unknown";
++	}
++}
+ 
++cast_failed::cast_failed(lua_State* L, type_id const& i): m_L(L), m_info(i), m_error("Cast failed : ")
++{
++	m_error+=m_info.name();
++	const char* tmp = lua_tostring(L,-1);
++	if (tmp!=NULL)
++	{
++		m_error+=", Stack error: ";
++		m_error+=tmp;
++	}
++}
++#endif
++
+ #ifdef LUABIND_NO_EXCEPTIONS
+ 
+ 	typedef void(*error_callback_fun)(lua_State*);
+@@ -74,5 +97,4 @@
+ 	{
+ 		return pcall_callback;
+ 	}
+-
+-}
++}
+\ No newline at end of file
+Index: src/inheritance.cpp
+===================================================================
+--- src/inheritance.cpp	(revision 2961)
++++ src/inheritance.cpp	(working copy)
+@@ -94,7 +94,7 @@
+   {
+       m_cache.insert(std::make_pair(
+           key_type(src, target, dynamic_id, object_offset)
+-        , cache_entry(offset, distance)
++        , cache_entry(offset, (int)distance)
+       ));
+   }
+ 
+Index: src/object_rep.cpp
+===================================================================
+--- src/object_rep.cpp	(revision 2961)
++++ src/object_rep.cpp	(working copy)
+@@ -210,6 +210,11 @@
+     {
+         lua_newtable(L);
+ 
++        // just indicate that this really is a class and not just
++        // any user data
++        lua_pushboolean(L, 1);
++        lua_setfield(L, -2, "__luabind_class");
++
+         // This is used as a tag to determine if a userdata is a luabind
+         // instance. We use a numeric key and a cclosure for fast comparision.
+         lua_pushnumber(L, 1);
+Index: src/scope.cpp
+===================================================================
+--- src/scope.cpp	(revision 2961)
++++ src/scope.cpp	(working copy)
+@@ -28,6 +28,7 @@
+ #include <luabind/detail/debug.hpp>
+ #include <luabind/detail/stack_utils.hpp>
+ #include <cassert>
++#include <luabind/HelpContainer.h>
+ 
+ namespace luabind { namespace detail {
+ 
+@@ -134,6 +135,8 @@
+ 
+     void module_::operator[](scope s)
+     {
++		if (TowerLua::HelpContainer::enabled)
++		TowerLua::HelpContainer::AddInfo("MODULE_BEGIN", m_name?m_name:"");
+         if (m_name)
+         {
+             lua_pushstring(m_state, m_name);
+@@ -151,12 +154,15 @@
+         }
+         else
+         {
++			
+             lua_pushvalue(m_state, LUA_GLOBALSINDEX);
+         }
+ 
+         lua_pop_stack guard(m_state);
+ 
+         s.register_(m_state);
++		if (TowerLua::HelpContainer::enabled)
++		TowerLua::HelpContainer::AddInfo("MODULE_END", m_name?m_name:"");
+     }
+ 
+     struct namespace_::registration_ : detail::registration
+@@ -168,6 +174,8 @@
+ 
+         void register_(lua_State* L) const
+         {
++			if (TowerLua::HelpContainer::enabled)
++			TowerLua::HelpContainer::AddInfo("NAMESPACE_BEGIN", m_name?m_name:"");
+ 			LUABIND_CHECK_STACK(L);
+             assert(lua_gettop(L) >= 1);
+ 
+@@ -187,6 +195,8 @@
+             }
+ 
+             m_scope.register_(L);
++			if (TowerLua::HelpContainer::enabled)
++			TowerLua::HelpContainer::AddInfo("NAMESPACE_END", m_name?m_name:"");
+         }
+ 
+         char const* m_name;
+Index: src/wrapper_base.cpp
+===================================================================
+--- src/wrapper_base.cpp	(revision 2961)
++++ src/wrapper_base.cpp	(working copy)
+@@ -34,10 +34,12 @@
+ 	LUABIND_API void do_call_member_selection(lua_State* L, char const* name)
+ 	{
+ 		object_rep* obj = static_cast<object_rep*>(lua_touserdata(L, -1));
++		lua_pop(L, 1); // pop self
+ 
++		obj->crep()->get_table(L); // push the crep table
+         lua_pushstring(L, name);
+         lua_gettable(L, -2);
+-        lua_replace(L, -2);
++		lua_remove(L, -2); // remove the crep table
+ 
+ 		if (!is_luabind_function(L, -1))
+ 			return;
+Index: test/Jamfile
+===================================================================
+--- test/Jamfile	(revision 2961)
++++ test/Jamfile	(working copy)
+@@ -45,7 +45,6 @@
+     test_super_leak.cpp
+     test_set_instance_value.cpp
+     test_unsigned_int.cpp
+-    test_def_function_object.cpp
+  ;
+ 
+ obj main : main.cpp : <library>..//luabind : : <library>..//luabind ;
+Index: test/test_abstract_base.cpp
+===================================================================
+--- test/test_abstract_base.cpp	(revision 2961)
++++ test/test_abstract_base.cpp	(working copy)
+@@ -110,13 +110,5 @@
+         "y:hello()\n");
+ 
+     DOSTRING(L, "call_hello(y)\n");
+-
+-    DOSTRING(L,
+-        "x = abstract()\n"
+-        "x.hello = function(self) return 'hello from instance' end\n"
+-        "print(x.hello)\n"
+-        "assert(x:hello() == 'hello from instance')\n"
+-        "assert(call_hello(x) == 'hello from instance')\n"
+-    );
+ }
+ 
+Index: test/test_attributes.cpp
+===================================================================
+--- test/test_attributes.cpp	(revision 2961)
++++ test/test_attributes.cpp	(working copy)
+@@ -73,19 +73,6 @@
+ int free_getter(const property_test& p)
+ { return p.get(); }
+ 
+-struct borrowed_attribute : counted_type<borrowed_attribute>
+-{
+-};
+-
+-struct attribute_holder : counted_type<attribute_holder>
+-{
+-    attribute_holder(borrowed_attribute* b)
+-      : borrowed(b)
+-    {}
+-
+-    borrowed_attribute* borrowed;
+-};
+-
+ void test_main(lua_State* L)
+ {
+     using namespace luabind;
+@@ -117,16 +104,6 @@
+ 			.def_readwrite("a", &C::a)
+ 	];
+ 
+-    module(L) [
+-        class_<borrowed_attribute>("borrowed_attribute")
+-            .def(constructor<>()),
+-
+-        class_<attribute_holder>("attribute_holder")
+-            .def(constructor<borrowed_attribute*>())
+-            .def_readwrite(
+-                "borrowed", &attribute_holder::borrowed, no_dependency)
+-    ];
+-
+ 	DOSTRING(L, "test = property()\n");
+ 
+ 	DOSTRING(L,
+@@ -181,23 +158,5 @@
+ 
+ 	DOSTRING(L,
+ 		"assert(a.x == 5)\n");
+-
+-    DOSTRING(L,
+-        "borrowed = borrowed_attribute()\n"
+-        "holder = attribute_holder(borrowed)\n"
+-    );
+-
+-    TEST_CHECK(borrowed_attribute::count == 1);
+-    TEST_CHECK(attribute_holder::count == 1);
+-
+-    DOSTRING(L,
+-        "holder.borrowed = borrowed\n"
+-        "borrowed2 = holder.borrowed\n"
+-        "holder = nil\n"
+-        "collectgarbage()\n"
+-    );
+-
+-    TEST_CHECK(borrowed_attribute::count == 1);
+-    TEST_CHECK(attribute_holder::count == 0);
+ }
+ 
+Index: test/test_typetraits.cpp
+===================================================================
+--- test/test_typetraits.cpp	(revision 2961)
++++ test/test_typetraits.cpp	(working copy)
+@@ -21,6 +21,7 @@
+ // OR OTHER DEALINGS IN THE SOFTWARE.
+ 
+ #include <luabind/detail/typetraits.hpp>
++#include <luabind/detail/is_indirect_const.hpp>
+ #include <luabind/detail/pointee_sizeof.hpp>
+ #include <boost/static_assert.hpp>
+ 
+@@ -54,5 +55,11 @@
+ 
+ 	BOOST_STATIC_ASSERT(!is_const_reference<const tester>::value);
+ 
++	BOOST_STATIC_ASSERT(!luabind::is_indirect_const<int&>::value);
++	BOOST_STATIC_ASSERT(is_indirect_const<const int>::value);
++	BOOST_STATIC_ASSERT(is_indirect_const<const int&>::value);
++	BOOST_STATIC_ASSERT(!is_indirect_const<int*>::value);
++	BOOST_STATIC_ASSERT(is_indirect_const<const int*>::value);
++
+ 	return 0;
+ }
