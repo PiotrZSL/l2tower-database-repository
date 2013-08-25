@@ -14,6 +14,7 @@ extern "C"
 #include <luabind/adopt_policy.hpp>
 #include <luabind/iterator_policy.hpp>
 #include <luabind/out_value_policy.hpp>
+#ifndef L2TOWER_UTILS
 #include <MyGUI.h>
 
 namespace luabind
@@ -48,6 +49,8 @@ namespace luabind
 	  : default_converter<MyGUI::UString>
 	{};
 };
+
+#endif
 
 inline void InitLuaState(lua_State *L)
 {
