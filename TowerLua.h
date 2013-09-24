@@ -52,8 +52,13 @@ namespace luabind
 
 #endif
 
+extern void InitLuaSockets(lua_State *L);
+extern void InitLuaMine(lua_State *L);
+
 inline void InitLuaState(lua_State *L)
 {
 	luaL_openlibs(L);
 	luabind::open(L);
+	InitLuaSockets(L);
+	InitLuaMine(L);
 }

@@ -113,6 +113,7 @@
     <ClCompile Include="luabind\src\stack_content_by_name.cpp" />
     <ClCompile Include="luabind\src\weak_ref.cpp" />
     <ClCompile Include="luabind\src\wrapper_base.cpp" />
+    <ClCompile Include="TowerLua.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{9D65F936-67BD-4452-9F45-DE41B652D2E7}</ProjectGuid>
@@ -166,7 +167,7 @@
       <Optimization>MaxSpeed</Optimization>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
-      <AdditionalIncludeDirectories>.\luabind;.\LuaJIT\src;..\Boost;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\luabind;.\LuaJIT\src;..\Boost;.\luasocket-2.0.2\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <StringPooling>true</StringPooling>
       <ExceptionHandling>Async</ExceptionHandling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -182,9 +183,9 @@
       <LinkLibraryDependencies>true</LinkLibraryDependencies>
     </ProjectReference>
     <Lib>
-      <AdditionalDependencies>lua51.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>lua51.lib;socket.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>./$(ProjectName).lib</OutputFile>
-      <AdditionalLibraryDirectories>.\LuaJIT;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>.\LuaJIT;.\luasocket-2.0.2;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
       <LinkTimeCodeGeneration>false</LinkTimeCodeGeneration>
     </Lib>
