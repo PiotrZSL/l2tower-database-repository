@@ -6,14 +6,16 @@
 *
 * This module is just an example of how to extend LuaSocket with a new 
 * domain.
-*
-* RCS ID: $Id$
 \*=========================================================================*/
 #include "lua.h"
 
 #include "buffer.h"
 #include "timeout.h"
 #include "socket.h"
+
+#ifndef UNIX_API
+#define UNIX_API extern
+#endif
 
 typedef struct t_unix_ {
     t_socket sock;
@@ -23,6 +25,6 @@ typedef struct t_unix_ {
 } t_unix;
 typedef t_unix *p_unix;
 
-int luaopen_socket_unix(lua_State *L);
+UNIX_API int luaopen_socket_unix(lua_State *L);
 
 #endif /* UNIX_H */
