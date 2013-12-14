@@ -122,12 +122,13 @@ namespace TowerLua
 			}
 	};
 
+#ifdef LOG_FILE
 	#define TowerLua__JOIN2(x,y) x##y
 	#define TowerLua__JOIN(x,y) TowerLua__JOIN2(x,y)
 	#define __HELP_MARK(type, symbol, ptr) static TowerLua::HelpNavigator TowerLua__JOIN(g_helpMarker,__COUNTER__)(type, symbol, __FILE__, __LINE__, TowerLua::void_cast(ptr));
 	#define __HELP_MARK2(type, symbol) static TowerLua::HelpNavigator TowerLua__JOIN(g_helpMarker,__COUNTER__)(type, symbol, __FILE__, __LINE__, nullptr);
 	
-	#define HELP_CLASS(type)					__HELP_MARK2("CLASS", typeid(type).name())
+	#define HELP_CLASS(type)					__HELP_MARK2("CLASS", typeid( type ).name())
 	#define HELP_METHOD(ptr)					__HELP_MARK("METHOD", typeid(ptr).name(), ptr)
 	#define HELP_CONST(ptr)						__HELP_MARK("CONST", typeid(ptr).name(), ptr)
 	#define HELP_VAR(ptr)						__HELP_MARK("VAR", typeid(ptr).name(), ptr)
@@ -140,4 +141,22 @@ namespace TowerLua
 	#define HELP_ENUM(type)						__HELP_MARK2("ENUM", typeid(type).name())
 	#define HELP_ENUM_ITEM(value)				__HELP_MARK("ENUM_ITEM", typeid(value).name(), value)
 	#define HELP_BASE(type)						__HELP_MARK2("BASE", typeid(type).name())
+#else
+	#define __HELP_MARK(type, symbol, ptr)
+	#define __HELP_MARK2(type, symbol)
+	#define HELP_CLASS(type)
+	#define HELP_METHOD(ptr)	
+	#define HELP_CONST(ptr)					
+	#define HELP_VAR(ptr)					
+	#define HELP_FUNCTION(ptr)				
+	#define HELP_PROPERTY(ptr)				
+	#define HELP_EVENT(ptr, index, type)	
+	#define HELP_CONSTRUCTOR(_class, number)
+	#define HELP_MODULE(fullName)			
+	#define HELP_NAMESPACE(fullName)			
+	#define HELP_ENUM(type)					
+	#define HELP_ENUM_ITEM(value)				
+	#define HELP_BASE(type)					
+#endif
+
 }
