@@ -15,10 +15,10 @@ logs\P{PID}_{YEAR}{MONTH}{DAY},{HOUR}{MINUTE}{SECOND}_L2Tower_Packets.log	1000	1
 logs\P{PID}_{YEAR}{MONTH}{DAY},{HOUR}{MINUTE}{SECOND}_L2Tower_Logic.log	1000	1024	N	N	1	Y	0	Y
 
 #Lineage 2 Chat logs (opened and closed durring login & logout)
-chat\{USER}_{YEAR}{MONTH}{DAY},{HOUR}{MINUTE}{SECOND}.chat	1000	512	N	Y	1	N	0	Y
+chat\{USER}_{YEAR}{MONTH}{DAY},{HOUR}{MINUTE}{SECOND}.chat	1000	512	N	Y	1	N	0	N
 chat\{USER}_{YEAR}{MONTH}{DAY},{HOUR}{MINUTE}{SECOND}.system	1000	512	N	N	1	N	0	Y
-chat\{USER}_{YEAR}{MONTH}{DAY},{HOUR}{MINUTE}{SECOND}.talk	1000	512	N	Y	1	N	0	Y
-chat\{USER}_{YEAR}{MONTH}{DAY},{HOUR}{MINUTE}{SECOND}.trade	500	512	N	Y	1	N	0	Y
+chat\{USER}_{YEAR}{MONTH}{DAY},{HOUR}{MINUTE}{SECOND}.talk	1000	512	N	Y	1	N	0	N
+chat\{USER}_{YEAR}{MONTH}{DAY},{HOUR}{MINUTE}{SECOND}.trade	500	512	N	Y	1	N	0	N
 
 #Entry for L2Tower MYGUI engine logs, we use only file name and "LogEnabled" from this record.
 logs\P{PID}_{YEAR}{MONTH}{DAY},{HOUR}{MINUTE}{SECOND}_L2Tower-MyGUI.log	1	1	Y	Y	1	N	0	N
