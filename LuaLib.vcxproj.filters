@@ -267,6 +267,9 @@
     <ClInclude Include="luabind\luabind\const_var.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="luabind\luabind\lua_tinker.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="luabind\src\class.cpp">
@@ -318,6 +321,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="luabind\src\wrapper_base.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="luabind\src\lua_tinker.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
