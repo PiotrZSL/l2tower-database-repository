@@ -8,7 +8,6 @@
 #if DASM_VERSION != 10300
 #error "Version mismatch between DynASM and included encoding engine"
 #endif
-
 #define DASM_SECTION_CODE_OP	0
 #define DASM_SECTION_CODE_SUB	1
 #define DASM_MAXSECTION		2
@@ -1489,7 +1488,7 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
   case BC_USETV:
 #define TV2MARKOFS \
  ((int32_t)offsetof(GCupval, marked)-(int32_t)offsetof(GCupval, tv))
-    dasm_put(Dst, 10406, offsetof(GCfuncL, uvptr), DtA(->closed), DtA(->v), TV2MARKOFS, LJ_GC_BLACK, LJ_TISGCV, LJ_TISNUM - LJ_TISGCV, Dt4(->gch.marked), LJ_GC_WHITES, GG_DISP2G);
+    dasm_put(Dst, 10406, offsetof(GCfuncL, uvptr), DtA(->closed), DtA(->v), TV2MARKOFS, LJ_GC_BLACK, LJ_TISGCV, LJ_TNUMX - LJ_TISGCV, Dt4(->gch.marked), LJ_GC_WHITES, GG_DISP2G);
     dasm_put(Dst, 10496);
     break;
 #undef TV2MARKOFS
@@ -2107,12 +2106,12 @@ static void emit_asm_debug(BuildCtx *ctx)
 #if LJ_64
 	  "\t.byte 0xe\n\t.byte 16\n"		/* def_cfa_offset */
 	  "\t.byte 0x86\n\t.byte 0x2\n"		/* offset rbp */
-	  "\t.byte 0xd\n\t.uleb128 0x6\n"	/* def_cfa_register rbp */
+	  "\t.byte 0xd\n\t.byte 0x6\n"		/* def_cfa_register rbp */
 	  "\t.byte 0x83\n\t.byte 0x3\n"		/* offset rbx */
 #else
 	  "\t.byte 0xe\n\t.byte 8\n"		/* def_cfa_offset */
 	  "\t.byte 0x84\n\t.byte 0x2\n"		/* offset ebp (4 for MACH-O)*/
-	  "\t.byte 0xd\n\t.uleb128 0x4\n"	/* def_cfa_register ebp */
+	  "\t.byte 0xd\n\t.byte 0x4\n"		/* def_cfa_register ebp */
 	  "\t.byte 0x83\n\t.byte 0x3\n"		/* offset ebx */
 #endif
 	  "\t.align " BSZPTR "\n"
