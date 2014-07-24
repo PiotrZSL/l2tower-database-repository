@@ -9,6 +9,7 @@
 #include <boost/make_shared.hpp>
 #include <typeinfo>
 #include <boost/mpl/if.hpp>
+#include <boost/noncopyable.hpp>
 
 namespace TowerLua
 {
@@ -25,7 +26,7 @@ namespace TowerLua
 		return (convertor.d);
 	}
 
-	class HelpContainer
+	class HelpContainer : private boost::noncopyable
 	{
 		private:
 			static std::string m_buffer;
@@ -74,7 +75,7 @@ namespace TowerLua
 			}
 	};
 
-	class HelpNavigator
+	class HelpNavigator : private boost::noncopyable
 	{
 		private:
 			static std::string *m_string;
